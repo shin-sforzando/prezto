@@ -12,9 +12,29 @@ fi
 
 # Customize to your needs...
 
-## Homebrew
-#
-alias bug="cd && brew update && hr && brew upgrade && hr && brew cask upgrade && hr && brew cleanup -s && hr && duf && hr && cd -"
+## cdr
+autoload -Uz is-at-least
+if is-at-least 4.3.11
+then
+  autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+  add-zsh-hook chpwd chpwd_recent_dirs
+  add-zsh-hook zshexit compact-chpwd-recent-dirs
+  zstyle ':chpwd:*' recent-dirs-max 5000
+  zstyle ':chpwd:*' recent-dirs-default yes
+  zstyle ':completion:*' recent-dirs-insert both
+fi
+
+function compact-chpwd-recent-dirs() {
+  emulate -L zsh
+  setopt extendedglob
+  local -aU reply
+  integer history_size
+  autoload -Uz chpwd_recent_filehandler
+  chpwd_recent_filehandler
+  histroy_size=$#reply
+  reply=(${^reply}(N))
+	(( $history_size == $#reply )) || chpwd_recent_filehandler $reply
+}
 
 ## cURL
 #
@@ -36,6 +56,10 @@ if which exa > /dev/null; then
     exa -halF --git
   }
 fi
+
+## Homebrew
+#
+alias bug="cd && brew update && hr && brew upgrade && hr && brew cask upgrade && hr && brew cleanup -s && hr && duf && hr && cd -"
 
 ## Horizontal Line
 #
