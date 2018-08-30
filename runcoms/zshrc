@@ -12,5 +12,167 @@ fi
 
 # Customize to your needs...
 
+## Homebrew
+#
+alias bug="cd && brew update && hr && brew upgrade && hr && brew cask upgrade && hr && brew cleanup -s && hr && duf && hr && cd -"
+
+## cURL
+#
+if [[ -x /usr/local/opt/curl/bin ]]; then
+  export PATH="/usr/local/opt/curl/bin:$PATH"
+fi
+
+## Delete Unwanted Files
+alias duf="find . \( -name '.DS_Store' -o -name '._*' -o -name '.apdisk' -o -name 'Thumbs.db' -o -name 'Desktop.ini' \) -delete -print"
+
+## exa: Modern replacement for 'ls'
+#
+if which exa > /dev/null; then
+  alias ls='exa -hF'
+  alias la='exa -haF'
+  alias ll='exa -halF --git'
+
+  function chpwd() {
+    exa -halF --git
+  }
+fi
+
+## Horizontal Line
+#
+function hr() {
+  printf "\e[7m$(printf %$(tput cols)s $(date +%Y/%m/%d-%T))\e[m\n"
+}
+
 ## thefuck
+#
 eval $(thefuck --alias)
+
+## gettext
+#
+if [[ -x /usr/local/opt/gettext/bin ]]; then
+  export PATH="/usr/local/opt/gettext/bin:$PATH"
+fi
+
+## Git
+#
+compdef g=git
+
+## ghq
+#
+if which ghq > /dev/null; then
+  alias repos='ghq list -p | peco'
+  alias repo='cd $(repos)'
+
+  if which hub > /dev/null; then
+    alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
+  fi
+
+  if which peco > /dev/null; then
+    function peco-src () {
+      local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+      if [ -n "$selected_dir" ]; then
+        BUFFER='cd ${selected_dir}'
+        zle accept-line
+      fi
+      zle clear-screen
+    }
+    zle -N peco-src
+
+    bindkey '^]' peco-src
+  fi
+
+  ## ghq-foreach
+  function ghq-foreach() {
+    if [[ $# -eq 0 ]]; then
+      echo "Usage: ghq-foreach (<git command>|-e <shell command>) [args]" >&2
+      return 1
+    fi
+    EXEC=
+    if [[ $1 = "-e" ]]; then
+      EXEC=1
+      shift
+    fi
+    ghq list -p | while read -r repo; do
+      (
+        chpwd(){}  # Temporarily disable chpwd()
+        cd $repo
+        echo -e "\033[0;36m \u00bb $repo \033[0;39m"
+        if [[ $EXEC ]]; then
+          $@
+        else
+          git $@
+        fi
+      )
+    done
+  }
+fi
+
+## MObileSHell
+#
+compdef mosh=ssh
+
+
+## Peco
+#
+if which peco > /dev/null; then
+  alias top='top | peco'
+  alias ps='ps aux | peco'
+  alias -g P='| peco'
+
+  function peco-select-history () {
+    BUFFER=$(history -nr 1 | awk '!a[$0]++' | peco --query "$LBUFFER" | sed 's/\\n/\n/')
+    CURSOR=$#BUFFER # move cursor
+    zle -R -c       # refresh
+  }
+  zle -N peco-select-history
+
+  function peco-cdr () {
+    local selected_dir="$(cdr -l | sed -e 's/^[[:digit:]]*[[:blank:]]*//' | peco --query "$LBUFFER")"
+    if [ -n "$selected_dir" ]; then
+      BUFFER="cd ${selected_dir}"
+      zle accept-line
+    fi
+  }
+  zle -N peco-cdr
+
+  function peco-source () {
+    if which ag > /dev/null; then
+      GREP_CMD=ag
+    fi
+    if which rg > /dev/null; then
+      GREP_CMD=rg
+    fi
+    $GREP_CMD "$@" . | peco --exec 'awk -F : '"'"'{print "+" $2 " " $1}'"'"' | xargs less -N '
+  }
+  zle -N peco-source
+
+  function peco-file-vim () {
+    local filepath=$(ag -l | peco --prompt 'PATH>')
+    if [ -n "$filepath" ]; then
+      if [ -n "$BUFFER" ]; then
+        BUFFER="$BUFFER $(echo $filepath | tr '\n' ' ')"
+        CURSOR=$#BUFFER
+      else
+        if [ -f "$filepath" ]; then
+          BUFFER="vim $filepath"
+          zle accept-line
+        fi
+      fi
+    fi
+  }
+  zle -N peco-file-vim
+
+  #bindkey '^r' peco-select-history  # -> znt-history-widget
+  bindkey '^j' peco-cdr
+  bindkey '^v' peco-file-vim
+fi
+
+## translate-shell
+#
+if which trans > /dev/null; then
+  alias -g T='| trans :ja'
+fi
+
+## iTerm2 Shell Integrations
+#
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
