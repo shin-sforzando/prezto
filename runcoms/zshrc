@@ -135,6 +135,9 @@ fi
 #
 compdef mosh=ssh
 
+## NeoVim
+#
+alias vi='nvim'
 
 ## Peco
 #
