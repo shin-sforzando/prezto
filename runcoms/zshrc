@@ -80,6 +80,7 @@ fi
 ## Git
 #
 compdef g=git
+export GIT_EDITOR=nvim
 
 ## ghq
 #
