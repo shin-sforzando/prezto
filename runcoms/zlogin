@@ -16,11 +16,29 @@
 
 # Execute code only if STDERR is bound to a TTY.
 [[ -o INTERACTIVE && -t 2 ]] && {
+  ## Login Message
+  #
+  echo "============================================================";
+  echo "=  =====  ==================    =====      ========   ==   =";
+  echo "=   ===   =================  ==  ===  ====  ========  ==  ==";
+  echo "=  =   =  ================  ====  ==  ====  ========  ==  ==";
+  echo "=  == ==  ===   ====   ===  ====  ===  ==============    ===";
+  echo "=  =====  ==  =  ==  =  ==  ====  =====  =============  ====";
+  echo "=  =====  =====  ==  =====  ====  =======  ==========    ===";
+  echo "=  =====  ===    ==  =====  ====  ==  ====  ========  ==  ==";
+  echo "=  =====  ==  =  ==  =  ===  ==  ===  ====  ========  ==  ==";
+  echo "=  =====  ===    ===   =====    =====      ========  ====  =";
+  echo "============================================================";
+  echo -e "\e[33m [Uptime & Who] \e[m"
+  w
 
   # Print a random, hopefully interesting, adage.
   if (( $+commands[fortune] )); then
-    fortune -s
-    print
+    echo -e "\n\e[33m [Today's fortune] \e[m"
+    if (( $+commands[trans] )); then
+      fortune -s | tr '\n' ' ' | trans :ja -sp --show-original yes --show-translation yes --show-translation-phonetics no --show-alternatives no --show-prompt-message no --show-languages no
+    else
+      fortune -s
+    fi
   fi
-
 } >&2
