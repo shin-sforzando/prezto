@@ -141,6 +141,20 @@ compdef mosh=ssh
 alias vi='nvim'
 alias vim='nvim'
 
+## nodebrew
+#
+if which nodebrew > /dev/null; then
+  export PATH=$HOME/.nodebrew/current/bin:$PATH
+fi
+
+## OpenSSL
+#
+if [ -x /usr/local/opt/openssl/bin/openssl ]; then
+  export PATH=/usr/local/opt/openssl/bin:$PATH
+  gexport LDFLAGS="-L/usr/local/opt/openssl/lib"
+  export CPPFLAGS="-I/usr/local/opt/openssl/include"
+fi
+
 ## Peco
 #
 if which peco > /dev/null; then

@@ -3,11 +3,6 @@ Setup MacOS using Prezto
 
 Prezto is the configuration framework for [Zsh][1]; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion and prompt themes.
 
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
-
-<!-- code_chunk_output -->
-
 - [Setup MacOS using Prezto](#setup-macos-using-prezto)
   - [Installation](#installation)
   - [Troubleshooting](#troubleshooting)
@@ -20,8 +15,6 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
   - [Misc.](#misc)
     - [Resources](#resources)
     - [License](#license)
-
-<!-- /code_chunk_output -->
 
 ## Installation
 
