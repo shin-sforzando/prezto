@@ -1,0 +1,15 @@
+{
+    "InitialMatcher": "SmartCase",
+    "Keymap": {
+      "C-a": "peco.SelectAll",
+      "C-s": "peco.ToggleSelectionAndSelectNext"
+    },
+    "Prompt": "[peco]",
+    "Style": {
+      "Basic": ["on_default", "default"],
+      "Matched": ["bold", "blue"],
+      "SavedSelection": ["bold", "reverse"],
+      "Selected": ["underline", "on_bold", "reverse"],
+      "Query": ["blue", "on_white"]
+    }
+}

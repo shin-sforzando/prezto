@@ -1,0 +1,69 @@
+[user]
+  name = Shin'ichiro SUZUKI
+  email = shin@sforzando.co.jp
+[alias]
+  a = add
+  ad = add
+  alias = config --get-regexp ^alias
+  amend = commit --amend
+  b = branch
+  br = branch
+  brd = branch --delete
+  c = commit -m
+  ca = commit -am
+  cam = commit --amend -am
+  ci = commit
+  cl = config --list
+  co = checkout
+  cob = checkout -b
+  cp = cherry-pick
+  d = diff
+  dc = diff --cached
+  delete-merged-branches = "!git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+  discard = checkout --
+  dl = diff HEAD^
+  dm = diff master
+  ds = diff --stat
+  f = fetch
+  flash = "!git fetch --prune --all && git pull --rebase"
+  fpr = "!f(){ git fetch origin pull/$1/head:$1; git checkout $1; };f"
+  gr = grep
+  graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+  grn = grep -n
+  l = log --graph --all --decorate
+  last = show -1 HEAD --stat -p
+  pre = diff --cached --diff-algorithm=minimal -w
+  pull-force = "!git checkout master && git fetch origin && git reset --hard origin/master"
+  s = status
+  sh = show
+  sl = shortlog
+  st = status
+  t = tag
+  uncommit = reset --mixed HEAD~
+  unstage = reset -q HEAD --
+  wip = "commit --allow-empty -m '[wip] Work in progress ... [ci skip]'"
+[color]
+  ui = true
+[core]
+  compression = -1
+  editor = vi
+  excludesfile = /Users/suzuki/.gitignore
+[merge]
+  ff = false
+[pull]
+  ff = only
+[push]
+  default = tracking
+[commit]
+  template = ~/.config/git_commit_template.txt
+[credential]
+  helper = cache --timeout=86400
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  process = git-lfs filter-process
+  required = true
+  smudge = git-lfs smudge -- %f
+[ghq]
+  root = ~/Workspace
+[fetch]
+  prune = true

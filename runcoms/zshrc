@@ -235,7 +235,7 @@ transfer() {
         curl --progress-bar --upload-file "-" "https://transfer.sh/$file" >> $tmpfile
     fi
     # cat output link
-    cat $tmpfile
+    cat $tmpfile | pbcopy
     # cleanup
     rm -f $tmpfile
 }
