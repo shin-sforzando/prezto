@@ -77,6 +77,10 @@ if [ -e /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/ ]; then
   fi
 fi
 
+## Highlight
+#
+alias hl='highlight --force --line-numbers --zeroes --out-format=truecolor'
+
 ## Homebrew
 #
 alias bug="cd && brew update && hr && brew upgrade && hr && brew cask upgrade && hr && brew cleanup -s && hr && duf && hr && cd -"
