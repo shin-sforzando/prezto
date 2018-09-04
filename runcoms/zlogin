@@ -36,7 +36,7 @@
   if (( $+commands[fortune] )); then
     echo -e "\n\e[33m [Today's fortune] \e[m"
     if (( $+commands[trans] )); then
-      fortune -s | tr '\n' ' ' | trans :ja -sp --show-original yes --show-translation yes --show-translation-phonetics no --show-alternatives no --show-prompt-message no --show-languages no
+      fortune -s | tr '\n' ' ' | trans :ja -sp --show-original yes --show-translation yes --show-translation-phonetics no --show-alternatives no --show-prompt-message no --show-languages no &!
     else
       fortune -s
     fi
