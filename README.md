@@ -3,18 +3,17 @@ Setup MacOS using Prezto
 
 Prezto is the configuration framework for [Zsh][1]; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion and prompt themes.
 
-- [Setup MacOS using Prezto](#setup-macos-using-prezto)
-  - [Installation](#installation)
-  - [Troubleshooting](#troubleshooting)
-  - [Updating](#updating)
-  - [Usage](#usage)
-    - [Modules](#modules)
-    - [Themes](#themes)
-    - [External Modules](#external-modules)
-  - [Customization](#customization)
-  - [Misc.](#misc)
-    - [Resources](#resources)
-    - [License](#license)
+- [Installation](#installation)
+- [Troubleshooting](#troubleshooting)
+- [Updating](#updating)
+- [Usage](#usage)
+  - [Modules](#modules)
+  - [Themes](#themes)
+  - [External Modules](#external-modules)
+- [Customization](#customization)
+- [Misc.](#misc)
+  - [Resources](#resources)
+  - [License](#license)
 
 ## Installation
 
@@ -39,11 +38,10 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
   4. Clone the repository:
 
      ```console
-     git clone --recursive https://github.com/shin-sforzando/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+     $ git clone --recursive https://github.com/shin-sforzando/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
      ```
 
-  5. Create a new Zsh configuration by copying the Zsh configuration files
-     provided:
+  5. Create a new Zsh configuration by copying the Zsh configuration files provided:
 
      ```sh
      setopt EXTENDED_GLOB
@@ -56,17 +54,28 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
      In simple cases you can add `source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"` to the bottom of your `.zshrc` to load prezto but keep your config intact.
      For more complicated setups, it is recommended that you back up your original configs and replace them with the provided prezto runcoms.
 
-  6. Set Zsh as your default shell:
+  6. Create symbolic links from `dot_files`:
 
-     ```console
-     chsh -s /bin/zsh
+     ```sh
+     setopt EXTENDED_GLOB
+     for dotfile in "${ZDOTDIR:-$HOME}"/.zprezto/dot_files/^README.md(.N); do
+       ln -s "$dotfile" "${ZDOTDIR:-$HOME}/.${dotfile:t}"
+     done
      ```
 
-  7. Open a new Zsh terminal window or tab.
+  7. Create `.config`
 
-  8. Create symbolic links from `_config`
+     ```sh
+     (T.B.D.)
+     ```
 
-  9. Install packages from Homebrew
+  8. Set Zsh as your default shell:
+
+     ```console
+     $ chsh -s /bin/zsh
+     ```
+
+  9.  Install packages from Homebrew
 
      ```console
      $ brew bundle
