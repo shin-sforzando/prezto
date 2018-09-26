@@ -55,7 +55,7 @@
 [push]
   default = tracking
 [commit]
-  template = ~/.config/git_commit_template.txt
+  template = ~/.git_commit_template.txt
 [credential]
   helper = cache --timeout=86400
 [filter "lfs"]

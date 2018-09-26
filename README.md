@@ -44,10 +44,10 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
   5. Create a new Zsh configuration by copying the Zsh configuration files provided:
 
      ```sh
-     setopt EXTENDED_GLOB
-     for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-       ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-     done
+     $ setopt EXTENDED_GLOB
+       for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+         ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+       done
      ```
 
      Note: If you already have any of the given config files, ln will error.
@@ -57,22 +57,26 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
   6. Create symbolic links from `dot_files`:
 
      ```sh
-     setopt EXTENDED_GLOB
-     for dotfile in "${ZDOTDIR:-$HOME}"/.zprezto/dot_files/^README.md(.N); do
-       ln -s "$dotfile" "${ZDOTDIR:-$HOME}/.${dotfile:t}"
-     done
+     $ setopt EXTENDED_GLOB
+       for dotfile in "${ZDOTDIR:-$HOME}"/.zprezto/dot_files/^README.md(.N); do
+         ln -s "$dotfile" "${ZDOTDIR:-$HOME}/.${dotfile:t}"
+       done
      ```
 
   7. Create `.config`
 
      ```sh
-     (T.B.D.)
+     $ mkdir .config
+     $ setopt EXTENDED_GLOB
+       for dotdir in "${ZDOTDIR:-$HOME}"/.zprezto/dot_config_dir/*; do
+         ln -s "$dotdir" "${ZDOTDIR:-$HOME}/.${dotdir:t}"
+       done
      ```
 
   8. Set Zsh as your default shell:
 
      ```console
-     $ chsh -s /bin/zsh
+     $ chsh -s /usr/local/bin/zsh
      ```
 
   9.  Install packages from Homebrew
