@@ -17,73 +17,74 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
 
 ## Installation
 
-  1. Install Homebrew
+### 1. Install Homebrew
 
-     ```console
-     $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-     ```
+```console
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
-  2. Install Zsh
+### 2. Install Zsh
 
-     ```console
-     $ brew install --without-etcdir zsh
-     ```
+```console
+$ brew install --without-etcdir zsh
+```
 
-  3. Launch Zsh:
+### 3. Launch Zsh:
 
-     ```console
-     $ /usr/local/bin/zsh
-     ```
+```console
+$ /usr/local/bin/zsh
+```
 
-  4. Clone the repository:
+### 4. Clone the repository:
 
-     ```console
-     $ git clone --recursive https://github.com/shin-sforzando/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-     ```
+```console
+$ git clone --recursive https://github.com/shin-sforzando/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+```
 
-  5. Create a new Zsh configuration by copying the Zsh configuration files provided:
+### 5. Create a new Zsh configuration by copying the Zsh configuration files provided:
 
-     ```sh
-     $ setopt EXTENDED_GLOB
-       for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-         ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-       done
-     ```
+```sh
+$ setopt EXTENDED_GLOB
+  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  done
+```
 
-     Note: If you already have any of the given config files, ln will error.
-     In simple cases you can add `source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"` to the bottom of your `.zshrc` to load prezto but keep your config intact.
-     For more complicated setups, it is recommended that you back up your original configs and replace them with the provided prezto runcoms.
+Note: If you already have any of the given config files, ln will error.
+In simple cases you can add `source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"` to the bottom of your `.zshrc` to load prezto but keep your config intact.
+For more complicated setups, it is recommended that you back up your original configs and replace them with the provided prezto runcoms.
 
-  6. Create symbolic links from `dot_files`:
+### 6. Create symbolic links from `dot_files`:
 
-     ```sh
-     $ setopt EXTENDED_GLOB
-       for dotfile in "${ZDOTDIR:-$HOME}"/.zprezto/dot_files/^README.md(.N); do
-         ln -s "$dotfile" "${ZDOTDIR:-$HOME}/.${dotfile:t}"
-       done
-     ```
+```sh
+$ setopt EXTENDED_GLOB
+  for dotfile in "${ZDOTDIR:-$HOME}"/.zprezto/dot_files/^README.md(.N); do
+    ln -s "$dotfile" "${ZDOTDIR:-$HOME}/.${dotfile:t}"
+  done
+```
 
-  7. Create `.config`
+### 7. Create `.config`
 
-     ```sh
-     $ mkdir .config
-     $ setopt EXTENDED_GLOB
-       for dotdir in "${ZDOTDIR:-$HOME}"/.zprezto/dot_config_dir/*; do
-         ln -s "$dotdir" "${ZDOTDIR:-$HOME}/.${dotdir:t}"
-       done
-     ```
+```sh
+$ mkdir .config
+$ setopt EXTENDED_GLOB
+  for dotdir in "${ZDOTDIR:-$HOME}"/.zprezto/dot_config_dir/*; do
+    ln -s "$dotdir" "${ZDOTDIR:-$HOME}/.${dotdir:t}"
+  done
+```
 
-  8. Set Zsh as your default shell:
+### 8. Set Zsh as your default shell:
 
-     ```console
-     $ chsh -s /usr/local/bin/zsh
-     ```
+```console
+$ chsh -s /usr/local/bin/zsh
+```
 
-  9.  Install packages from Homebrew
+### 9.  Install packages from Homebrew
 
-     ```console
-     $ brew bundle
-     ```
+```console
+$ brew bundle
+```
+
 
 ## Troubleshooting
 
