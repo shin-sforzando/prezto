@@ -156,6 +156,12 @@ if which ghq > /dev/null; then
   }
 fi
 
+## hub
+#
+if which hub > /dev/null; then
+  eval "$(hub alias -s)"
+fi
+
 ## MObileSHell
 #
 compdef mosh=ssh

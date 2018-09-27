@@ -89,7 +89,7 @@ brew "sanemat/font/ricty", args: ["with-powerline"]
 
 ## Install Cask Packages
 cask "1password"
-cask "adobe-creative-cloud"
+# cask "adobe-creative-cloud"
 cask "aerial"
 cask "appcleaner"
 cask "authy"
@@ -111,18 +111,3 @@ cask "suspicious-package"
 cask "visual-studio-code"
 cask "vivaldi"
 cask "vlc"
-
-## Install Applications from AppStore
-mas "Deliveries", id: 924726344
-mas "GarageBand", id: 682658836
-mas "iMovie", id: 408981434
-mas "iStumbler", id: 546033581
-mas "Keynote", id: 409183694
-mas "LightScreenSharing", id: 417367191
-mas "Movist", id: 461788075
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "PopClip", id: 445189367
-mas "StuffIt Expander", id: 405580712
-mas "Transmit", id: 403388562
-mas "Xcode", id: 497799835
