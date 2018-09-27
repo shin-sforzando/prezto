@@ -36,6 +36,9 @@ brew "git-lfs"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
 
+# Add GitHub support to git on the command-line
+brew "hub"
+
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 
@@ -53,6 +56,9 @@ brew "neovim"
 
 # Network Kanji code conversion Filter (NKF)
 brew "nkf"
+
+# Node.js version manager
+brew "nodebrew"
 
 # Simplistic interactive filtering tool
 brew "peco"
