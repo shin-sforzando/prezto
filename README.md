@@ -79,7 +79,7 @@ $ setopt EXTENDED_GLOB
 $ mkdir .config
 $ setopt EXTENDED_GLOB
   for dotdir in "${ZDOTDIR:-$HOME}"/.zprezto/dot_config_dir/*; do
-    ln -s "$dotdir" "${ZDOTDIR:-$HOME}/.${dotdir:t}"
+    ln -s "$dotdir" "${ZDOTDIR:-$HOME}/.config/${dotdir:t}"
   done
 ```
 
