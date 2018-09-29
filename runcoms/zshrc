@@ -79,7 +79,7 @@ fi
 
 ## Highlight
 #
-alias hl='highlight --force --line-numbers --zeroes --out-format=truecolor'
+alias hl='highlight --force --line-numbers --zeroes --style=molokai --out-format=truecolor'
 
 ## Homebrew
 #
@@ -237,9 +237,17 @@ if which peco > /dev/null; then
   }
   zle -N peco-file-vim
 
-  #bindkey '^r' peco-select-history  # -> znt-history-widget
+  bindkey '^r' peco-select-history
   bindkey '^j' peco-cdr
   bindkey '^v' peco-file-vim
+fi
+
+## Pygments
+#
+if which pygmentize > /dev/null; then
+  alias pcat="pygmentize -f terminal -O bg=dark,linenos=True"
+else
+  pip3 install pygments --upgrade
 fi
 
 ## transfer.sh
