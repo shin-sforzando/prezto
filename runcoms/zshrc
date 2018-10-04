@@ -5,6 +5,9 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# Start Profiling
+#zmodload zsh/zprof
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -170,8 +173,12 @@ compdef mosh=ssh
 
 ## NeoVim
 #
-alias vi='nvim'
-alias vim='nvim'
+if which nvim > /dev/null; then
+  alias vi='nvim'
+  alias vim='nvim'
+else
+  alias vi='vim'
+fi
 
 ## nodebrew
 #
@@ -303,3 +310,9 @@ fi
 ## iTerm2 Shell Integrations
 #
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# End Profiling
+#if type zprof > /dev/null 2>&1; then
+#  zprof | less
+#fi
+
