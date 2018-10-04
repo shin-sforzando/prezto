@@ -254,7 +254,7 @@ fi
 if which pygmentize > /dev/null; then
   alias pcat="pygmentize -f terminal -O bg=dark,linenos=True"
 else
-  pip3 install pygments --upgrade
+  pip3 install Pygments --upgrade
 fi
 
 ## transfer.sh
