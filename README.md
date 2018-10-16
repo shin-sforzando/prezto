@@ -9,7 +9,7 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
   - [3. Launch Zsh:](#3-launch-zsh)
   - [4. Clone the repository:](#4-clone-the-repository)
   - [5. Create a new Zsh configuration by copying the Zsh configuration files provided:](#5-create-a-new-zsh-configuration-by-copying-the-zsh-configuration-files-provided)
-  - [6. Create symbolic links from `dot_files`:](#6-create-symbolic-links-from-dotfiles)
+  - [6. Create symbolic links from `dot_files`:](#6-create-symbolic-links-from-dot_files)
   - [7. Create `.config`](#7-create-config)
   - [8. Set Zsh as your default shell:](#8-set-zsh-as-your-default-shell)
   - [9. Install packages from Homebrew](#9-install-packages-from-homebrew)
@@ -60,9 +60,12 @@ $ setopt EXTENDED_GLOB
   done
 ```
 
-Note: If you already have any of the given config files, ln will error.
-In simple cases you can add `source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"` to the bottom of your `.zshrc` to load prezto but keep your config intact.
-For more complicated setups, it is recommended that you back up your original configs and replace them with the provided prezto runcoms.
+     Note: If you already have any of the given configuration files, `ln` will
+     cause error. In simple cases you can load prezto by adding the line
+     `source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"` to the bottom of your
+     `.zshrc` and keep the rest of your Zsh configuration intact. For more
+     complicated setups, it is recommended that you back up your original
+     configs and replace them with the provided prezto runcoms.
 
 ### 6. Create symbolic links from `dot_files`:
 
@@ -134,7 +137,10 @@ Prezto has many features disabled by default. Read the source code and accompany
   3. Load the theme you like in *~/.zpreztorc* then open a new Zsh terminal window or tab.
 
      ![sorin theme][2]
-     Note that the 'git' module may be required for special symbols to appear, such as those on the right of the above image. Add `'git'` to the list under `zstyle ':prezto:load' pmodule \ ` in your `.zpreztorc` to enable this module.
+     Note that the 'git' module may be required for special symbols to appear,
+     such as those on the right of the above image. Add `'git'` to the `pmodule`
+     list (under `zstyle ':prezto:load' pmodule \` in your *~/.zpreztorc*) to
+     enable this module.
 
 ### External Modules
 
@@ -144,7 +150,7 @@ Prezto has many features disabled by default. Read the source code and accompany
 
      Note that module names need to be unique or they will cause an error when loading.
 
-     ```console
+     ```sh
      zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-contrib
      ```
 
