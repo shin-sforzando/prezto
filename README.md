@@ -16,6 +16,7 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
   - [10. Run setup script](#10-run-setup-script)
 - [Troubleshooting](#troubleshooting)
 - [Updating](#updating)
+  - [Follow Upstream Repository](#follow-upstream-repository)
 - [Usage](#usage)
   - [Modules](#modules)
   - [Themes](#themes)
@@ -119,6 +120,13 @@ To pull the latest changes and update submodules manually:
 cd $ZPREZTODIR
 git pull
 git submodule update --init --recursive
+```
+
+### Follow Upstream Repository
+
+```console
+$ git fetch upstream
+$ git merge upstream/master
 ```
 
 ## Usage
