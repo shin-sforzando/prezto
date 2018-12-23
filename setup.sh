@@ -2,6 +2,9 @@
 
 set -eux
 
+## Make Workspaces
+mkdir Workspaces
+
 ## Don't create .DS_Store on Network Drive
 defaults write com.apple.desktopservices DSDontWriteNetworkStores True
 killall Finder

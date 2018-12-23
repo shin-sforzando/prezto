@@ -94,11 +94,9 @@ brew "zsh", args: ["without-etcdir"]
 brew "sanemat/font/ricty", args: ["with-powerline"]
 
 ## Install Cask Packages
-cask "1password"
-# cask "adobe-creative-cloud"
+cask "adobe-creative-cloud"
 cask "aerial"
 cask "appcleaner"
-cask "authy"
 cask "docker"
 cask "dropbox"
 cask "font-genshingothic"
@@ -110,7 +108,6 @@ cask "launchbar"
 cask "macwinzipper"
 cask "pycharm"
 cask "qlcolorcode"
-cask "qlimagesize"
 cask "qlstephen"
 cask "shiftit"
 cask "suspicious-package"

@@ -3,28 +3,29 @@ Setup MacOS using Prezto
 
 Prezto is the configuration framework for [Zsh][1]; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion and prompt themes.
 
-- [Installation](#installation)
-  - [1. Install Homebrew](#1-install-homebrew)
-  - [2. Install Zsh](#2-install-zsh)
-  - [3. Launch Zsh:](#3-launch-zsh)
-  - [4. Clone the repository:](#4-clone-the-repository)
-  - [5. Create a new Zsh configuration by copying the Zsh configuration files provided:](#5-create-a-new-zsh-configuration-by-copying-the-zsh-configuration-files-provided)
-  - [6. Create symbolic links from `dot_files`:](#6-create-symbolic-links-from-dot_files)
-  - [7. Create `.config`](#7-create-config)
-  - [8. Set Zsh as your default shell:](#8-set-zsh-as-your-default-shell)
-  - [9. Install packages from Homebrew](#9-install-packages-from-homebrew)
-  - [10. Run setup script](#10-run-setup-script)
-- [Troubleshooting](#troubleshooting)
-- [Updating](#updating)
-  - [Follow Upstream Repository](#follow-upstream-repository)
-- [Usage](#usage)
-  - [Modules](#modules)
-  - [Themes](#themes)
-  - [External Modules](#external-modules)
-- [Customization](#customization)
-- [Misc.](#misc)
-  - [Resources](#resources)
-  - [License](#license)
+- [Setup MacOS using Prezto](#setup-macos-using-prezto)
+  - [Installation](#installation)
+    - [1. Install Homebrew](#1-install-homebrew)
+    - [2. Install Zsh](#2-install-zsh)
+    - [3. Launch Zsh:](#3-launch-zsh)
+    - [4. Clone the repository:](#4-clone-the-repository)
+    - [5. Create a new Zsh configuration by copying the Zsh configuration files provided:](#5-create-a-new-zsh-configuration-by-copying-the-zsh-configuration-files-provided)
+    - [6. Create symbolic links from `dot_files`:](#6-create-symbolic-links-from-dotfiles)
+    - [7. Create `.config`](#7-create-config)
+    - [8. Set Zsh as your default shell:](#8-set-zsh-as-your-default-shell)
+    - [9. Install packages from Homebrew](#9-install-packages-from-homebrew)
+    - [10. Run setup script](#10-run-setup-script)
+  - [Troubleshooting](#troubleshooting)
+  - [Updating](#updating)
+    - [Follow Upstream Repository](#follow-upstream-repository)
+  - [Usage](#usage)
+    - [Modules](#modules)
+    - [Themes](#themes)
+    - [External Modules](#external-modules)
+  - [Customization](#customization)
+  - [Misc.](#misc)
+    - [Resources](#resources)
+    - [License](#license)
 
 ## Installation
 
@@ -37,7 +38,7 @@ $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst
 ### 2. Install Zsh
 
 ```console
-$ brew install --without-etcdir zsh
+$ brew install zsh
 ```
 
 ### 3. Launch Zsh:
