@@ -16,7 +16,7 @@
 #   * :sparkles: style    (formatting, missing semi colons, etc; no code change)
 #   * :pencil:   docs     (changes to documentation)
 #   * :100:      test     (adding or refactoring tests; no code change)
-#   * :pushpin:  chore    (updating README etc; no  code change)
+#   * :pushpin:  chore    (updating README etc; no code change)
 # --------------------
 # Remember to
 #   * Capitalize the subject line
