@@ -43,6 +43,7 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'prompt' \
   'python' \
+  'ruby' \
   'rsync' \
   'spectrum' \
   'ssh' \
