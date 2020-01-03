@@ -10,25 +10,28 @@ tap "sanemat/font"
 brew "ccze"
 
 # Get a file from an HTTP, HTTPS or FTP server
-brew "curl", args: ["with-openssl"]
+brew "curl"
+
+# Pack, ship and run any application as a lightweight container
+brew "docker"
 
 # Modern replacement for 'ls'
 brew "exa"
 
 # Play, record, convert, and stream audio and video
-brew "ffmpeg", args: ["HEAD", "with-fontconfig", "with-freetype"]
+brew "ffmpeg"
 
 # SSL/TLS cryptography library
 brew "openssl"
 
 # Infamous electronic fortune-cookie generator
-brew "fortune", args: ["without-offensive"]
+brew "fortune"
 
 # Remote repository management made easy
 brew "ghq"
 
 # Distributed revision control system
-brew "git", args: ["with-curl", "with-gettext", "with-openssl"]
+brew "git"
 
 # Git extension for versioning large files
 brew "git-lfs"
@@ -38,6 +41,9 @@ brew "highlight"
 
 # Add GitHub support to git on the command-line
 brew "hub"
+
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
 
 # Lightweight and flexible command-line JSON processor
 brew "jq"
@@ -84,33 +90,31 @@ brew "uncrustify"
 # Internet file retriever
 brew "wget"
 
-# Download YouTube videos from the command-line
-brew "youtube-dl"
-
 # UNIX shell (command interpreter)
-brew "zsh", args: ["without-etcdir"]
+brew "zsh"
 
 # Font for programming
 brew "sanemat/font/ricty", args: ["with-powerline"]
 
 ## Install Cask Packages
+cask "1password"
 cask "adobe-creative-cloud"
 cask "aerial"
+cask "authy"
 cask "appcleaner"
 cask "docker"
 cask "dropbox"
 cask "font-genshingothic"
-cask "franz"
 cask "google-chrome"
 cask "imageoptim"
 cask "iterm2"
 cask "launchbar"
 cask "macwinzipper"
+cask "popclip"
 cask "pycharm"
-cask "qlcolorcode"
-cask "qlstephen"
 cask "shiftit"
+cask "station"
 cask "suspicious-package"
+cask "transmit"
 cask "visual-studio-code"
-cask "vivaldi"
 cask "vlc"

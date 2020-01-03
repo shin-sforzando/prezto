@@ -3,15 +3,15 @@
 set -eux
 
 ## Make Workspaces
-mkdir Workspaces
+mkdir ~/Workspaces
 
 ## Don't create .DS_Store on Network Drive
 defaults write com.apple.desktopservices DSDontWriteNetworkStores True
 killall Finder
 
 ## Recent Applications in Dock
-defaults write com.apple.dock persistent-others -array-add '{ "tile-data" = { "list-type" = 1; }; "tile-type" = "recents-tile"; }'
-killall Dock
+#defaults write com.apple.dock persistent-others -array-add '{ "tile-data" = { "list-type" = 1; }; "tile-type" = "recents-tile"; }'
+#killall Dock
 
 ## neovim
 pip3 install neovim

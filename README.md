@@ -124,6 +124,7 @@ git submodule update --init --recursive
 ### Follow Upstream Repository
 
 ```console
+$ git remote add upstream https://github.com/sorin-ionescu/prezto.git
 $ git fetch upstream
 $ git merge upstream/master
 ```
