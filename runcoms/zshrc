@@ -124,7 +124,7 @@ if which ghq > /dev/null; then
   alias repo='cd $(repos)'
 
   if which hub > /dev/null; then
-    alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
+    alias ghb='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
   fi
 
   if which peco > /dev/null; then
