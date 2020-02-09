@@ -15,7 +15,6 @@
 } &!
 
 # Execute code only if STDERR is bound to a TTY.
-<<<<<<< HEAD
 [[ -o INTERACTIVE && -t 2 ]] && {
   ## Login Message
   #
@@ -32,10 +31,6 @@
   echo "============================================================";
   echo -e "\e[33m [Uptime & Who] \e[m"
   w
-=======
-if [[ -o INTERACTIVE && -t 2 ]]; then
->>>>>>> upstream/master
-
   # Print a random, hopefully interesting, adage.
   if (( $+commands[fortune] )); then
     echo -e "\n\e[33m [Today's fortune] \e[m"
@@ -45,9 +40,4 @@ if [[ -o INTERACTIVE && -t 2 ]]; then
       fortune -s
     fi
   fi
-<<<<<<< HEAD
 } >&2
-=======
-
-fi >&2
->>>>>>> upstream/master
