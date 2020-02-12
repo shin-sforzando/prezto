@@ -31,7 +31,6 @@
   echo "============================================================";
   echo -e "\e[33m [Uptime & Who] \e[m"
   w
-
   # Print a random, hopefully interesting, adage.
   if (( $+commands[fortune] )); then
     echo -e "\n\e[33m [Today's fortune] \e[m"
