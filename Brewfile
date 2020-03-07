@@ -6,6 +6,9 @@ tap "homebrew/core"
 tap "sanemat/font"
 
 ## Install Packages
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+
 # Robust and modular log colorizer
 brew "ccze"
 
@@ -17,6 +20,9 @@ brew "docker"
 
 # Modern replacement for 'ls'
 brew "exa"
+
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
@@ -112,7 +118,7 @@ cask "launchbar"
 cask "macwinzipper"
 cask "popclip"
 cask "pycharm"
-cask "shiftit"
+cask "rectangle"
 cask "station"
 cask "suspicious-package"
 cask "transmit"
