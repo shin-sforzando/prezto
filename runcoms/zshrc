@@ -98,7 +98,7 @@ fi
 
 ## Highlight
 #
-alias hl='highlight --force --line-numbers --zeroes --style=molokai --out-format=truecolor'
+alias hl="highlight --force --line-numbers --zeroes --style=molokai --out-format=truecolor"
 
 ## Homebrew
 #
@@ -124,8 +124,8 @@ fi
 
 ## Cargo
 #
-if [ -d '$HOME/.cargo/bin' ]; then
-    PATH='$HOME/.cargo/bin:$PATH'
+if [[ -d $HOME/.cargo/bin ]]; then
+    PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 ## Git
