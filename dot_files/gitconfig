@@ -59,7 +59,7 @@
 [commit]
   template = ~/.git_commit_template.txt
 [credential]
-  helper = cache --timeout=86400
+	helper = osxkeychain
 [filter "lfs"]
   clean = git-lfs clean -- %f
   process = git-lfs filter-process
