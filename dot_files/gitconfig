@@ -4,6 +4,7 @@
 [alias]
   a = add
   ad = add
+  au = add -u
   alias = config --get-regexp ^alias
   amend = commit --amend
   b = branch
@@ -34,10 +35,12 @@
   last = show -1 HEAD --stat -p
   pre = diff --cached --diff-algorithm=minimal -w
   pull-force = "!git checkout master && git fetch origin && git reset --hard origin/master"
+  res = restore
   s = status
   sh = show
   sl = shortlog
   st = status
+  sw = switch
   t = tag
   uncommit = reset --mixed HEAD~
   unstage = reset -q HEAD --
