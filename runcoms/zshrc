@@ -52,6 +52,7 @@ alias duf="find . \( -name '.DS_Store' -o -name '._*' -o -name '.apdisk' -o -nam
 #
 if which exa > /dev/null; then
   alias ls='exa -hF'
+  alias l='exa -haF'
   alias la='exa -haF'
   alias ll='exa -halF --git'
 
