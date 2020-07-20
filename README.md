@@ -2,28 +2,28 @@
 
 Prezto is the configuration framework for [Zsh][1]; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion and prompt themes.
 
-- [Installation](#Installation)
-  - [1. Install Homebrew](#1-Install-Homebrew)
-  - [2. Install Zsh](#2-Install-Zsh)
-  - [3. Launch Zsh:](#3-Launch-Zsh)
-  - [4. Clone the repository:](#4-Clone-the-repository)
-  - [5. Create a new Zsh configuration by copying the Zsh configuration files provided:](#5-Create-a-new-Zsh-configuration-by-copying-the-Zsh-configuration-files-provided)
-  - [6. Create symbolic links from `dot_files`:](#6-Create-symbolic-links-from-dotfiles)
-  - [7. Create `.config`](#7-Create-config)
-  - [8. Set Zsh as your default shell:](#8-Set-Zsh-as-your-default-shell)
-  - [9. Install packages from Homebrew](#9-Install-packages-from-Homebrew)
-  - [10. Run setup script](#10-Run-setup-script)
-- [Troubleshooting](#Troubleshooting)
-- [Updating](#Updating)
-  - [Follow Upstream Repository](#Follow-Upstream-Repository)
-- [Usage](#Usage)
-  - [Modules](#Modules)
-  - [Themes](#Themes)
-  - [External Modules](#External-Modules)
-- [Customization](#Customization)
-- [Misc.](#Misc)
-  - [Resources](#Resources)
-  - [License](#License)
+- [Installation](#installation)
+  - [1. Install Homebrew](#1-install-homebrew)
+  - [2. Install Zsh](#2-install-zsh)
+  - [3. Launch Zsh:](#3-launch-zsh)
+  - [4. Clone the repository:](#4-clone-the-repository)
+  - [5. Create a new Zsh configuration by copying the Zsh configuration files provided:](#5-create-a-new-zsh-configuration-by-copying-the-zsh-configuration-files-provided)
+  - [6. Create symbolic links from `dot_files`:](#6-create-symbolic-links-from-dot_files)
+  - [7. Create `.config`](#7-create-config)
+  - [8. Set Zsh as your default shell:](#8-set-zsh-as-your-default-shell)
+  - [9.  Install packages from Homebrew](#9-install-packages-from-homebrew)
+  - [10. Run setup script](#10-run-setup-script)
+- [Troubleshooting](#troubleshooting)
+- [Updating](#updating)
+  - [Follow Upstream Repository](#follow-upstream-repository)
+- [Usage](#usage)
+  - [Modules](#modules)
+  - [Themes](#themes)
+  - [External Modules](#external-modules)
+- [Customization](#customization)
+- [Misc.](#misc)
+  - [Resources](#resources)
+  - [License](#license)
 
 ## Installation
 
@@ -168,6 +168,7 @@ The project is managed via [Git][3].
 It is highly recommended that you fork this project; so, that you can commit your changes and push them to [GitHub][4] to not lose them. If you do not know how to use Git, follow this [tutorial][5] and bookmark this [reference][6].
 
 ## Misc.
+
 ### Resources
 
 The [Zsh Reference Card][7] and the [zsh-lovers][8] man page are indispensable.
