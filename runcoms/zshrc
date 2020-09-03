@@ -103,7 +103,7 @@ alias hl="highlight --force --line-numbers --zeroes --style=molokai --out-format
 
 ## Homebrew
 #
-alias bug="cd && brew update && hr && brew upgrade && hr && brew cask upgrade && hr && brew cleanup -s && hr && duf && hr && cd -"
+alias bug="cd && brew update && hr && brew upgrade && hr && brew upgrade --cask && hr && brew cleanup -s && hr && duf && hr && cd -"
 
 ## Horizontal Line
 #
