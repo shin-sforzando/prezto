@@ -33,6 +33,9 @@ brew "openssl"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
 
+# GitHub official CLI
+brew "github/gh/gh"
+
 # Remote repository management made easy
 brew "ghq"
 
@@ -44,9 +47,6 @@ brew "git-lfs"
 
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
-
-# Add GitHub support to git on the command-line
-brew "hub"
 
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
@@ -81,7 +81,7 @@ brew "ripgrep"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
 
-# Programatically correct mistyped console commands
+# Programmatically correct mistyped console commands
 brew "thefuck"
 
 # Text interface for Git repositories

@@ -1,9 +1,6 @@
 #
 # Executes commands at the start of an interactive session.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
 
 # Start Profiling
 #zmodload zsh/zprof
@@ -80,8 +77,8 @@ fi
 ## Google Cloud SDK
 #
 if [ -e /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/ ]; then
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
   if which peco > /dev/null; then
     function gconf() {
@@ -89,7 +86,6 @@ if [ -e /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/ ]; then
       if echo "${projData}" | grep -E "^[a-zA-Z].*" > /dev/null ; then
         config=$(echo ${projData} | awk '{print $1}')
         gcloud config configurations activate ${config}
-
         echo "=== The current account is as follows ==="
         gcloud config configurations list | grep "${config}"
       fi
@@ -99,11 +95,11 @@ fi
 
 ## Highlight
 #
-alias hl="highlight --force --line-numbers --zeroes --style=molokai --out-format=truecolor"
+alias hl='highlight --force --line-numbers --zeroes --style=molokai --out-format=truecolor'
 
 ## Homebrew
 #
-alias bug="cd && brew update && hr && brew upgrade && hr && brew upgrade --cask && hr && brew cleanup -s && hr && duf && hr && cd -"
+alias bug='cd && brew update && hr && brew upgrade && hr && brew upgrade --cask && hr && brew cleanup -s && hr && duf && hr && cd -'
 
 ## Horizontal Line
 #
@@ -139,10 +135,6 @@ export GIT_EDITOR=nvim
 if which ghq > /dev/null; then
   alias repos='ghq list -p | peco'
   alias repo='cd $(repos)'
-
-  if which hub > /dev/null; then
-    alias ghb='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
-  fi
 
   if which peco > /dev/null; then
     function peco-src () {
@@ -182,12 +174,6 @@ if which ghq > /dev/null; then
       )
     done
   }
-fi
-
-## hub
-#
-if which hub > /dev/null; then
-  eval "$(hub alias -s)"
 fi
 
 ## MObileSHell
@@ -279,7 +265,7 @@ fi
 ## Pygments
 #
 if which pygmentize > /dev/null; then
-  alias pcat="pygmentize -f terminal -O bg=dark,linenos=True"
+  alias pcat='pygmentize -f terminal -O bg=dark,linenos=True'
 else
   pip3 install Pygments --upgrade
 fi
