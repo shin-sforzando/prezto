@@ -42,8 +42,8 @@ if [[ -x /usr/local/opt/curl/bin ]]; then
   export PATH="/usr/local/opt/curl/bin:$PATH"
 fi
 
-## Delete Unwanted Files
-alias duf="find . \( -name '.DS_Store' -o -name '._*' -o -name '.apdisk' -o -name 'Thumbs.db' -o -name 'Desktop.ini' \) -delete -print"
+## Delete Disused Files
+alias ddf="find . \( -name '.DS_Store' -o -name '._*' -o -name '.apdisk' -o -name 'Thumbs.db' -o -name 'Desktop.ini' \) -delete -print"
 
 ## exa: Modern replacement for 'ls'
 #
@@ -99,7 +99,7 @@ alias hl='highlight --force --line-numbers --zeroes --style=molokai --out-format
 
 ## Homebrew
 #
-alias bug='cd && brew update && hr && brew upgrade && hr && brew upgrade --cask && hr && brew cleanup -s && hr && duf && hr && cd -'
+alias bug='cd && brew update && hr && brew upgrade && hr && brew upgrade --cask && hr && brew cleanup -s && hr && ddf && hr && cd -'
 
 ## Horizontal Line
 #
