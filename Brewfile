@@ -9,9 +9,6 @@ tap "sanemat/font"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 
-# Robust and modular log colorizer
-brew "ccze"
-
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 
