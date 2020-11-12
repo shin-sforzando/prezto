@@ -111,13 +111,7 @@ If you are not able to find certain commands after switching to *Prezto*, modify
 ## Updating
 
 Run `zprezto-update` to automatically check if there is an update to zprezto.
-<<<<<<< HEAD
 If there are no file conflicts, zprezto and its submodules will be automatically updated. If there are conflicts you will instructed to go into the `$ZPREZTODIR` directory and resolve them yourself.
-=======
-If there are no file conflicts, zprezto and its submodules will be
-automatically updated. If there are conflicts you will be instructed to go into
-the `$ZPREZTODIR` directory and resolve them yourself.
->>>>>>> upstream/master
 
 To pull the latest changes and update submodules manually:
 
