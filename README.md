@@ -100,6 +100,8 @@ brew bundle
 
 ### 10. Run setup script
 
+To setup `~/Workspace`, [neovim](https://github.com/neovim/neovim), [nodebrew](https://github.com/hokaccha/nodebrew) and [iTerm2 Shell Integration](https://iterm2.com/documentation-shell-integration.html).
+
 ```console
 ./setup.sh
 ```
