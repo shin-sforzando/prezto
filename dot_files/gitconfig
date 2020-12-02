@@ -47,23 +47,18 @@
   wip = "commit --allow-empty -m '[wip] Work in progress ... [ci skip]'"
 [color]
   ui = true
+[commit]
+  template = ~/.git_commit_template.txt
 [core]
+  autocrlf = input
   compression = -1
   editor = vi
   excludesfile = /Users/suzuki/.gitignore
-  autocrlf = input
-[merge]
-  ff = false
-[pull]
-  ff = only
-  rebase = true
-[push]
-  default = tracking
-[commit]
-  template = ~/.git_commit_template.txt
 [credential]
 	helper = osxkeychain
   helper = cache --timeout 604800
+[fetch]
+  prune = true
 [filter "lfs"]
   clean = git-lfs clean -- %f
   process = git-lfs filter-process
@@ -71,12 +66,15 @@
   smudge = git-lfs smudge -- %f
 [ghq]
   root = ~/Workspace
-[fetch]
-  prune = true
+[merge]
+  ff = false
+[pull]
+  ff = only
+  rebase = true
+[push]
+  default = tracking
 [secrets]
   providers = git secrets --aws-provider
   patterns = [A-Z0-9]{20}
   patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
   patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
-  allowed = AKIAIOSFODNN7EXAMPLE
-  allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
