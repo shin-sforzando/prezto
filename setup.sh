@@ -9,9 +9,8 @@ mkdir ~/Workspaces
 defaults write com.apple.desktopservices DSDontWriteNetworkStores True
 killall Finder
 
-## Recent Applications in Dock
-#defaults write com.apple.dock persistent-others -array-add '{ "tile-data" = { "list-type" = 1; }; "tile-type" = "recents-tile"; }'
-#killall Dock
+## Install Settings Sync to Visual Studio Code
+code --install-extension shan.code-settings-sync
 
 ## neovim
 pip3 install neovim

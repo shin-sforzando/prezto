@@ -129,6 +129,7 @@ git submodule update --init --recursive
 git remote add upstream https://github.com/sorin-ionescu/prezto.git
 git fetch upstream
 git merge upstream/master
+git submodule update --init --recursive
 ```
 
 ## Usage

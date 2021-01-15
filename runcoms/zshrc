@@ -185,6 +185,7 @@ compdef mosh=ssh
 if which nvim > /dev/null; then
   alias vi='nvim'
   alias vim='nvim'
+  export XDG_CONFIG_HOME="$HOME/.config"
 else
   alias vi='vim'
 fi
@@ -266,8 +267,6 @@ fi
 #
 if which pygmentize > /dev/null; then
   alias pcat='pygmentize -f terminal -O bg=dark,linenos=True'
-else
-  pip3 install Pygments --upgrade
 fi
 
 ## transfer.sh
