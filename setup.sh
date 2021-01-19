@@ -2,8 +2,8 @@
 
 set -eux
 
-## Make Workspaces
-mkdir ~/Workspaces
+## Make Workspace
+mkdir ~/Workspace
 
 ## Don't create .DS_Store on Network Drive
 defaults write com.apple.desktopservices DSDontWriteNetworkStores True
