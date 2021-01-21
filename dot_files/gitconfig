@@ -20,10 +20,8 @@
   cp = cherry-pick
   d = diff
   dc = diff --cached
-  delete-merged-branches = "!git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
   discard = checkout --
   dl = diff HEAD^
-  dm = diff master
   ds = diff --stat
   f = fetch
   flash = "!git fetch --prune --all && git pull --rebase"
@@ -34,7 +32,7 @@
   l = log --graph --all --decorate
   last = show -1 HEAD --stat -p
   pre = diff --cached --diff-algorithm=minimal -w
-  pull-force = "!git checkout master && git fetch origin && git reset --hard origin/master"
+  # pull-force = "!git checkout master && git fetch origin && git reset --hard origin/master"
   res = restore
   s = status
   sh = show
