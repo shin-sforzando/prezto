@@ -4,6 +4,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "github/gh"
 tap "sanemat/font"
 
 ## Install Packages
@@ -32,7 +33,7 @@ brew "openssl"
 brew "fortune"
 
 # GitHub official CLI
-brew "github/gh/gh"
+brew "gh"
 
 # Remote repository management made easy
 brew "ghq"

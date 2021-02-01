@@ -79,7 +79,7 @@ setopt EXTENDED_GLOB
 ### 7. Create `.config`
 
 ```console
-mkdir .config
+mkdir .config && \
 setopt EXTENDED_GLOB
   for dotdir in "${ZDOTDIR:-$HOME}"/.zprezto/dot_config_dir/*; do
     ln -s "$dotdir" "${ZDOTDIR:-$HOME}/.config/${dotdir:t}"
@@ -88,6 +88,8 @@ setopt EXTENDED_GLOB
 
 ### 8. Set Zsh as your default shell
 
+Append `/usr/local/bin/zsh` to `/etc/shells` ,
+
 ```console
 chsh -s /usr/local/bin/zsh
 ```
@@ -95,7 +97,7 @@ chsh -s /usr/local/bin/zsh
 ### 9. Install packages from Homebrew
 
 ```console
-brew bundle
+brew bundle --file .zprezto/Brewfile
 ```
 
 ### 10. Run setup script
