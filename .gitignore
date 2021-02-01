@@ -2,4 +2,5 @@
 *.zwc.old
 Brewfile.lock.json
 contrib
+dot_config_dir/nvim/pack/kite
 modules/*/cache.zsh
