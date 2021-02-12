@@ -71,7 +71,14 @@ fi
 ## ripgrep: https://github.com/BurntSushi/ripgrep
 #
 if which rg > /dev/null; then
-  alias rg='rg --no-ignore'
+  alias rgn='rg --no-ignore'
+fi
+
+## navi: https://github.com/denisidoro/navi
+#
+if which navi > /dev/null; then
+  # Installing navi shell widget as Ctrl+G
+  eval "$(navi widget zsh)"
 fi
 
 ## Google Cloud SDK
@@ -180,20 +187,32 @@ fi
 #
 compdef mosh=ssh
 
+## broot: https://github.com/Canop/broot
+#
+if which broot > /dev/null; then
+  source /Users/suzuki/.config/broot/launcher/bash/br
+fi
+
 ## NeoVim
 #
 if which nvim > /dev/null; then
-  alias vi='nvim'
-  alias vim='nvim'
+  alias vi="nvim"
+  alias vim="nvim"
   export XDG_CONFIG_HOME="$HOME/.config"
 else
-  alias vi='vim'
+  alias vi="vim"
 fi
 
 ## nodebrew
 #
 if which nodebrew > /dev/null; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
+fi
+
+## Visual Studio Code
+#
+if which code > /dev/null; then
+  export EDITOR="code"
 fi
 
 ## Yarn
@@ -261,6 +280,19 @@ if which peco > /dev/null; then
   bindkey '^r' peco-select-history
   bindkey '^j' peco-cdr
   bindkey '^v' peco-file-vim
+fi
+
+## zoxide: https://github.com/ajeetdsouza/zoxide
+#
+if which zoxide > /dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
+## mcfly: https://github.com/cantino/mcfly
+#
+if [[ -r "/usr/local/opt/mcfly/mcfly.zsh" ]]; then
+  # Ctrl+R call mcfly
+  source "/usr/local/opt/mcfly/mcfly.zsh"
 fi
 
 ## Pygments
