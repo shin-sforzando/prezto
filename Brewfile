@@ -62,7 +62,7 @@ brew "git"
 # Git extension for versioning large files
 brew "git-lfs"
 
-# regex generator
+# Refgular Expression generator
 brew "grex"
 
 # Simple hex viewer
@@ -80,7 +80,7 @@ brew "jq"
 # ls Deluxe
 brew "lsd"
 
-# Swiss Army Knife for macOS
+# Swiss-army Knife for macOS
 brew "m-cli"
 
 # Mac App Store CLI interface
