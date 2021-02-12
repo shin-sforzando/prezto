@@ -20,5 +20,8 @@ pip3 install neovim
 nodebrew install-binary stable
 nodebrew use stable
 
+## Install Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
+
 ## iTerm2 Shell Integration
 curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | /usr/local/bin/zsh

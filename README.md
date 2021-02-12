@@ -88,7 +88,7 @@ setopt EXTENDED_GLOB
 
 ### 8. Set Zsh as your default shell
 
-Append `/usr/local/bin/zsh` to `/etc/shells` ,
+Add `/usr/local/bin/zsh` to `/etc/shells` .
 
 ```console
 chsh -s /usr/local/bin/zsh
