@@ -33,6 +33,13 @@ fi
 # Paths
 #
 
+# Ignore /etc/z*
+setopt no_global_rcs
+
+# If you execute a command with = at the beginning,
+# the absolute path of the command will be returned
+setopt magic_equal_subst
+
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
@@ -43,9 +50,29 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  /usr/local/{bin,sbin}
+  /opt/homebrew/bin(N-/)
+  /usr/local/{bin,sbin}(N-/)
   $path
 )
+
+# Homebrew for M1
+if [[ -e /opt/homebrew/bin/brew ]];then
+  eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
+if (( $+commands[sw_vers] )) && (( $+commands[arch] )); then
+	[[ -x /usr/local/bin/brew ]] && alias brew="arch -arch x86_64 /usr/local/bin/brew"
+	alias x64='exec arch -x86_64 /bin/zsh'
+	alias a64='exec arch -arm64e /bin/zsh'
+	switch-arch() {
+		if  [[ "$(uname -m)" == arm64 ]]; then
+			arch=x86_64
+		elif [[ "$(uname -m)" == x86_64 ]]; then
+			arch=arm64e
+		fi
+		exec arch -arch $arch /bin/zsh
+	}
+fi
 
 #
 # Less
