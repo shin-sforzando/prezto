@@ -63,6 +63,8 @@ git clone --recursive https://github.com/shin-sforzando/prezto.git "${ZDOTDIR:-$
 
 ### 5. Create a new Zsh configuration by copying the Zsh configuration files provided
 
+After deleting all zsh related files, create symbolic links.
+
 ```console
 setopt EXTENDED_GLOB
   for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
