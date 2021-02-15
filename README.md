@@ -6,6 +6,8 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
   - [1. Install Homebrew](#1-install-homebrew)
   - [2. Install Zsh](#2-install-zsh)
   - [3. Launch Zsh](#3-launch-zsh)
+    - [for Intel Mac](#for-intel-mac)
+    - [for M1 Mac](#for-m1-mac)
   - [4. Clone the repository](#4-clone-the-repository)
   - [5. Create a new Zsh configuration by copying the Zsh configuration files provided](#5-create-a-new-zsh-configuration-by-copying-the-zsh-configuration-files-provided)
   - [6. Create symbolic links from `dot_files`](#6-create-symbolic-links-from-dot_files)
@@ -41,8 +43,16 @@ brew install zsh
 
 ### 3. Launch Zsh
 
+#### for Intel Mac
+
 ```console
 /usr/local/bin/zsh
+```
+
+#### for M1 Mac
+
+```console
+/opt/homebrew/bin/zsh
 ```
 
 ### 4. Clone the repository
@@ -88,7 +98,7 @@ setopt EXTENDED_GLOB
 
 ### 8. Set Zsh as your default shell
 
-Add `/usr/local/bin/zsh` to `/etc/shells` .
+Add `/usr/local/bin/zsh` (or `/opt/homebrew/bin/zsh` ) to `/etc/shells` .
 
 ```console
 chsh -s /usr/local/bin/zsh
