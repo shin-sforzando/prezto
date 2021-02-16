@@ -288,10 +288,11 @@ if which zoxide > /dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
-## mcfly: https://github.com/cantino/mcfly
+## McFly: https://github.com/cantino/mcfly
 #
 if [[ -r "/usr/local/opt/mcfly/mcfly.zsh" ]]; then
-  # Ctrl+R call mcfly
+  export MCFLY_FUZZY=true
+  # Ctrl+R calls mcfly widget
   source "/usr/local/opt/mcfly/mcfly.zsh"
 fi
 

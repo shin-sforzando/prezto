@@ -32,8 +32,8 @@ zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:load' pmodule \
   'archive' \
   'autosuggestions' \
-  'completion' \
   'command-not-found' \
+  'completion' \
   'directory' \
   'docker' \
   'editor' \
