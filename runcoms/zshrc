@@ -38,8 +38,13 @@ function compact-chpwd-recent-dirs() {
 
 ## cURL
 #
+# For Intel
 if [[ -x /usr/local/opt/curl/bin ]]; then
   export PATH="/usr/local/opt/curl/bin:$PATH"
+fi
+# For M1
+if [[ -x /opt/homebrew/opt/curl/bin ]]; then
+  export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 fi
 
 ## Delete Disused Files
@@ -221,10 +226,17 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 ## OpenSSL
 #
+# For Intel
 if [ -x /usr/local/opt/openssl/bin/openssl ]; then
   export PATH=/usr/local/opt/openssl/bin:$PATH
   export LDFLAGS="-L/usr/local/opt/openssl/lib"
   export CPPFLAGS="-I/usr/local/opt/openssl/include"
+fi
+# For M1
+if [ -x /opt/homebrew/opt/openssl/bin/openssl ]; then
+  export PATH=/opt/homebrew/opt/openssl/bin:$PATH
+  export LDFLAGS="-L/opt/homebrew/opt/openssl/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/openssl/include"
 fi
 
 ## Peco
@@ -290,10 +302,17 @@ fi
 
 ## McFly: https://github.com/cantino/mcfly
 #
+# For Intel
 if [[ -r "/usr/local/opt/mcfly/mcfly.zsh" ]]; then
   export MCFLY_FUZZY=true
   # Ctrl+R calls mcfly widget
   source "/usr/local/opt/mcfly/mcfly.zsh"
+fi
+# For M1
+if [[ -r "/opt/homebrew/opt/mcfly/mcfly.zsh" ]]; then
+  export MCFLY_FUZZY=true
+  # Ctrl+R calls mcfly widget
+  source "/opt/homebrew/opt/mcfly/mcfly.zsh"
 fi
 
 ## Pygments

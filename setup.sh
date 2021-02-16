@@ -28,7 +28,7 @@ code --install-extension shan.code-settings-sync
 pip3 install neovim
 
 ## nodebrew
-/usr/local/opt/nodebrew/bin/nodebrew setup_dirs
+nodebrew setup_dirs
 nodebrew install-binary stable
 nodebrew use stable
 
