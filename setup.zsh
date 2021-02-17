@@ -99,6 +99,9 @@ if ! grep -q ${BREW_BIN_PATH}/zsh /etc/shells; then
 fi
 chsh -s ${BREW_BIN_PATH}/zsh
 
+## Apply Zsh Config
+source $HOME/.zshrc
+
 ## Create Workspace
 mkdir -p $HOME/Workspace
 
