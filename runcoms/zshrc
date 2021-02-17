@@ -134,7 +134,8 @@ fi
 ## Cargo
 #
 if [[ -d $HOME/.cargo/bin ]]; then
-    PATH="$HOME/.cargo/bin:$PATH"
+  source "$HOME/.cargo/env"
+  PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 ## Git

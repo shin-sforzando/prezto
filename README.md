@@ -9,12 +9,7 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
     - [for Intel Mac](#for-intel-mac)
     - [for M1 Mac](#for-m1-mac)
   - [4. Clone the repository](#4-clone-the-repository)
-  - [5. Create a new Zsh configuration by copying the Zsh configuration files provided](#5-create-a-new-zsh-configuration-by-copying-the-zsh-configuration-files-provided)
-  - [6. Create symbolic links from `dot_files`](#6-create-symbolic-links-from-dot_files)
-  - [7. Create `.config`](#7-create-config)
-  - [8. Set Zsh as your default shell](#8-set-zsh-as-your-default-shell)
-  - [9. Install packages from Homebrew](#9-install-packages-from-homebrew)
-  - [10. Run setup script](#10-run-setup-script)
+  - [5. Run setup script](#5-run-setup-script)
 - [Troubleshooting](#troubleshooting)
 - [Updating](#updating)
   - [Follow Upstream Repository](#follow-upstream-repository)
@@ -61,63 +56,10 @@ brew install zsh
 git clone --recursive https://github.com/shin-sforzando/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ```
 
-### 5. Create a new Zsh configuration by copying the Zsh configuration files provided
-
-After deleting all zsh related files, create symbolic links.
+### 5. Run setup script
 
 ```console
-setopt EXTENDED_GLOB
-  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-  done
-```
-
-  Note: If you already have any of the given configuration files, `ln` will
-  cause error. In simple cases you can load prezto by adding the line
-  `source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"` to the bottom of your
-  `.zshrc` and keep the rest of your Zsh configuration intact. For more
-  complicated setups, it is recommended that you back up your original
-  configs and replace them with the provided prezto runcoms.
-
-### 6. Create symbolic links from `dot_files`
-
-```console
-setopt EXTENDED_GLOB
-  for dotfile in "${ZDOTDIR:-$HOME}"/.zprezto/dot_files/^README.md(.N); do
-    ln -s "$dotfile" "${ZDOTDIR:-$HOME}/.${dotfile:t}"
-  done
-```
-
-### 7. Create `.config`
-
-```console
-mkdir .config && \
-setopt EXTENDED_GLOB
-  for dotdir in "${ZDOTDIR:-$HOME}"/.zprezto/dot_config_dir/*; do
-    ln -s "$dotdir" "${ZDOTDIR:-$HOME}/.config/${dotdir:t}"
-  done
-```
-
-### 8. Set Zsh as your default shell
-
-Add `/usr/local/bin/zsh` (or `/opt/homebrew/bin/zsh` ) to `/etc/shells` .
-
-```console
-chsh -s /usr/local/bin/zsh
-```
-
-### 9. Install packages from Homebrew
-
-```console
-brew bundle --file .zprezto/Brewfile
-```
-
-### 10. Run setup script
-
-To setup `~/Workspace`, [neovim](https://github.com/neovim/neovim), [nodebrew](https://github.com/hokaccha/nodebrew) and [iTerm2 Shell Integration](https://iterm2.com/documentation-shell-integration.html).
-
-```console
-./setup.sh
+./.zprezto/setup.zsh
 ```
 
 ## Troubleshooting
