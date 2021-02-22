@@ -2,6 +2,8 @@
   "path": "cz-emoji",
   "config": {
     "cz-emoji": {
+      "subjectMaxLength": 64,
+      "skipQuestions": ["scope"],
       "types": [
         {
           "name": "feat",
