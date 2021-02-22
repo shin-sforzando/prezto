@@ -7,19 +7,20 @@
       "types": [
         {
           "name": "feat",
+          "value": "feat",
           "code": ":+1:",
           "emoji": "👍",
           "description": "Feature"
         },
         {
           "name": "fix",
-          "code": ":bug:",
+          "code": "bug: :bug:",
           "emoji": "🐛",
           "description": "Fix"
         },
         {
           "name": "wip",
-          "code": ":construction:",
+          "code": "wip: :construction:",
           "emoji": "🚧",
           "description": "WIP"
         },
