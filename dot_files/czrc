@@ -9,61 +9,61 @@
           "name": "feat",
           "code": "feat: :+1:",
           "emoji": "👍",
-          "description": "Feature"
+          "description": "Feature     (実装)"
         },
         {
           "name": "fix",
-          "code": "bug: :bug:",
+          "code": "fix: :bug:",
           "emoji": "🐛",
-          "description": "Fix"
+          "description": "Fix         (修復)"
         },
         {
           "name": "wip",
           "code": "wip: :construction:",
           "emoji": "🚧",
-          "description": "WIP"
+          "description": "WIP         (工事)"
         },
         {
           "name": "chore",
-          "code": ":paperclip:",
+          "code": "chore: :paperclip:",
           "emoji": "📎",
-          "description": "Chore"
+          "description": "Chore       (雑務)"
         },
         {
           "name": "style",
-          "code": ":sparkles:",
+          "code": "style: :sparkles:",
           "emoji": "✨",
-          "description": "Style"
+          "description": "Style       (美観)"
         },
         {
           "name": "docs",
-          "code": ":notebook:",
+          "code": "docs: :notebook:",
           "emoji": "📓",
-          "description": "Documents"
+          "description": "Documents   (文書)"
         },
         {
           "name": "perf",
-          "code": ":zap:",
+          "code": "perf: :zap:",
           "emoji": "⚡",
-          "description": "Performance"
+          "description": "Performance (改善)"
         },
         {
           "name": "refactor",
-          "code": ":bulb:",
+          "code": "refactor: :bulb:",
           "emoji": "💡",
-          "description": "Refactoring"
+          "description": "Refactoring (改築)"
         },
         {
           "name": "test",
-          "code": ":100:",
+          "code": "test: :100:",
           "emoji": "💯",
-          "description": "Test"
+          "description": "Test        (試験)"
         },
         {
           "name": "release",
-          "code": "tada",
+          "code": "release :tada:",
           "emoji": "🎉",
-          "description": "Release"
+          "description": "Release     (公開)"
         }
       ]
     }
