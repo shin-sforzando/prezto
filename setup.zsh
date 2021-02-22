@@ -122,6 +122,12 @@ if which nodebrew > /dev/null; then
   nodebrew setup_dirs
   nodebrew install-binary stable
   nodebrew use stable
+
+  ## Install Global Packages
+  npm install -g yarn
+  npm install -g npm-check-updates
+  npm install -g commitizen
+  npm install -g cz-emoji
 fi
 
 ## iTerm2 Shell Integration

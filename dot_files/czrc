@@ -1,0 +1,69 @@
+{
+  "path": "cz-emoji",
+  "config": {
+    "cz-emoji": {
+      "types": [
+        {
+          "name": "feat",
+          "code": ":+1:",
+          "emoji": "👍",
+          "description": "Feature"
+        },
+        {
+          "name": "fix",
+          "code": ":bug:",
+          "emoji": "🐛",
+          "description": "Fix"
+        },
+        {
+          "name": "wip",
+          "code": ":construction:",
+          "emoji": "🚧",
+          "description": "WIP"
+        },
+        {
+          "name": "chore",
+          "code": ":paperclip:",
+          "emoji": "📎",
+          "description": "Chore"
+        },
+        {
+          "name": "style",
+          "code": ":sparkles:",
+          "emoji": "✨",
+          "description": "Style"
+        },
+        {
+          "name": "docs",
+          "code": ":notebook:",
+          "emoji": "📓",
+          "description": "Documents"
+        },
+        {
+          "name": "perf",
+          "code": ":zap:",
+          "emoji": "⚡",
+          "description": "Performance"
+        },
+        {
+          "name": "refactor",
+          "code": ":bulb:",
+          "emoji": "💡",
+          "description": "Refactoring"
+        },
+        {
+          "name": "test",
+          "code": ":100:",
+          "emoji": "💯",
+          "description": "Test"
+        },
+        {
+          "name": "release",
+          "code": "tada",
+          "emoji": "🎉",
+          "description": "Release"
+        }
+      ]
+    }
+  }
+}
