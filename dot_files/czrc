@@ -7,8 +7,7 @@
       "types": [
         {
           "name": "feat",
-          "value": "feat",
-          "code": ":+1:",
+          "code": "feat: :+1:",
           "emoji": "👍",
           "description": "Feature"
         },
