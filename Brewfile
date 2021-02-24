@@ -44,6 +44,9 @@ brew "ffmpeg"
 # A nonsense activity generator
 brew "genact"
 
+# GnuPG
+brew "gnupg"
+
 # SSL/TLS cryptography library
 brew "openssl"
 
@@ -155,6 +158,9 @@ brew "watchexec"
 # Internet file retriever
 brew "wget"
 
+# Yubikey Manager
+brew "ykman"
+
 # In terminal graphical metrics for your *nix system written in Rust
 brew "zenith"
 
@@ -182,6 +188,7 @@ cask "font-genshingothic"
 cask "font-hack-nerd-font"
 cask "gitup"
 cask "google-chrome"
+cask "gpg-suite-no-mail"
 cask "imageoptim"
 cask "iterm2"
 cask "kite"

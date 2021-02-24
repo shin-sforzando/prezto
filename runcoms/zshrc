@@ -193,6 +193,12 @@ fi
 #
 compdef mosh=ssh
 
+## SSH w/ Yubikey
+#
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+
 ## broot: https://github.com/Canop/broot
 #
 if which broot > /dev/null; then
