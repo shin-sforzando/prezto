@@ -1,6 +1,7 @@
 [user]
   name = Shin'ichiro SUZUKI
   email = shin@sforzando.co.jp
+	signingkey = 9269867E64CB5B3F52B97A1EE87D7A5449F25074
 [alias]
   a = add
   ad = add
