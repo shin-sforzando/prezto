@@ -1,7 +1,7 @@
 [user]
-  name = Shin'ichiro SUZUKI
+  name = SHINICHIRO SUZUKI
   email = shin@sforzando.co.jp
-	signingkey = 9269867E64CB5B3F52B97A1EE87D7A5449F25074
+  signingkey = 9269867E64CB5B3F52B97A1EE87D7A5449F25074
 [alias]
   a = add
   ad = add
@@ -48,14 +48,14 @@
   ui = true
 [commit]
   template = ~/.git_commit_template.txt
-	gpgsign = true
+  gpgsign = true
 [core]
   autocrlf = input
   compression = -1
   editor = vi
   excludesfile = /Users/suzuki/.gitignore
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
   helper = cache --timeout 604800
 [fetch]
   prune = true
@@ -79,4 +79,4 @@
   patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
   patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
 [gpg]
-	program = gpg
+  program = gpg
