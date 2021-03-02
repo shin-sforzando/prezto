@@ -141,4 +141,8 @@ curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utili
 defaults write com.apple.desktopservices DSDontWriteNetworkStores True
 killall Finder
 
+## Search own public key
+gpg --keyserver hkps.pool.sks-keyservers.net --search-keys shin@sforzando.co.jp
+msg "${ORANGE}You have to trust the key: ${CYAN}gpg --edit-key KEYID, trust${NOFORMAT}"
+
 msg "${RED}Setup is complete.${NOFORMAT}"
