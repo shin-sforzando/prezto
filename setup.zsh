@@ -120,7 +120,11 @@ pip3 install neovim
 ## For nodebrew
 if which nodebrew > /dev/null; then
   nodebrew setup_dirs
-  nodebrew install-binary stable
+  if [[ $PROCESSOR_ARCH == "arm" ]]; then
+   nodebrew compile stable
+  elif [[ $PROCESSOR_ARCH == "i386" ]]; then
+    nodebrew install-binary stable
+  fi
   nodebrew use stable
 
   ## Install Global Packages
