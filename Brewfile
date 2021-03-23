@@ -65,6 +65,12 @@ brew "git"
 # Git extension for versioning large files
 brew "git-lfs"
 
+# Bash-tool to store the private data inside Git
+brew "git-secret"
+
+# Prevents you from committing sensitive information to Git
+brew "git-secrets"
+
 # Refgular Expression generator
 brew "grex"
 
