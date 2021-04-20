@@ -227,6 +227,12 @@ if which broot > /dev/null; then
   source /Users/suzuki/.config/broot/launcher/bash/br
 fi
 
+## deta: https://deta.sh/
+#
+if [ -e /Users/suzuki/.deta/bin ]; then
+  export PATH="/Users/suzuki/.deta/bin:$PATH"
+fi
+
 ## NeoVim
 #
 if which nvim > /dev/null; then
