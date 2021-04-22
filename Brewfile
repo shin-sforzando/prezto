@@ -56,6 +56,9 @@ brew "fortune"
 # GitHub official CLI
 brew "gh"
 
+# The Go Programing Language
+brew "go"
+
 # Remote repository management made easy
 brew "ghq"
 
