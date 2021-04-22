@@ -86,6 +86,14 @@ if which navi > /dev/null; then
   eval "$(navi widget zsh)"
 fi
 
+## Terraform
+#
+if which terraform > /dev/null; then
+  tfenv use latest
+  autoload -U +X bashcompinit && bashcompinit
+  complete -o nospace -C /usr/local/Cellar/tfenv/2.2.0/versions/0.15.0/terraform terraform
+fi
+
 ## Google Cloud SDK
 #
 # The next line updates PATH for the Google Cloud SDK.
