@@ -147,12 +147,16 @@ if [[ -x /usr/local/opt/gettext/bin ]]; then
   export PATH="/usr/local/opt/gettext/bin:$PATH"
 fi
 
-## Cargo
+## Cargo for Rust
 #
 if [[ -d $HOME/.cargo/bin ]]; then
   source "$HOME/.cargo/env"
   PATH="$HOME/.cargo/bin:$PATH"
 fi
+
+## rbenv
+#
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 ## Git
 #

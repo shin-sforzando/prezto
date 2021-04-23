@@ -131,6 +131,9 @@ brew "procs"
 # CLI task management tool for sequential and parallel execution
 brew "pueue"
 
+# Groom your app’s Ruby environment with rbenv
+brew "rbenv"
+
 # Search tool like grep and The Silver Searcher aka. rg
 brew "ripgrep"
 

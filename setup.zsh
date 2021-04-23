@@ -114,10 +114,10 @@ brew bundle --file $HOME/.zprezto/Brewfile
 ## Install Settings Sync to Visual Studio Code
 code --install-extension shan.code-settings-sync
 
-## For neovim
+## for neovim
 pip3 install neovim
 
-## For nodebrew
+## for nodebrew
 if which nodebrew > /dev/null; then
   nodebrew setup_dirs
   if [[ $PROCESSOR_ARCH == "arm" ]]; then
@@ -133,6 +133,11 @@ if which nodebrew > /dev/null; then
   npm install -g commitizen
   npm install -g cz-emoji
 fi
+
+# for rbenv
+LATEST_RUBY=$(rbenv install -l | grep -v - | tail -1)
+rbenv install $LATEST_RUBY
+rbenv global $LATEST_RUBY
 
 ## iTerm2 Shell Integration
 curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | ${BREW_BIN_PATH}/zsh
