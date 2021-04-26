@@ -91,6 +91,7 @@ fi
 if which terraform > /dev/null; then
   autoload -U +X bashcompinit && bashcompinit
   complete -o nospace -C /usr/local/Cellar/tfenv/2.2.0/versions/0.15.0/terraform terraform
+  TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 fi
 
 ## Google Cloud SDK
