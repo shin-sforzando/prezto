@@ -23,6 +23,9 @@ brew "clementtsang/bottom/bottom"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 
+# Unclutter your .profile
+brew "direnv"
+
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 
