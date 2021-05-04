@@ -52,7 +52,7 @@
 [core]
   autocrlf = input
   compression = -1
-  editor = vi
+  editor = nvim
   excludesfile = /Users/suzuki/.gitignore
 [credential]
   helper = osxkeychain

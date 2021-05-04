@@ -44,11 +44,20 @@ brew "fd"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 
+# Facebook PathPicker
+brew "fpp"
+
 # A nonsense activity generator
 brew "genact"
 
 # GnuPG
 brew "gnupg"
+
+# User-friendly command-line HTTP client
+brew "httpie"
+
+# Display bandwidth usage on an interface
+brew "iftop"
 
 # SSL/TLS cryptography library
 brew "openssl"
@@ -107,6 +116,12 @@ brew "monolith"
 # Remote terminal application
 brew "mosh"
 
+# My TraceRoute
+brew "mtr"
+
+# NCurses Disk Usage
+brew "ncdu"
+
 # An interactive cheatsheet tool for the CLI and application launchers
 brew "navi"
 
@@ -157,6 +172,9 @@ brew "thefuck"
 
 # Text interface for Git repositories
 brew "tig"
+
+# Simplified and community-driven man pages
+brew "tldr"
 
 # Keeping your system up to date mostly involves invoking more than a single package manager
 brew "topgrade"

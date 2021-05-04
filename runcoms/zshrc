@@ -273,6 +273,12 @@ if which code > /dev/null; then
   export EDITOR="code"
 fi
 
+## fpp: Facebook PathPicker
+#
+if which fpp > /dev/null; then
+  export FPP_EDITOR="code"
+fi
+
 ## Yarn
 #
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
