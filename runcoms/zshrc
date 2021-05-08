@@ -92,6 +92,12 @@ if which direnv > /dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
+## Kitty
+#
+if which kitty > /dev/null; then
+  kitty + complete setup zsh | source /dev/stdin
+fi
+
 ## Terraform
 #
 if which terraform > /dev/null; then
