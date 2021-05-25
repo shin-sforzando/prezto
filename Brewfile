@@ -4,6 +4,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "fwartner/mac-cleanup"
 tap "github/gh"
 tap "sanemat/font"
 
@@ -106,6 +107,9 @@ brew "lsd"
 
 # Swiss-army Knife for macOS
 brew "m-cli"
+
+# A cleanup script for macOS
+brew "mac-cleanup"
 
 # Mac App Store CLI interface
 brew "mas"
