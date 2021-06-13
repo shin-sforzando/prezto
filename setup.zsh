@@ -77,7 +77,7 @@ msg "${RED}Start setup for ${CHIPSET}(${PROCESSOR_ARCH}).${NOFORMAT}"
 setopt EXTENDED_GLOB
 
 ## Create Zsh configuration symbolic links from runcoms
-rm -i $HOME/.z*
+rm -if $HOME/.z*
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
