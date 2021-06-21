@@ -44,6 +44,8 @@
   uncommit = reset --mixed HEAD~
   unstage = reset -q HEAD --
   wip = "commit --allow-empty -m '[wip] Work in progress ... [ci skip]'"
+[help]
+  autocorrect = 1
 [color]
   ui = true
 [commit]
@@ -78,5 +80,5 @@
 [secrets]
   providers = git secrets --aws-provider
   patterns = [A-Z0-9]{20}
-  patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
   patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+  patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
