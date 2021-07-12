@@ -16,30 +16,34 @@
 
 # Execute code only if STDERR is bound to a TTY.
 [[ -o INTERACTIVE && -t 2 ]] && {
-  ## Login Message
-  #
-  echo "                                                  ";
-  echo "      #######       ##### ##     /###           / ";
-  echo "    /       ###  ######  /### / /  ############/  ";
-  echo "   /         ## /#   /  /  ##/ /     ##########   ";
-  echo "   ##        # /    /  /    #  #             /    ";
-  echo "    ###            /  /         ##          /     ";
-  echo "   ## ###         ## ##                    /      ";
-  echo "    ### ###       ## ##                   /       ";
-  echo "      ### ###     ## ######              /        ";
-  echo "        ### /##   ## #####              /         ";
-  echo "          #/ /##  ## ##                /          ";
-  echo "           #/ ##  #  ##               /           ";
-  echo "            # /      #               /            ";
-  echo "  /##        /   /####           /##/           / ";
-  echo " /  ########/   /  #####        /  ############/  ";
-  echo "/     #####    /    ###        /     ##########   ";
-  echo "|              #                                  ";
-  echo " \)             ##                                ";
-  echo "                                                  ";
-  echo "                                                  ";
-  echo -e "\e[33m [Uptime & Who] \e[m"
-  w
+  if (( $+commands[neofetch] )); then
+    neofetch # command-line system information tool written in bash 3.2+
+  else
+    ## Login Message
+    #
+    echo "                                                  ";
+    echo "      #######       ##### ##     /###           / ";
+    echo "    /       ###  ######  /### / /  ############/  ";
+    echo "   /         ## /#   /  /  ##/ /     ##########   ";
+    echo "   ##        # /    /  /    #  #             /    ";
+    echo "    ###            /  /         ##          /     ";
+    echo "   ## ###         ## ##                    /      ";
+    echo "    ### ###       ## ##                   /       ";
+    echo "      ### ###     ## ######              /        ";
+    echo "        ### /##   ## #####              /         ";
+    echo "          #/ /##  ## ##                /          ";
+    echo "           #/ ##  #  ##               /           ";
+    echo "            # /      #               /            ";
+    echo "  /##        /   /####           /##/           / ";
+    echo " /  ########/   /  #####        /  ############/  ";
+    echo "/     #####    /    ###        /     ##########   ";
+    echo "|              #                                  ";
+    echo " \)             ##                                ";
+    echo "                                                  ";
+    echo "                                                  ";
+    echo -e "\e[33m [Uptime & Who] \e[m"
+    w # display who is logged in and what they are doing
+  fi
   # Print a random, hopefully interesting, adage.
   if (( $+commands[fortune] )); then
     echo -e "\n\e[33m [Today's fortune] \e[m"

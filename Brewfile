@@ -4,7 +4,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
-tap "fwartner/mac-cleanup"
+tap "fwartner/tap"
 tap "github/gh"
 tap "sanemat/font"
 
@@ -123,11 +123,14 @@ brew "mosh"
 # My TraceRoute
 brew "mtr"
 
+# An interactive cheatsheet tool for the CLI and application launchers
+brew "navi"
+
 # NCurses Disk Usage
 brew "ncdu"
 
-# An interactive cheatsheet tool for the CLI and application launchers
-brew "navi"
+# command-line system information tool
+brew "neofetch"
 
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
