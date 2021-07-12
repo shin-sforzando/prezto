@@ -120,11 +120,7 @@ pip3 install neovim
 ## for nodebrew
 if which nodebrew > /dev/null; then
   nodebrew setup_dirs
-  if [[ $PROCESSOR_ARCH == "arm" ]]; then
-   nodebrew compile stable
-  elif [[ $PROCESSOR_ARCH == "i386" ]]; then
-    nodebrew install-binary stable
-  fi
+  nodebrew install-binary stable
   nodebrew use stable
 
   ## Install Global Packages
@@ -147,7 +143,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores True
 killall Finder
 
 ## Search own public key
-gpg --keyserver hkps.pool.sks-keyservers.net --search-keys shin@sforzando.co.jp
+gpg --keyserver hkps://keys.openpgp.org --search-keys shin@sforzando.co.jp
 msg "${ORANGE}You have to trust the key: ${CYAN}gpg --edit-key KEYID, trust${NOFORMAT}"
 
 msg "${RED}Setup is complete.${NOFORMAT}"
