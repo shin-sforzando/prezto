@@ -44,6 +44,8 @@
   uncommit = reset --mixed HEAD~
   unstage = reset -q HEAD --
   wip = "commit --allow-empty -m '[wip] Work in progress ... [ci skip]'"
+[init]
+  defaultBranch = main
 [help]
   autocorrect = 1
 [color]
