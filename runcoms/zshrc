@@ -354,7 +354,6 @@ if which peco > /dev/null; then
   }
   zle -N peco-file-vim
 
-  bindkey '^r' peco-select-history
   bindkey '^j' peco-cdr
   bindkey '^v' peco-file-vim
 fi
@@ -362,22 +361,15 @@ fi
 ## zoxide: https://github.com/ajeetdsouza/zoxide
 #
 if which zoxide > /dev/null; then
-  eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh --cmd cd)"
 fi
 
 ## McFly: https://github.com/cantino/mcfly
-#
-# For Intel
-if [[ -r "/usr/local/opt/mcfly/mcfly.zsh" ]]; then
-  export MCFLY_FUZZY=true
-  # Ctrl+R calls mcfly widget
-  source "/usr/local/opt/mcfly/mcfly.zsh"
-fi
-# For M1
-if [[ -r "/opt/homebrew/opt/mcfly/mcfly.zsh" ]]; then
-  export MCFLY_FUZZY=true
-  # Ctrl+R calls mcfly widget
-  source "/opt/homebrew/opt/mcfly/mcfly.zsh"
+# ctrl-r to bring up McFly
+if which mcfly > /dev/null; then
+  eval "$(mcfly init zsh)"
+else
+  bindkey '^r' peco-select-history
 fi
 
 ## Pygments
