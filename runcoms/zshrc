@@ -131,7 +131,7 @@ fi
 #
 if which aws > /dev/null; then
   autoload bashcompinit && bashcompinit
-  complete -C '/usr/local/bin/aws_completer' aws
+  complete -C $(which aws_completer) aws
 fi
 
 ## Highlight
@@ -432,3 +432,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 #if type zprof > /dev/null 2>&1; then
 #  zprof | less
 #fi
+
+source /Users/suzuki/.config/broot/launcher/bash/br
