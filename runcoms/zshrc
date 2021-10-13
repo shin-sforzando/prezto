@@ -113,8 +113,8 @@ if [ -e /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/ ]; then
   source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
   source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 fi
-if [ -f '/Users/suzuki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/suzuki/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/Users/suzuki/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/suzuki/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
 if which peco > /dev/null; then
   function gconf() {
     projData=$(gcloud config configurations list | peco)
@@ -248,13 +248,17 @@ decrypt () {
 ## broot: https://github.com/Canop/broot
 #
 if which broot > /dev/null; then
-  source /Users/suzuki/.config/broot/launcher/bash/br
+  if [ -e $HOME/.config/broot/launcher/bash/br ]; then
+    source $HOME/.config/broot/launcher/bash/br
+  else
+    broot --install
+  fi
 fi
 
 ## deta: https://deta.sh/
 #
-if [ -e /Users/suzuki/.deta/bin ]; then
-  export PATH="/Users/suzuki/.deta/bin:$PATH"
+if [ -e $HOME/.deta/bin ]; then
+  export PATH="$HOME/.deta/bin:$PATH"
 fi
 
 ## NeoVim
@@ -432,5 +436,3 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 #if type zprof > /dev/null 2>&1; then
 #  zprof | less
 #fi
-
-source /Users/suzuki/.config/broot/launcher/bash/br
