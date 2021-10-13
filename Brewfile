@@ -211,7 +211,6 @@ brew "sanemat/font/ricty", args: ["with-powerline"]
 
 ## Install Cask Packages
 cask "1password"
-cask "adobe-creative-cloud"
 cask "aerial"
 cask "authy"
 cask "appcleaner"

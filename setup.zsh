@@ -77,47 +77,51 @@ msg "${RED}Start setup for ${CHIPSET}(${PROCESSOR_ARCH}).${NOFORMAT}"
 setopt EXTENDED_GLOB
 
 ## Create Zsh configuration symbolic links from runcoms
+msg "${BLUE}Start setup for runcoms.${NOFORMAT}"
 rm -if $HOME/.zshrc
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 
 ## Create symbolic links from dot_files
+msg "${BLUE}Start setup for dotfiles.${NOFORMAT}"
 for dotfile in "${ZDOTDIR:-$HOME}"/.zprezto/dot_files/^README.md(.N); do
   ln -sf "$dotfile" "${ZDOTDIR:-$HOME}/.${dotfile:t}"
 done
 
 ## Create .config and symbolic links
+msg "${BLUE}Start setup for .config.${NOFORMAT}"
 mkdir .config && \
 for dotdir in "${ZDOTDIR:-$HOME}"/.zprezto/dot_config_dir/*; do
   ln -sf "$dotdir" "${ZDOTDIR:-$HOME}/.config/${dotdir:t}"
 done
 
-## Set Default Shell
-if ! grep -q ${BREW_BIN_PATH}/zsh /etc/shells; then
-  echo ${BREW_BIN_PATH}/zsh | sudo tee -a /etc/shells
-fi
-chsh -s ${BREW_BIN_PATH}/zsh
-
 ## Apply Zsh Config
+msg "${BLUE}Reload .zshrc.${NOFORMAT}"
 source $HOME/.zshrc
 
 ## Create Workspace
+msg "${BLUE}Make ~/.Workspace.${NOFORMAT}"
 mkdir -p $HOME/Workspace
 
 ## Install Rust
+msg "${BLUE}Install Rust.${NOFORMAT}"
 curl --proto "=https" --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 ## Install packages via Homebrew
+msg "${BLUE}Bundle brew packages.${NOFORMAT}"
 brew bundle --file $HOME/.zprezto/Brewfile
 
 ## Install Settings Sync to Visual Studio Code
+msg "${BLUE}Install Settings-Sync to Visual Studio Code.${NOFORMAT}"
 code --install-extension shan.code-settings-sync
 
 ## for neovim
+msg "${BLUE}Start setup for neovim.${NOFORMAT}"
 pip3 install neovim
 
 ## for nodebrew
+msg "${BLUE}Start setup for nodebrew.${NOFORMAT}"
 if which nodebrew > /dev/null; then
   nodebrew setup_dirs
   nodebrew install-binary stable
@@ -131,19 +135,30 @@ if which nodebrew > /dev/null; then
 fi
 
 # for rbenv
+msg "${BLUE}Start setup for rbenv.${NOFORMAT}"
 LATEST_RUBY=$(rbenv install -l | grep -v - | tail -1)
 rbenv install $LATEST_RUBY
 rbenv global $LATEST_RUBY
 
 ## iTerm2 Shell Integration
+msg "${BLUE}Install iTerm2 Shell Integration.${NOFORMAT}"
 curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | ${BREW_BIN_PATH}/zsh
 
 ## Don't create .DS_Store on Network Drive
+msg "${BLUE}Don't create .DS_Store on Network Drive${NOFORMAT}"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores True
 killall Finder
 
 ## Search own public key
+msg "${BLUE}Start setup for GPG Key.${NOFORMAT}"
 gpg --keyserver hkps://keys.openpgp.org --search-keys shin@sforzando.co.jp
 msg "${ORANGE}You have to trust the key: ${CYAN}gpg --edit-key KEYID, trust${NOFORMAT}"
+
+## Set Default Shell
+msg "${BLUE}Start setup for default shell.${NOFORMAT}"
+if ! grep -q ${BREW_BIN_PATH}/zsh /etc/shells; then
+  echo ${BREW_BIN_PATH}/zsh | sudo tee -a /etc/shells
+fi
+msg "${ORANGE}You have to change default shell: ${CYAN}chsh -s /usr/local/bin/zsh${NOFORMAT}"
 
 msg "${RED}Setup is complete.${NOFORMAT}"
