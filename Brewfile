@@ -170,14 +170,14 @@ brew "terminal-notifier"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
 
+# A very fast implementation of tldr in Rust: Simplified, example based and community-driven man pages
+brew "tealdeer"
+
 # Programmatically correct mistyped console commands
 brew "thefuck"
 
 # Text interface for Git repositories
 brew "tig"
-
-# Simplified and community-driven man pages
-brew "tldr"
 
 # Keeping your system up to date mostly involves invoking more than a single package manager
 brew "topgrade"
