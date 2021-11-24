@@ -26,9 +26,6 @@ brew "curl"
 # Unclutter your .profile
 brew "direnv"
 
-# Pack, ship and run any application as a lightweight container
-brew "docker"
-
 # CLI DNS client, like dig
 brew "dog"
 
@@ -219,7 +216,6 @@ cask "deepl"
 cask "dropbox"
 cask "edex-ui"
 cask "evernote"
-cask "fig"
 cask "font-genshingothic"
 cask "font-hack-nerd-font"
 cask "gitup"
