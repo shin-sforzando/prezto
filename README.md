@@ -52,6 +52,8 @@ brew install zsh
 
 ### 4. Clone the repository
 
+Make sure `$XDG_CONFIG_HOME` and `$ZDOTDIR`.
+
 ```console
 git clone --recursive https://github.com/shin-sforzando/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ```
@@ -61,6 +63,7 @@ git clone --recursive https://github.com/shin-sforzando/prezto.git "${ZDOTDIR:-$
 ```console
 ./.zprezto/setup.zsh
 ```
+
 ## Troubleshooting
 
 If you are not able to find certain commands after switching to *Prezto*, modify the `PATH` variable in *~/.zprofile* then open a new Zsh terminal window or tab.
