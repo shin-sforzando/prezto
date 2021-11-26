@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-set -Eeuo pipefail
+set -uo pipefail
 trap cleanup SIGINT SIGTERM ERR EXIT
 
 script_dir=$(cd "$(dirname "$0")" &>/dev/null && pwd -P)
@@ -72,41 +72,12 @@ if [[ $PROCESSOR_ARCH == "arm" ]]; then
 fi
 
 # ---- script logic here ----
-msg "${RED}Start setup for ${CHIPSET}(${PROCESSOR_ARCH}).${NOFORMAT}"
-
-setopt EXTENDED_GLOB
-
-## Create Zsh configuration symbolic links from runcoms
-msg "${BLUE}Start setup for runcoms.${NOFORMAT}"
-rm -if $HOME/.zshrc
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
-
-## Create symbolic links from dot_files
-msg "${BLUE}Start setup for dotfiles.${NOFORMAT}"
-for dotfile in "${ZDOTDIR:-$HOME}"/.zprezto/dot_files/^README.md(.N); do
-  ln -sf "$dotfile" "${ZDOTDIR:-$HOME}/.${dotfile:t}"
-done
-
-## Create .config and symbolic links
-msg "${BLUE}Start setup for .config.${NOFORMAT}"
-mkdir .config && \
-for dotdir in "${ZDOTDIR:-$HOME}"/.zprezto/dot_config_dir/*; do
-  ln -sf "$dotdir" "${ZDOTDIR:-$HOME}/.config/${dotdir:t}"
-done
-
-## Apply Zsh Config
-msg "${BLUE}Reload .zshrc.${NOFORMAT}"
-source $HOME/.zshrc
-
-## Create Workspace
-msg "${BLUE}Make ~/.Workspace.${NOFORMAT}"
-mkdir -p $HOME/Workspace
+msg "${RED}Start setup 02 for ${CHIPSET}(${PROCESSOR_ARCH}).${NOFORMAT}"
 
 ## Install Rust
 msg "${BLUE}Install Rust.${NOFORMAT}"
 curl --proto "=https" --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source $HOME/.cargo/env
 
 ## Install packages via Homebrew
 msg "${BLUE}Bundle brew packages.${NOFORMAT}"
@@ -161,4 +132,4 @@ if ! grep -q ${BREW_BIN_PATH}/zsh /etc/shells; then
 fi
 msg "${ORANGE}You have to change default shell: ${CYAN}chsh -s /usr/local/bin/zsh${NOFORMAT}"
 
-msg "${RED}Setup is complete.${NOFORMAT}"
+msg "${RED}Setup 02 is complete.${NOFORMAT}"
