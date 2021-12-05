@@ -66,9 +66,9 @@ PROCESSOR_ARCH=$(uname -p)
 if [[ $PROCESSOR_ARCH == "arm" ]]; then
   CHIPSET="M1"
   BREW_BIN_PATH="/opt/homebrew/bin"
-  elif [[ $PROCESSOR_ARCH == "i386" ]]; then
-    CHIPSET="Intel"
-    BREW_BIN_PATH="/usr/local/bin"
+elif [[ $PROCESSOR_ARCH == "i386" ]]; then
+  CHIPSET="Intel"
+  BREW_BIN_PATH="/usr/local/bin"
 fi
 
 # ---- script logic here ----
@@ -83,6 +83,9 @@ source $HOME/.cargo/env
 msg "${BLUE}Bundle brew packages.${NOFORMAT}"
 brew bundle --file $HOME/.zprezto/Brewfile
 
+## Install fzf key bindings and fuzzy completion
+$(brew --prefix)/opt/fzf/install
+
 ## Install Settings Sync to Visual Studio Code
 msg "${BLUE}Install Settings-Sync to Visual Studio Code.${NOFORMAT}"
 code --install-extension shan.code-settings-sync
@@ -93,7 +96,7 @@ pip3 install neovim
 
 ## for nodebrew
 msg "${BLUE}Start setup for nodebrew.${NOFORMAT}"
-if which nodebrew > /dev/null; then
+if which nodebrew >/dev/null; then
   nodebrew setup_dirs
   nodebrew install-binary stable
   nodebrew use stable

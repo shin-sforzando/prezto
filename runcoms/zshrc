@@ -12,30 +12,6 @@ fi
 
 # Customize to your needs...
 
-## cdr
-autoload -Uz is-at-least
-if is-at-least 4.3.11
-then
-  autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-  add-zsh-hook chpwd chpwd_recent_dirs
-  add-zsh-hook zshexit compact-chpwd-recent-dirs
-  zstyle ':chpwd:*' recent-dirs-max 5000
-  zstyle ':chpwd:*' recent-dirs-default yes
-  zstyle ':completion:*' recent-dirs-insert both
-fi
-
-function compact-chpwd-recent-dirs() {
-  emulate -L zsh
-  setopt extendedglob
-  local -aU reply
-  integer history_size
-  autoload -Uz chpwd_recent_filehandler
-  chpwd_recent_filehandler
-  histroy_size=$#reply
-  reply=(${^reply}(N))
-	(( $history_size == $#reply )) || chpwd_recent_filehandler $reply
-}
-
 ## cURL
 #
 # For Intel
@@ -52,11 +28,11 @@ alias ddf="find . \( -name '.DS_Store' -o -name '._*' -o -name '.apdisk' -o -nam
 
 ## exa: Modern replacement for 'ls'
 #
-if which exa > /dev/null; then
-  alias ls='exa -hF'
-  alias l='exa -haF'
-  alias la='exa -haF'
-  alias ll='exa -halF --git'
+if which exa >/dev/null; then
+  alias ls="exa -hF"
+  alias l="exa -haF"
+  alias la="exa -haF"
+  alias ll="exa -halF --git"
 
   function chpwd() {
     exa -halF --git
@@ -67,42 +43,87 @@ else
   }
 fi
 
+## fzf
+#
+if which fzf >/dev/null; then
+  # Auto-completion
+  [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2>/dev/null
+
+  # Key bindings
+  source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+
+  if is-at-least 4.3.11; then
+    autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+    add-zsh-hook chpwd chpwd_recent_dirs
+    chpwd_functions+=chpwd_recent_dirs
+    zstyle ':chpwd:*' recent-dirs-max 1000
+    zstyle ':chpwd:*' recent-dirs-default true
+    zstyle ':completion:*' recent-dirs-insert always
+
+    # 既に存在しないディレクトリをcdrのリストから削除する
+    # https://blog.n-z.jp/blog/2014-07-25-compact-chpwd-recent-dirs.html
+    function _my-compact-chpwd-recent-dirs() {
+      emulate -L zsh
+      setopt extendedglob
+      local -aU reply
+      integer history_size
+      autoload -Uz chpwd_recent_filehandler
+      chpwd_recent_filehandler
+      history_size=$#reply
+      reply=(${^reply}(N))
+      (( $history_size == $#reply )) || chpwd_recent_filehandler $reply
+    }
+    _my-compact-chpwd-recent-dirs
+
+    alias cdd='_fzf-cdr'
+    function _fzf-cdr() {
+      target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | fzf --height 50% --layout=reverse --border --inline-info --preview 'stat {}'`
+      target_dir=`echo ${target_dir/\~/$HOME}`
+      if [ -n "$target_dir" ]; then
+        cd $target_dir
+      fi
+    }
+  fi
+
+  # Options
+  export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --inline-info --preview 'head -100 {}'"
+fi
+
 ## bat: https://github.com/sharkdp/bat
 #
-if which bat > /dev/null; then
-  alias cat='bat'
+if which bat >/dev/null; then
+  alias cat="bat"
 fi
 
 ## ripgrep: https://github.com/BurntSushi/ripgrep
 #
-if which rg > /dev/null; then
-  alias rgn='rg --no-ignore'
+if which rg >/dev/null; then
+  alias rgn="rg --no-ignore"
 fi
 
 ## navi: https://github.com/denisidoro/navi
 #
-if which navi > /dev/null; then
+if which navi >/dev/null; then
   # Installing navi shell widget as Ctrl+G
   eval "$(navi widget zsh)"
 fi
 
 ## direnv: https://github.com/direnv/direnv
 #
-if which direnv > /dev/null; then
+if which direnv >/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
 ## Kitty
 #
-if which kitty > /dev/null; then
+if which kitty >/dev/null; then
   kitty + complete setup zsh | source /dev/stdin
 fi
 
 ## Terraform
 #
-if which terraform > /dev/null; then
+if which terraform >/dev/null; then
   autoload -U +X bashcompinit && bashcompinit
-  complete -o nospace -C /usr/local/Cellar/tfenv/2.2.0/versions/0.15.0/terraform terraform
   TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 fi
 
@@ -113,34 +134,17 @@ if [ -e /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/ ]; then
   source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
   source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 fi
-if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
-if which peco > /dev/null; then
-  function gconf() {
-    projData=$(gcloud config configurations list | peco)
-    if echo "${projData}" | grep -E "^[a-zA-Z].*" > /dev/null ; then
-      config=$(echo ${projData} | awk '{print $1}')
-      gcloud config configurations activate ${config}
-      echo "=== The current account is as follows ==="
-      gcloud config configurations list | grep "${config}"
-    fi
-  }
+if [ -e $HOME/google-cloud-sdk/ ]; then
+  source "$HOME/google-cloud-sdk/path.zsh.inc"
+  source "$HOME/google-cloud-sdk/completion.zsh.inc"
 fi
 
 ## AWS CLI
 #
-if which aws > /dev/null; then
+if which aws >/dev/null; then
   autoload bashcompinit && bashcompinit
   complete -C $(which aws_completer) aws
 fi
-
-## Highlight
-#
-alias hl='highlight --force --line-numbers --zeroes --style=molokai --out-format=truecolor'
-
-## Homebrew
-#
-alias bug='cd && brew update && hr && brew upgrade && hr && brew upgrade --cask && hr && brew cleanup -s && hr && ddf && hr && cd -'
 
 ## Horizontal Line
 #
@@ -150,7 +154,7 @@ function hr() {
 
 ## thefuck
 #
-if which thefuck > /dev/null; then
+if which thefuck >/dev/null; then
   eval $(thefuck --alias)
 fi
 
@@ -178,48 +182,9 @@ export GIT_EDITOR=nvim
 
 ## ghq
 #
-if which ghq > /dev/null; then
-  alias repos='ghq list -p | peco'
-  alias repo='cd $(repos)'
-
-  if which peco > /dev/null; then
-    function peco-src () {
-      local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
-      if [ -n "$selected_dir" ]; then
-        BUFFER='cd ${selected_dir}'
-        zle accept-line
-      fi
-      zle clear-screen
-    }
-    zle -N peco-src
-
-    bindkey '^]' peco-src
-  fi
-
-  ## ghq-foreach
-  function ghq-foreach() {
-    if [[ $# -eq 0 ]]; then
-      echo "Usage: ghq-foreach (<git command>|-e <shell command>) [args]" >&2
-      return 1
-    fi
-    EXEC=
-    if [[ $1 = "-e" ]]; then
-      EXEC=1
-      shift
-    fi
-    ghq list -p | while read -r repo; do
-      (
-        chpwd(){}  # Temporarily disable chpwd()
-        cd $repo
-        echo -e "\033[0;36m \u00bb $repo \033[0;39m"
-        if [[ $EXEC ]]; then
-          $@
-        else
-          git $@
-        fi
-      )
-    done
-  }
+if which ghq >/dev/null; then
+  alias repos="ghq list | fzf --preview 'bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*'"
+  alias repo='cd $(ghq root)/$(repos)'
 fi
 
 ## MObileSHell
@@ -235,25 +200,15 @@ gpgconf --launch gpg-agent
 
 ### OpenPGP
 #
-encrypt () {
+encrypt() {
   output=~/"${1}".$(date +%s).enc
   gpg --encrypt --armor --output ${output} -r 0x0000 -r 0x0001 -r 0x0002 "${1}" && echo "${1} -> ${output}"
 }
 
-decrypt () {
+decrypt() {
   output=$(echo "${1}" | rev | cut -c16- | rev)
   gpg --decrypt --output ${output} "${1}" && echo "${1} -> ${output}"
 }
-
-## broot: https://github.com/Canop/broot
-#
-if which broot > /dev/null; then
-  if [ -e $HOME/.config/broot/launcher/bash/br ]; then
-    source $HOME/.config/broot/launcher/bash/br
-  else
-    broot --install
-  fi
-fi
 
 ## deta: https://deta.sh/
 #
@@ -263,7 +218,7 @@ fi
 
 ## NeoVim
 #
-if which nvim > /dev/null; then
+if which nvim >/dev/null; then
   alias vi="nvim"
   alias vim="nvim"
   export XDG_CONFIG_HOME="$HOME/.config"
@@ -273,19 +228,19 @@ fi
 
 ## nodebrew
 #
-if which nodebrew > /dev/null; then
+if which nodebrew >/dev/null; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
 fi
 
 ## Visual Studio Code
 #
-if which code > /dev/null; then
+if which code >/dev/null; then
   export EDITOR="code"
 fi
 
 ## fpp: Facebook PathPicker
 #
-if which fpp > /dev/null; then
+if which fpp >/dev/null; then
   export FPP_EDITOR="code"
 fi
 
@@ -308,124 +263,50 @@ if [ -x /opt/homebrew/opt/openssl/bin/openssl ]; then
   export CPPFLAGS="-I/opt/homebrew/opt/openssl/include"
 fi
 
-## Peco
-#
-if which peco > /dev/null; then
-  alias top='top | peco'
-  alias ps='ps aux | peco'
-  alias -g P='| peco'
-
-  function peco-select-history () {
-    BUFFER=$(history -nr 1 | awk '!a[$0]++' | peco --query "$LBUFFER" | sed 's/\\n/\n/')
-    CURSOR=$#BUFFER # move cursor
-    zle -R -c       # refresh
-  }
-  zle -N peco-select-history
-
-  function peco-cdr () {
-    local selected_dir="$(cdr -l | sed -e 's/^[[:digit:]]*[[:blank:]]*//' | peco --query "$LBUFFER")"
-    if [ -n "$selected_dir" ]; then
-      BUFFER="cd ${selected_dir}"
-      zle accept-line
-    fi
-  }
-  zle -N peco-cdr
-
-  function peco-source () {
-    if which ag > /dev/null; then
-      GREP_CMD=ag
-    fi
-    if which rg > /dev/null; then
-      GREP_CMD=rg
-    fi
-    $GREP_CMD "$@" . | peco --exec 'awk -F : '"'"'{print "+" $2 " " $1}'"'"' | xargs less -N '
-  }
-  zle -N peco-source
-
-  function peco-file-vim () {
-    local filepath=$(ag -l | peco --prompt 'PATH>')
-    if [ -n "$filepath" ]; then
-      if [ -n "$BUFFER" ]; then
-        BUFFER="$BUFFER $(echo $filepath | tr '\n' ' ')"
-        CURSOR=$#BUFFER
-      else
-        if [ -f "$filepath" ]; then
-          BUFFER="vim $filepath"
-          zle accept-line
-        fi
-      fi
-    fi
-  }
-  zle -N peco-file-vim
-
-  bindkey '^j' peco-cdr
-  bindkey '^v' peco-file-vim
-fi
-
-## zoxide: https://github.com/ajeetdsouza/zoxide
-#
-if which zoxide > /dev/null; then
-  eval "$(zoxide init zsh --cmd cd)"
-fi
-
-## McFly: https://github.com/cantino/mcfly
-# ctrl-r to bring up McFly
-if which mcfly > /dev/null; then
-  eval "$(mcfly init zsh)"
-else
-  bindkey '^r' peco-select-history
-fi
-
-## Pygments
-#
-if which pygmentize > /dev/null; then
-  alias pcat='pygmentize -f terminal -O bg=dark,linenos=True'
-fi
-
 ## transfer.sh
 # Defines transfer alias and provides easy command line file and folder sharing.
 # Authors:
 #   Remco Verhoef <remco@dutchcoders.io>
 transfer() {
-    # check arguments
-    if [ $# -eq 0 ]; then
-        echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
-        return 1
+  # check arguments
+  if [ $# -eq 0 ]; then
+    echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
+    return 1
+  fi
+  # get temporarily filename, output is written to this file show progress can be showed
+  tmpfile=$(mktemp -t transferXXX)
+  # upload stdin or file
+  file=$1
+  if tty -s; then
+    basefile=$(basename "$file" | sed -e 's/[^a-zA-Z0-9._-]/-/g')
+    if [ ! -e $file ]; then
+      echo "File $file doesn't exists."
+      return 1
     fi
-    # get temporarily filename, output is written to this file show progress can be showed
-    tmpfile=$( mktemp -t transferXXX )
-    # upload stdin or file
-    file=$1
-    if tty -s; then
-        basefile=$(basename "$file" | sed -e 's/[^a-zA-Z0-9._-]/-/g')
-        if [ ! -e $file ]; then
-            echo "File $file doesn't exists."
-            return 1
-        fi
-        if [ -d $file ]; then
-            # zip directory and transfer
-            zipfile=$( mktemp -t transferXXX.zip )
-            cd $(dirname $file) && zip -r -q - $(basename $file) >> $zipfile
-            curl --progress-bar --upload-file "$zipfile" "https://transfer.sh/$basefile.zip" >> $tmpfile
-            rm -f $zipfile
-        else
-            # transfer file
-            curl --progress-bar --upload-file "$file" "https://transfer.sh/$basefile" >> $tmpfile
-        fi
+    if [ -d $file ]; then
+      # zip directory and transfer
+      zipfile=$(mktemp -t transferXXX.zip)
+      cd $(dirname $file) && zip -r -q - $(basename $file) >>$zipfile
+      curl --progress-bar --upload-file "$zipfile" "https://transfer.sh/$basefile.zip" >>$tmpfile
+      rm -f $zipfile
     else
-        # transfer pipe
-        curl --progress-bar --upload-file "-" "https://transfer.sh/$file" >> $tmpfile
+      # transfer file
+      curl --progress-bar --upload-file "$file" "https://transfer.sh/$basefile" >>$tmpfile
     fi
-    # cat output link
-    cat $tmpfile | pbcopy
-    # cleanup
-    rm -f $tmpfile
+  else
+    # transfer pipe
+    curl --progress-bar --upload-file "-" "https://transfer.sh/$file" >>$tmpfile
+  fi
+  # cat output link
+  cat $tmpfile | pbcopy
+  # cleanup
+  rm -f $tmpfile
 }
 
 ## translate-shell
 #
-if which trans > /dev/null; then
-  alias -g T='| trans :ja'
+if which trans >/dev/null; then
+  alias -g T="| trans :ja"
 fi
 
 ## iTerm2 Shell Integrations

@@ -44,6 +44,9 @@ brew "ffmpeg"
 # Facebook PathPicker
 brew "fpp"
 
+# A command-line fuzzy finder
+brew "fzf"
+
 # A nonsense activity generator
 brew "genact"
 
@@ -196,9 +199,6 @@ brew "ykman"
 
 # In terminal graphical metrics for your *nix system written in Rust
 brew "zenith"
-
-# A faster way to navigate your filesystem
-brew "zoxide"
 
 # UNIX shell (command interpreter)
 brew "zsh"
