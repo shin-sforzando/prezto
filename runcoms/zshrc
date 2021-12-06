@@ -77,16 +77,19 @@ if which fzf >/dev/null; then
 
     alias cdd='_fzf-cdr'
     function _fzf-cdr() {
-      target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | fzf --height 50% --layout=reverse --border --inline-info --preview 'stat {}'`
+      target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | fzf --preview 'f() { sh -c "exa -halF --git $1" }; f {}'`
       target_dir=`echo ${target_dir/\~/$HOME}`
       if [ -n "$target_dir" ]; then
         cd $target_dir
       fi
+      zle reset-prompt
     }
+    zle -N _fzf-cdr
+    bindkey "^j" _fzf-cdr
   fi
 
   # Options
-  export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --inline-info --preview 'head -100 {}'"
+  export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --inline-info --ansi --preview 'head -100 {}'"
 fi
 
 ## bat: https://github.com/sharkdp/bat
