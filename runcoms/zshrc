@@ -46,11 +46,12 @@ fi
 ## fzf
 #
 if which fzf >/dev/null; then
-  # Auto-completion
-  [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2>/dev/null
+  source $HOME/.fzf.zsh
+  # # Auto-completion
+  # [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2>/dev/null
 
-  # Key bindings
-  source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+  # # Key bindings
+  # source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 
   if is-at-least 4.3.11; then
     autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
