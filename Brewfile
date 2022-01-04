@@ -5,7 +5,6 @@ tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "github/gh"
-tap "sanemat/font"
 
 ## Install Packages
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -203,9 +202,6 @@ brew "zenith"
 # UNIX shell (command interpreter)
 brew "zsh"
 
-# Font for programming
-brew "sanemat/font/ricty", args: ["with-powerline"]
-
 ## Install Cask Packages
 cask "1password"
 cask "aerial"
@@ -214,16 +210,14 @@ cask "appcleaner"
 cask "docker"
 cask "deepl"
 cask "dropbox"
-cask "edex-ui"
 cask "evernote"
 cask "font-genshingothic"
-cask "font-hack-nerd-font"
+cask "font-hackgen-nerd"
 cask "gitup"
 cask "google-chrome"
 cask "gpg-suite-no-mail"
 cask "imageoptim"
 cask "iterm2"
-cask "kite"
 cask "launchbar"
 cask "macwinzipper"
 cask "popclip"
