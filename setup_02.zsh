@@ -86,10 +86,6 @@ brew bundle --file $HOME/.zprezto/Brewfile
 ## Install fzf key bindings and fuzzy completion
 $(brew --prefix)/opt/fzf/install
 
-## Install Settings Sync to Visual Studio Code
-msg "${BLUE}Install Settings-Sync to Visual Studio Code.${NOFORMAT}"
-code --install-extension shan.code-settings-sync
-
 ## for neovim
 msg "${BLUE}Start setup for neovim.${NOFORMAT}"
 pip3 install neovim
