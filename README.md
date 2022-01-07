@@ -27,7 +27,7 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
 ### 1. Install Homebrew
 
 ```console
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ### 2. Install Zsh
@@ -61,7 +61,8 @@ git clone --recursive https://github.com/shin-sforzando/prezto.git "${ZDOTDIR:-$
 ### 5. Run setup script
 
 ```console
-./.zprezto/setup.zsh
+./.zprezto/setup_01.zsh
+./.zprezto/setup_02.zsh
 ```
 
 ## Troubleshooting

@@ -129,6 +129,6 @@ msg "${BLUE}Start setup for default shell.${NOFORMAT}"
 if ! grep -q ${BREW_BIN_PATH}/zsh /etc/shells; then
   echo ${BREW_BIN_PATH}/zsh | sudo tee -a /etc/shells
 fi
-msg "${ORANGE}You have to change default shell: ${CYAN}chsh -s /usr/local/bin/zsh${NOFORMAT}"
+msg "${ORANGE}You have to change default shell: ${CYAN}chsh -s ${HOMEBREW_PREFIX}/bin/zsh${NOFORMAT}"
 
 msg "${RED}Setup 02 is complete.${NOFORMAT}"
