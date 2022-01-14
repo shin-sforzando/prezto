@@ -100,6 +100,9 @@ brew "imagemagick"
 # Lightweight and flexible CLI JSON processor
 brew "jq"
 
+# The fastest polyglot Git hooks manager out there
+brew "lefthook"
+
 # ls Deluxe
 brew "lsd"
 
@@ -144,9 +147,6 @@ brew "pastel"
 
 # Simplistic interactive filtering tool
 brew "peco"
-
-# A framework for managing and maintaining multi-language pre-commit hooks
-brew "pre-commit"
 
 # procs is a replacement for ps
 brew "procs"
