@@ -145,6 +145,9 @@ brew "pastel"
 # Simplistic interactive filtering tool
 brew "peco"
 
+# A framework for managing and maintaining multi-language pre-commit hooks
+brew "pre-commit"
+
 # procs is a replacement for ps
 brew "procs"
 
