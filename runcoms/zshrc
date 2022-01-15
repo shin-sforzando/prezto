@@ -12,6 +12,8 @@ fi
 
 # Customize to your needs...
 
+autoload -Uz compinit && compinit
+
 ## cURL
 #
 # For Intel
