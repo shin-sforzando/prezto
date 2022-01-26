@@ -49,6 +49,9 @@ brew "fzf"
 # A nonsense activity generator
 brew "genact"
 
+# A syntax-highlighting pager for git, diff, and grep output
+brew "git-delta"
+
 # GnuPG
 brew "gnupg"
 
@@ -102,6 +105,9 @@ brew "jq"
 
 # The fastest polyglot Git hooks manager out there
 brew "lefthook"
+
+# Pager program similar to more
+brew "less"
 
 # ls Deluxe
 brew "lsd"
@@ -162,6 +168,9 @@ brew "ripgrep"
 
 # rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
 brew "ripgrep-all"
+
+# Utility that provides fast incremental file transfer
+brew "rsync"
 
 # sd - s[earch] & d[isplace] like sed
 brew "sd"

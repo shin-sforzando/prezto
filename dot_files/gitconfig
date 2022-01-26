@@ -33,13 +33,13 @@
   l = log --graph --all --decorate
   last = show -1 HEAD --stat -p
   pre = diff --cached --diff-algorithm=minimal -w
-  # pull-force = "!git checkout master && git fetch origin && git reset --hard origin/master"
-  res = restore
+  r = restore
   s = status
   sh = show
   sl = shortlog
   st = status
   sw = switch
+  swc = switch -c
   t = tag
   uncommit = reset --mixed HEAD~
   unstage = reset -q HEAD --
@@ -57,7 +57,18 @@
   autocrlf = input
   compression = -1
   editor = nvim
+  pager = delta
   excludesfile = /Users/suzuki/.gitignore
+[diff]
+  colorMoved = default
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+[delta]
+  features = decorations
+  navigate = true
+  side-by-side = true
+[delta "interactive"]
+  keep-plus-minus-markers = false
 [credential]
   helper = osxkeychain
   helper = cache --timeout 604800
