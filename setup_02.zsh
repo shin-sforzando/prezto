@@ -78,6 +78,7 @@ msg "${RED}Start setup 02 for ${CHIPSET}(${PROCESSOR_ARCH}).${NOFORMAT}"
 msg "${BLUE}Install Rust.${NOFORMAT}"
 curl --proto "=https" --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source $HOME/.cargo/env
+cargo install cargo-update
 
 ## Install packages via Homebrew
 msg "${BLUE}Bundle brew packages.${NOFORMAT}"
