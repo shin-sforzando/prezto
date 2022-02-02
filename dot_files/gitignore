@@ -199,3 +199,6 @@ modules.xml
 *_REMOTE_*.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/git ----
+
+### DeepCode aka. Snyl ###
+.dccache
