@@ -88,7 +88,7 @@ brew bundle --file $HOME/.zprezto/Brewfile
 $(brew --prefix)/opt/fzf/install
 
 ## for ntfy (Pushover)
-pip install ntfy
+pip install 'ntfy[pid,emoji,slack]'
 
 ## for neovim
 msg "${BLUE}Start setup for neovim.${NOFORMAT}"
