@@ -166,6 +166,12 @@ if [[ -d $HOME/.cargo/bin ]]; then
   PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+## ntfy for Pushover
+#
+if which ntfy >/dev/null; then
+  eval "$(ntfy shell-integration)"
+fi
+
 ## rbenv
 #
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"

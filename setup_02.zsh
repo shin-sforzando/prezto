@@ -87,6 +87,9 @@ brew bundle --file $HOME/.zprezto/Brewfile
 ## Install fzf key bindings and fuzzy completion
 $(brew --prefix)/opt/fzf/install
 
+## for ntfy (Pushover)
+pip install ntfy
+
 ## for neovim
 msg "${BLUE}Start setup for neovim.${NOFORMAT}"
 pip3 install neovim
