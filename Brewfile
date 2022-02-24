@@ -109,9 +109,6 @@ brew "lefthook"
 # Pager program similar to more
 brew "less"
 
-# ls Deluxe
-brew "lsd"
-
 # Swiss-army Knife for macOS
 brew "m-cli"
 
@@ -150,9 +147,6 @@ brew "pandoc"
 
 # CLI tool to generate, analyze, convert and manipulate colors
 brew "pastel"
-
-# Simplistic interactive filtering tool
-brew "peco"
 
 # procs is a replacement for ps
 brew "procs"
