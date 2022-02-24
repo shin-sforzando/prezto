@@ -169,7 +169,7 @@ fi
 ## ntfy for Pushover
 #
 if which ntfy >/dev/null; then
-  eval "$(ntfy shell-integration)"
+  eval "$(ntfy shell-integration -s zsh --foreground-too)"
 fi
 
 ## rbenv
