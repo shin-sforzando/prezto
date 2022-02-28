@@ -1,5 +1,9 @@
 local wezterm = require 'wezterm';
 
+wezterm.on("window-config-reloaded", function(window, pane)
+  window:toast_notification("wezterm", "Configuration reloaded!", nil, 4000)
+end)
+
 wezterm.on("update-right-status", function(window, pane)
 	local cwd_uri = pane:get_current_working_dir()
 	local cwd = ""
@@ -33,7 +37,7 @@ return {
   use_ime = true,
   scrollback_lines = 99999,
   font = wezterm.font("HackGen35Nerd", {weight="Regular", stretch="Normal", italic=false}),
-  font_size = 12.0,
+  font_size = 13.0,
   adjust_window_size_when_changing_font_size = false,
   color_scheme = "Builtin Pastel Dark",
   window_background_opacity = 0.67,
