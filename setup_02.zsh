@@ -88,7 +88,7 @@ brew bundle --file $HOME/.zprezto/Brewfile
 $(brew --prefix)/opt/fzf/install
 
 ## for ntfy (Pushover)
-pip install 'ntfy[pid,emoji,slack]'
+pip3 install 'ntfy[pid,emoji,slack]'
 
 ## for neovim
 msg "${BLUE}Start setup for neovim.${NOFORMAT}"
@@ -102,10 +102,10 @@ if which nodebrew >/dev/null; then
   nodebrew use stable
 
   ## Install Global Packages
-  npm install -g yarn
-  npm install -g npm-check-updates
-  npm install -g commitizen
-  npm install -g cz-emoji
+  ~/.nodebrew/current/bin/npm install -g yarn
+  ~/.nodebrew/current/bin/npm install -g npm-check-updates
+  ~/.nodebrew/current/bin/npm install -g commitizen
+  ~/.nodebrew/current/bin/npm install -g cz-emoji
 fi
 
 # for rbenv
