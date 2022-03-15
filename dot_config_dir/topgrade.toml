@@ -5,13 +5,13 @@
 #disable = ["system", "emacs"]
 
 # Ignore failures for these steps
-#ignore_failures = ["powershell"]
+ignore_failures = ["pnpm"]
 
 # Run specific steps - same options as the command line flag
 #only = ["system", "emacs"]
 
 # Do not ask to retry failed steps (default: false)
-#no_retry = true
+no_retry = true
 
 # Run inside tmux
 #run_in_tmux = true
@@ -32,15 +32,15 @@
 #set_title = false
 
 # Cleanup temporary or old files
-#cleanup = true
+cleanup = true
 
 [git]
-#max_concurrency = 5
+max_concurrency = 5
 # Additional git repositories to pull
-#repos = [
-#    "~/src/*/",
-#    "~/.config/something"
-#]
+repos = [
+    "~/Workspace/github.com/shin-sforzando",
+    "~/Workspace/github.com/sforzando"
+]
 
 # Don't pull the predefined git repos
 #predefined_repos = false
@@ -58,6 +58,7 @@
 # Custom commands
 [commands]
 #"Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
+"Delete Disused Files" = "find . ( -name '.DS_Store' -o -name '._*' -o -name '.apdisk' -o -name 'Thumbs.db' -o -name 'Desktop.ini' ) -delete -print"
 
 [brew]
 #greedy_cask = true
