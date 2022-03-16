@@ -43,4 +43,8 @@ return {
   window_background_opacity = 0.67,
   hide_tab_bar_if_only_one_tab = true,
   exit_behavior = "CloseOnCleanExit",
+  keys = {
+    {key="d", mods="SUPER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
+    {key="d", mods="SUPER|SHIFT",  action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
+  }
 }
