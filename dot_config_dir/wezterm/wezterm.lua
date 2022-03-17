@@ -35,14 +35,17 @@ end)
 
 return {
   use_ime = true,
+  default_cursor_style = "BlinkingBlock",
   scrollback_lines = 99999,
   font = wezterm.font("HackGen35Nerd", {weight="Regular", stretch="Normal", italic=false}),
   font_size = 13.0,
   adjust_window_size_when_changing_font_size = false,
   color_scheme = "Builtin Pastel Dark",
   window_background_opacity = 0.67,
+  use_fancy_tab_bar = false,
   hide_tab_bar_if_only_one_tab = true,
   exit_behavior = "CloseOnCleanExit",
+  window_close_confirmation = "NeverPrompt",
   keys = {
     {key="d", mods="SUPER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
     {key="d", mods="SUPER|SHIFT",  action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
