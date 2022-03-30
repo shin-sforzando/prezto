@@ -4,7 +4,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
-tap "github/gh"
+tap "rhysd/hgrep", "https://github.com/rhysd/hgrep"
 
 ## Install Packages
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -93,6 +93,9 @@ brew "grex"
 
 # Simple hex viewer
 brew "hexyl"
+
+# Human-friendly GREP
+brew "hgrep"
 
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
@@ -190,6 +193,9 @@ brew "topgrade"
 # CLI translator using Google Translate and more
 brew "translate-shell"
 
+# Ultra fast grep with interactive TUI
+brew "ugrep"
+
 # Source code beautifier
 brew "uncrustify"
 
@@ -213,7 +219,7 @@ cask "1password"
 cask "aerial"
 cask "authy"
 cask "appcleaner"
-cask "docker"
+cask "docker", greedy: true
 cask "deepl"
 cask "dropbox"
 cask "evernote"
@@ -236,3 +242,9 @@ cask "vivaldi"
 cask "vlc"
 cask "wezterm"
 cask "yubico-yubikey-manager"
+
+## Install App Store Packages
+mas "Tailscale", id: 1475387142
+mas "iPreview", id: 1519213509
+mas "Deliveries", id: 290986013
+mas "PopClip", id: 445189367
