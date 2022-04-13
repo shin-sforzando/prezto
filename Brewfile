@@ -22,6 +22,9 @@ brew "bottom"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 
+# A tool that allows any two computers to simply and securely transfer files.
+brew "croc"
+
 # Unclutter your .profile
 brew "direnv"
 
@@ -97,8 +100,7 @@ brew "hexyl"
 # Human-friendly GREP
 brew "hgrep"
 
-# Convert source code to formatted text with syntax highlighting
-brew "highlight"
+# Convert source code to formatted text with syntax highlightingbrew "highlight"
 
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
