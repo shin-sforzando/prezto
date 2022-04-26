@@ -192,6 +192,7 @@ fi
 #
 if which ntfy >/dev/null; then
   eval "$(ntfy shell-integration -s zsh)"
+  export AUTO_NTFY_DONE_IGNORE="nvim vim screen ssh mosh topgrade"
 fi
 
 ## rbenv

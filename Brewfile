@@ -91,7 +91,7 @@ brew "git-secret"
 # Prevents you from committing sensitive information to Git
 brew "git-secrets"
 
-# Refgular Expression generator
+# Regular Expression generator
 brew "grex"
 
 # Simple hex viewer
@@ -99,8 +99,6 @@ brew "hexyl"
 
 # Human-friendly GREP
 brew "hgrep"
-
-# Convert source code to formatted text with syntax highlightingbrew "highlight"
 
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
