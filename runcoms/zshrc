@@ -204,6 +204,20 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 compdef g=git
 export GIT_EDITOR=nvim
 
+## gh: GitHub CLI
+#
+if which gh >/dev/null; then
+  eval "$(gh completion -s zsh)"
+  gh alias set rl 'repo list' >/dev/null
+  gh alias set rv 'repo view --web' >/dev/null
+  gh alias set il 'issue list' >/dev/null
+  gh alias set iv 'issue view --web' >/dev/null
+  gh alias set pl 'pr list' >/dev/null
+  gh alias set pv 'pr view --web' >/dev/null
+  gh alias set b 'browse' >/dev/null
+  gh alias set s 'status' >/dev/null
+fi
+
 ## ghq
 #
 if which ghq >/dev/null; then

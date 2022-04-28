@@ -25,6 +25,9 @@ brew "curl"
 # A tool that allows any two computers to simply and securely transfer files.
 brew "croc"
 
+# Top-like interface for container metrics.
+brew "ctop"
+
 # Unclutter your .profile
 brew "direnv"
 
