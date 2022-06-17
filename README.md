@@ -26,6 +26,8 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
 
 ### 1. Install Homebrew
 
+Prezto will work with any recent release of Zsh, but the minimum required version is **4.3.11**.
+
 ```console
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
