@@ -214,6 +214,9 @@ brew "ykman"
 # In terminal graphical metrics for your *nix system written in Rust
 brew "zenith"
 
+# Smarter cd command
+brew "zoxide"
+
 # UNIX shell (command interpreter)
 brew "zsh"
 

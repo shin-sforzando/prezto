@@ -298,6 +298,12 @@ if which fpp >/dev/null; then
   export FPP_EDITOR="code"
 fi
 
+## zoxide: Smarter cd command
+#
+if which zoxide >/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
 ## Yarn
 #
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
