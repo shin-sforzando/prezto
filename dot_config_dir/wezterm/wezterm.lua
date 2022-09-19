@@ -1,7 +1,7 @@
 local wezterm = require 'wezterm';
 
 wezterm.on("window-config-reloaded", function(window, pane)
-  window:toast_notification("wezterm", "Configuration reloaded!", nil, 4000)
+  window:toast_notification("wezterm", "Configuration reloaded!", nil, 3000)
 end)
 
 return {
@@ -15,8 +15,8 @@ return {
   },
   font_size = 13.0,
   adjust_window_size_when_changing_font_size = false,
-  initial_rows = 48,
-  initial_cols = 160,
+  initial_rows = 80,
+  initial_cols = 200,
   color_scheme = "Builtin Pastel Dark",
   window_background_opacity = 0.67,
   use_fancy_tab_bar = false,
