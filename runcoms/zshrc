@@ -117,6 +117,11 @@ if which ug >/dev/null; then
   alias zxgrep="ugrep -zW"  # search (ERE) compressed files/archives and output text or hex for binary
 fi
 
+## OpenJDK
+if [ -e /opt/homebrew/opt/openjdk/bin ]; then
+  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+fi
+
 ## navi: https://github.com/denisidoro/navi
 #
 if which navi >/dev/null; then
