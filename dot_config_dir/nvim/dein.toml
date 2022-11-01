@@ -6,9 +6,12 @@ repo = 'Shougo/denite.nvim'
 
 [[plugins]]
 repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
 hook_add = '''
   set background=dark
-  au MyAutoCmd VimEnter * nested colorscheme molokai
+  au MyAutoCmd VimEnter * nested colorscheme hybrid
 '''
 
 [[plugins]]
@@ -39,3 +42,9 @@ repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+merged = '0'
+
