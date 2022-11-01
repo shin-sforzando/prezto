@@ -28,6 +28,9 @@ brew "croc"
 # Top-like interface for container metrics.
 brew "ctop"
 
+# A modern runtime for JS and TS
+brew "deno"
+
 # Unclutter your .profile
 brew "direnv"
 

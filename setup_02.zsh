@@ -93,6 +93,8 @@ pip3 install 'ntfy[pid,emoji,slack]'
 ## for neovim
 msg "${BLUE}Start setup for neovim.${NOFORMAT}"
 pip3 install neovim
+git clone https://github.com/kabinspace/AstroVim ~/.config/nvim
+nvim +PackerSync
 
 ## for nodebrew
 msg "${BLUE}Start setup for nodebrew.${NOFORMAT}"
