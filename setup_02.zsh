@@ -94,7 +94,7 @@ pip3 install 'ntfy[pid,emoji,slack]'
 msg "${BLUE}Start setup for neovim.${NOFORMAT}"
 pip3 install neovim
 git clone https://github.com/kabinspace/AstroVim ~/.config/nvim
-nvim +PackerSync
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 ## for nodebrew
 msg "${BLUE}Start setup for nodebrew.${NOFORMAT}"

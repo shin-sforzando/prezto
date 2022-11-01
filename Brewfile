@@ -246,6 +246,7 @@ cask "popclip"
 cask "raycast"
 cask "suspicious-package"
 cask "tableplus"
+cask "tailscale"
 cask "transmit"
 cask "visual-studio-code"
 cask "vivaldi"
@@ -254,7 +255,5 @@ cask "wezterm"
 cask "yubico-yubikey-manager"
 
 ## Install App Store Packages
-mas "Tailscale", id: 1475387142
 mas "iPreview", id: 1519213509
 mas "Deliveries", id: 290986013
-mas "PopClip", id: 445189367
