@@ -77,20 +77,20 @@ msg "${RED}Start setup 01 for ${CHIPSET}(${PROCESSOR_ARCH}).${NOFORMAT}"
 setopt EXTENDED_GLOB
 
 ## Create Zsh configuration symbolic links from runcoms
-msg "${BLUE}Start setup for runcoms.${NOFORMAT}"
+msg "${BLUE}Start setting up runcoms.${NOFORMAT}"
 rm -if $HOME/.zshrc
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 
 ## Create symbolic links from dot_files
-msg "${BLUE}Start setup for dotfiles.${NOFORMAT}"
+msg "${BLUE}Start setting up dotfiles.${NOFORMAT}"
 for dotfile in "${ZDOTDIR:-$HOME}"/.zprezto/dot_files/^README.md(.N); do
   ln -sf "$dotfile" "${ZDOTDIR:-$HOME}/.${dotfile:t}"
 done
 
 ## Create .config and symbolic links
-msg "${BLUE}Start setup for .config.${NOFORMAT}"
+msg "${BLUE}Start setting up .config.${NOFORMAT}"
 mkdir .config && \
 for dotdir in "${ZDOTDIR:-$HOME}"/.zprezto/dot_config_dir/*; do
   ln -sf "$dotdir" "${ZDOTDIR:-$HOME}/.config/${dotdir:t}"

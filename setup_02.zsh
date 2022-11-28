@@ -90,14 +90,15 @@ $(brew --prefix)/opt/fzf/install
 ## for ntfy (Pushover)
 pip3 install 'ntfy[pid,emoji,slack]'
 
-## for neovim
-msg "${BLUE}Start setup for neovim.${NOFORMAT}"
+## for AstroNvim
+msg "${BLUE}Start setting up AstroNvim.${NOFORMAT}"
 pip3 install neovim
 git clone https://github.com/kabinspace/AstroVim ~/.config/nvim
+git clone https://github.com/shin-sforzando/astronvim_config.git ~/.config/nvim/lua/user
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 ## for nodebrew
-msg "${BLUE}Start setup for nodebrew.${NOFORMAT}"
+msg "${BLUE}Start setting up nodebrew.${NOFORMAT}"
 if which nodebrew >/dev/null; then
   nodebrew setup_dirs
   nodebrew install-binary stable
@@ -111,7 +112,7 @@ if which nodebrew >/dev/null; then
 fi
 
 # for rbenv
-msg "${BLUE}Start setup for rbenv.${NOFORMAT}"
+msg "${BLUE}Start setting up rbenv.${NOFORMAT}"
 LATEST_RUBY=$(rbenv install -l | grep -v - | tail -1)
 rbenv install $LATEST_RUBY
 rbenv global $LATEST_RUBY
@@ -126,12 +127,12 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores True
 killall Finder
 
 ## Search own public key
-msg "${BLUE}Start setup for GPG Key.${NOFORMAT}"
+msg "${BLUE}Start setting up GPG Key.${NOFORMAT}"
 gpg --keyserver hkps://keys.openpgp.org --search-keys shin@sforzando.co.jp
 msg "${ORANGE}You have to trust the key: ${CYAN}gpg --edit-key KEYID, trust${NOFORMAT}"
 
 ## Set Default Shell
-msg "${BLUE}Start setup for default shell.${NOFORMAT}"
+msg "${BLUE}Start setting up default shell.${NOFORMAT}"
 if ! grep -q ${BREW_BIN_PATH}/zsh /etc/shells; then
   echo ${BREW_BIN_PATH}/zsh | sudo tee -a /etc/shells
 fi
