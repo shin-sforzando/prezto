@@ -14,6 +14,15 @@ fi
 
 autoload -Uz compinit && compinit
 
+## Personal bin directory
+# For example, installing a JetBrains alias.
+#
+PERSONAL_BIN_DIR="$HOME/.local/bin"
+if [[ ! -d $PERSONAL_BIN_DIR ]]; then
+  mkdir -p $PERSONAL_BIN_DIR
+fi
+export PATH="$PERSONAL_BIN_DIR:$PATH"
+
 ## cURL
 #
 # For Intel
@@ -199,7 +208,6 @@ fi
 #
 if [[ -d $HOME/.cargo/bin ]]; then
   source "$HOME/.cargo/env"
-  PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 ## Go
