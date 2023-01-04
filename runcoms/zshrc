@@ -156,6 +156,12 @@ if which kitty >/dev/null; then
   kitty + complete setup zsh | source /dev/stdin
 fi
 
+## 1Password
+#
+if which op >/dev/null; then
+  eval "$(op completion zsh)"; compdef _op op
+fi
+
 ## Terraform
 #
 if which terraform >/dev/null; then
