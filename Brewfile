@@ -118,6 +118,9 @@ brew "lefthook"
 # Pager program similar to more
 brew "less"
 
+# The Log File Navigator
+brew "lnav"
+
 # Swiss-army Knife for macOS
 brew "m-cli"
 
