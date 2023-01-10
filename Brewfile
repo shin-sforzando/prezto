@@ -154,6 +154,9 @@ brew "nkf"
 # Node.js version manager
 brew "nodebrew"
 
+# feature rich terminal pager
+brew "noborus/tap/ov"
+
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 
@@ -243,7 +246,6 @@ cask "gitup"
 cask "google-chrome"
 cask "gpg-suite-no-mail"
 cask "imageoptim"
-cask "iterm2"
 cask "jetbrains-toolbox"
 cask "macwinzipper"
 cask "popclip"
