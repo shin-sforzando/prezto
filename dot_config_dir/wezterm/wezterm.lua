@@ -23,6 +23,12 @@ return {
   hide_tab_bar_if_only_one_tab = true,
   exit_behavior = "CloseOnCleanExit",
   window_close_confirmation = "NeverPrompt",
+  hyperlink_rules = {
+    {
+      regex = "\\b\\w+://(?:[\\w.-\\.]+):\\d+\\S*\\b",
+      format = "$0",
+    }
+  },
   keys = {
     {key="d", mods="SUPER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
     {key="d", mods="SUPER|SHIFT",  action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
