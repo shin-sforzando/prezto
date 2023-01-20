@@ -151,9 +151,6 @@ brew "neovim"
 # Network Kanji code conversion Filter (NKF)
 brew "nkf"
 
-# Node.js version manager
-brew "nodebrew"
-
 # feature rich terminal pager
 brew "noborus/tap/ov"
 
@@ -210,6 +207,9 @@ brew "ugrep"
 
 # Source code beautifier
 brew "uncrustify"
+
+# hassle-free way to manage your JavaScript command-line tools
+brew "volta"
 
 # Tool for watching a path and runs a command
 brew "watchexec"

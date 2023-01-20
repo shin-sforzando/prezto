@@ -97,18 +97,15 @@ git clone https://github.com/kabinspace/AstroVim ~/.config/nvim
 git clone https://github.com/shin-sforzando/astronvim_config.git ~/.config/nvim/lua/user
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
-## for nodebrew
-msg "${BLUE}Start setting up nodebrew.${NOFORMAT}"
-if which nodebrew >/dev/null; then
-  nodebrew setup_dirs
-  nodebrew install-binary stable
-  nodebrew use stable
+## for Volta
+msg "${BLUE}Start setting up Volta.${NOFORMAT}"
+if which volta >/dev/null; then
+  volta install node
 
   ## Install Global Packages
-  ~/.nodebrew/current/bin/npm install -g yarn
-  ~/.nodebrew/current/bin/npm install -g npm-check-updates
-  ~/.nodebrew/current/bin/npm install -g commitizen
-  ~/.nodebrew/current/bin/npm install -g cz-emoji
+  npm install --global commitizen
+  npm install --global cz-emoji
+  npm install --global npm-check-updates
 fi
 
 # for rbenv

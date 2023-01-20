@@ -12,6 +12,15 @@ fi
 
 # Customize to your needs...
 
+## Personal Zsh completions directory
+#
+PERSONAL_COMP_DIR="$HOME/.zsh_completions"
+if [[ ! -d $PERSONAL_COMP_DIR ]]; then
+  mkdir -p $PERSONAL_COMP_DIR
+fi
+export FPATH="$PERSONAL_COMP_DIR:$FPATH"
+
+# Enable completions
 autoload -Uz compinit && compinit
 
 ## Personal bin directory
@@ -308,10 +317,12 @@ else
   alias vi="vim"
 fi
 
-## nodebrew
+## Volta
 #
-if which nodebrew >/dev/null; then
-  export PATH=$HOME/.nodebrew/current/bin:$PATH
+if which volta >/dev/null; then
+  export VOLTA_HOME="$HOME/.volta"
+  export PATH="$VOLTA_HOME/bin:$PATH"
+  volta completions --force --quiet zsh -o $PERSONAL_COMP_DIR/_volta
 fi
 
 ## Visual Studio Code
