@@ -2,7 +2,7 @@
 #assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-disable = ["containers"]
+disable = ["containers", "vim"]
 
 # Ignore failures for these steps
 ignore_failures = ["git_repos", "node", "pnpm"]
@@ -33,6 +33,8 @@ no_retry = true
 
 # Cleanup temporary or old files
 cleanup = true
+
+skip_notify = true
 
 [git]
 max_concurrency = 5
