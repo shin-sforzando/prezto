@@ -12,10 +12,10 @@ return {
 	"mononoki Nerd Font Mono",
 	"HackGen35 Console NFJ"
   },
-  font_size = 13.0,
+  font_size = 14.0,
   adjust_window_size_when_changing_font_size = false,
-  initial_rows = 80,
-  initial_cols = 180,
+  initial_rows = 50,
+  initial_cols = 200,
   color_scheme = "Builtin Pastel Dark",
   window_background_opacity = 0.67,
   use_fancy_tab_bar = false,
