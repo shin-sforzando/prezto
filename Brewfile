@@ -248,7 +248,7 @@ cask "gpg-suite-no-mail"
 cask "imageoptim"
 cask "jetbrains-toolbox"
 cask "macwinzipper"
-cask "popclip"
+# cask "popclip"
 cask "raycast"
 cask "suspicious-package"
 cask "tableplus"
@@ -263,3 +263,4 @@ cask "yubico-yubikey-manager"
 ## Install App Store Packages
 mas "iPreview", id: 1519213509
 mas "Deliveries", id: 290986013
+mas "PopClip", id: 445189367

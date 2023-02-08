@@ -9,7 +9,6 @@ return {
   default_cursor_style = "BlinkingBlock",
   scrollback_lines = 99999,
   font = wezterm.font_with_fallback {
-	"Firge35Nerd Console",
 	"mononoki Nerd Font Mono",
 	"HackGen35 Console NFJ"
   },
