@@ -30,7 +30,9 @@ PERSONAL_BIN_DIR="$HOME/.local/bin"
 if [[ ! -d $PERSONAL_BIN_DIR ]]; then
   mkdir -p $PERSONAL_BIN_DIR
 fi
-export PATH="$PERSONAL_BIN_DIR:$PATH"
+JETBRAINS_APPS_DIR="$HOME/Library/Application Support/JetBrains/Toolbox/apps"
+JETBRAINS_SCRIPTS_DIR="$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+export PATH="$PERSONAL_BIN_DIR:$JETBRAINS_APPS_DIR:$JETBRAINS_SCRIPTS_DIR:$PATH"
 
 ## cURL
 #
