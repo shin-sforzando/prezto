@@ -64,7 +64,7 @@ setup_colors
 # ---- chipset check here ----
 PROCESSOR_ARCH=$(uname -p)
 if [[ $PROCESSOR_ARCH == "arm" ]]; then
-  CHIPSET="M1"
+  CHIPSET="Silicon"
   BREW_BIN_PATH="/opt/homebrew/bin"
   elif [[ $PROCESSOR_ARCH == "i386" ]]; then
     CHIPSET="Intel"
@@ -72,7 +72,7 @@ if [[ $PROCESSOR_ARCH == "arm" ]]; then
 fi
 
 # ---- script logic here ----
-msg "${RED}Start setup 01 for ${CHIPSET}(${PROCESSOR_ARCH}).${NOFORMAT}"
+msg "${RED}Start setup_01 for ${CHIPSET}(${PROCESSOR_ARCH}).${NOFORMAT}"
 
 setopt EXTENDED_GLOB
 
@@ -104,4 +104,4 @@ mkdir -p $HOME/Workspace
 msg "${BLUE}Reload .zshrc.${NOFORMAT}"
 source $HOME/.zshrc
 
-msg "${RED}Setup 01 is complete.${NOFORMAT}"
+msg "${RED}setup_01 is complete. Run setup_02.zsh in a new Terminal window.${NOFORMAT}"

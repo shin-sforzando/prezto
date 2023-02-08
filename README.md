@@ -7,7 +7,7 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
   - [2. Install Zsh](#2-install-zsh)
   - [3. Launch Zsh](#3-launch-zsh)
     - [for Intel Mac](#for-intel-mac)
-    - [for M1 Mac](#for-m1-mac)
+    - [for Silicon Mac](#for-silicon-mac)
   - [4. Clone the repository](#4-clone-the-repository)
   - [5. Run setup script](#5-run-setup-script)
 - [Troubleshooting](#troubleshooting)
@@ -46,7 +46,7 @@ brew install zsh
 /usr/local/bin/zsh
 ```
 
-#### for M1 Mac
+#### for Silicon Mac
 
 ```console
 /opt/homebrew/bin/zsh

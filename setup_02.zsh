@@ -64,7 +64,7 @@ setup_colors
 # ---- chipset check here ----
 PROCESSOR_ARCH=$(uname -p)
 if [[ $PROCESSOR_ARCH == "arm" ]]; then
-  CHIPSET="M1"
+  CHIPSET="Silicon"
   BREW_BIN_PATH="/opt/homebrew/bin"
 elif [[ $PROCESSOR_ARCH == "i386" ]]; then
   CHIPSET="Intel"
@@ -72,10 +72,11 @@ elif [[ $PROCESSOR_ARCH == "i386" ]]; then
 fi
 
 # ---- script logic here ----
-msg "${RED}Start setup 02 for ${CHIPSET}(${PROCESSOR_ARCH}).${NOFORMAT}"
+msg "${RED}Start setup_02 for ${CHIPSET}(${PROCESSOR_ARCH}).${NOFORMAT}"
 
 ## Install Rust
 msg "${BLUE}Install Rust.${NOFORMAT}"
+brew install openssl
 curl --proto "=https" --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source $HOME/.cargo/env
 cargo install cargo-update
@@ -135,4 +136,4 @@ if ! grep -q ${BREW_BIN_PATH}/zsh /etc/shells; then
 fi
 msg "${ORANGE}You have to change default shell: ${CYAN}chsh -s ${HOMEBREW_PREFIX}/bin/zsh${NOFORMAT}"
 
-msg "${RED}Setup 02 is complete.${NOFORMAT}"
+msg "${RED}setup_02 is complete.${NOFORMAT}"
