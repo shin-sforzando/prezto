@@ -257,6 +257,7 @@ cask "transmit"
 cask "visual-studio-code"
 cask "vivaldi"
 cask "vlc"
+cask "wavebox"
 cask "wezterm"
 cask "yubico-yubikey-manager"
 

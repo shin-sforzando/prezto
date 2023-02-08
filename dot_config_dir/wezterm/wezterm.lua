@@ -15,7 +15,7 @@ return {
   font_size = 13.0,
   adjust_window_size_when_changing_font_size = false,
   initial_rows = 80,
-  initial_cols = 200,
+  initial_cols = 180,
   color_scheme = "Builtin Pastel Dark",
   window_background_opacity = 0.67,
   use_fancy_tab_bar = false,

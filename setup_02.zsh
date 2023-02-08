@@ -89,6 +89,7 @@ brew bundle --file $HOME/.zprezto/Brewfile
 $(brew --prefix)/opt/fzf/install
 
 ## for ntfy (Pushover)
+pip3 install --upgrade emoji==1.6.3
 pip3 install 'ntfy[pid,emoji,slack]'
 
 ## for AstroNvim
