@@ -233,7 +233,7 @@ brew "zsh"
 cask "1password"
 cask "1password-cli"
 cask "aerial"
-casl "around"
+cask "around"
 cask "authy"
 cask "appcleaner"
 cask "docker", greedy: true
