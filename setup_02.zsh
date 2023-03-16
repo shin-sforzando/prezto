@@ -89,15 +89,14 @@ brew bundle --file $HOME/.zprezto/Brewfile
 $(brew --prefix)/opt/fzf/install
 
 ## for ntfy (Pushover)
-pip3 install --upgrade emoji==1.6.3
-pip3 install 'ntfy[pid,emoji,slack]'
+# pip3 install --upgrade emoji==1.6.3
+# pip3 install 'ntfy[pid,emoji,slack]'
 
 ## for AstroNvim
 msg "${BLUE}Start setting up AstroNvim.${NOFORMAT}"
 pip3 install neovim
 git clone https://github.com/kabinspace/AstroVim ~/.config/nvim
 git clone https://github.com/shin-sforzando/astronvim_config.git ~/.config/nvim/lua/user
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 ## for Volta
 msg "${BLUE}Start setting up Volta.${NOFORMAT}"

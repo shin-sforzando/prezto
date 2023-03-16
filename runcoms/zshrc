@@ -238,11 +238,11 @@ fi
 
 ## ntfy for Pushover
 #
-if which ntfy >/dev/null; then
-  eval "$(ntfy shell-integration -s zsh)"
-  export AUTO_NTFY_DONE_IGNORE="bat cat git mosh nvim screen ssh topgrade vim"
-  # `pip3 install --upgrade 'emoji==1.6.3' && pip3 install 'ntfy[pid,emoji,slack]'` to reinstall if FileNotFoundError occures
-fi
+# if which ntfy >/dev/null; then
+#   eval "$(ntfy shell-integration -s zsh)"
+#   export AUTO_NTFY_DONE_IGNORE="bat cat git mosh nvim screen ssh topgrade vim"
+#   # `pip3 install --upgrade 'emoji==1.6.3' && pip3 install 'ntfy[pid,emoji,slack]'` to reinstall if FileNotFoundError occures
+# fi
 
 ## rbenv
 #
