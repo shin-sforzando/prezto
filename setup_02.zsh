@@ -88,10 +88,6 @@ brew bundle --file $HOME/.zprezto/Brewfile
 ## Install fzf key bindings and fuzzy completion
 $(brew --prefix)/opt/fzf/install
 
-## for ntfy (Pushover)
-# pip3 install --upgrade emoji==1.6.3
-# pip3 install 'ntfy[pid,emoji,slack]'
-
 ## for AstroNvim
 msg "${BLUE}Start setting up AstroNvim.${NOFORMAT}"
 pip3 install neovim
@@ -107,6 +103,7 @@ if which volta >/dev/null; then
   npm install --global commitizen
   npm install --global cz-emoji
   npm install --global npm-check-updates
+  npm install --global @githubnext/github-copilot-cli
 fi
 
 # for rbenv
@@ -134,6 +131,6 @@ msg "${BLUE}Start setting up default shell.${NOFORMAT}"
 if ! grep -q ${BREW_BIN_PATH}/zsh /etc/shells; then
   echo ${BREW_BIN_PATH}/zsh | sudo tee -a /etc/shells
 fi
-msg "${ORANGE}You have to change default shell: ${CYAN}chsh -s ${HOMEBREW_PREFIX}/bin/zsh${NOFORMAT}"
+msg "${ORANGE}You have to change default shell: ${CYAN}chsh -s \${HOMEBREW_PREFIX}/bin/zsh${NOFORMAT}"
 
 msg "${RED}setup_02 is complete.${NOFORMAT}"
