@@ -65,10 +65,8 @@ setup_colors
 PROCESSOR_ARCH=$(uname -p)
 if [[ $PROCESSOR_ARCH == "arm" ]]; then
   CHIPSET="Silicon"
-  BREW_BIN_PATH="/opt/homebrew/bin"
-  elif [[ $PROCESSOR_ARCH == "i386" ]]; then
-    CHIPSET="Intel"
-    BREW_BIN_PATH="/usr/local/bin"
+elif [[ $PROCESSOR_ARCH == "i386" ]]; then
+  CHIPSET="Intel"
 fi
 
 # ---- script logic here ----

@@ -65,10 +65,8 @@ setup_colors
 PROCESSOR_ARCH=$(uname -p)
 if [[ $PROCESSOR_ARCH == "arm" ]]; then
   CHIPSET="Silicon"
-  BREW_BIN_PATH="/opt/homebrew/bin"
 elif [[ $PROCESSOR_ARCH == "i386" ]]; then
   CHIPSET="Intel"
-  BREW_BIN_PATH="/usr/local/bin"
 fi
 
 # ---- script logic here ----
@@ -114,7 +112,7 @@ rbenv global $LATEST_RUBY
 
 ## iTerm2 Shell Integration
 msg "${BLUE}Install iTerm2 Shell Integration.${NOFORMAT}"
-curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | ${BREW_BIN_PATH}/zsh
+curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | $(brew --prefix)/bin/zsh
 
 ## Don't create .DS_Store on Network Drive
 msg "${BLUE}Don't create .DS_Store on Network Drive${NOFORMAT}"
@@ -128,9 +126,9 @@ msg "${ORANGE}You have to trust the key: ${CYAN}gpg --edit-key KEYID, trust${NOF
 
 ## Set Default Shell
 msg "${BLUE}Start setting up default shell.${NOFORMAT}"
-if ! grep -q ${BREW_BIN_PATH}/zsh /etc/shells; then
-  echo ${BREW_BIN_PATH}/zsh | sudo tee -a /etc/shells
+if ! grep -q $(brew --prefix)/bin/zsh /etc/shells; then
+  echo $(brew --prefix)/bin/zsh | sudo tee -a /etc/shells
 fi
-msg "${ORANGE}You have to change default shell: ${CYAN}chsh -s \${HOMEBREW_PREFIX}/bin/zsh${NOFORMAT}"
+msg "${ORANGE}You have to change default shell: ${CYAN}chsh -s \$(brew --prefix)/bin/zsh${NOFORMAT}"
 
 msg "${RED}setup_02 is complete.${NOFORMAT}"
