@@ -48,12 +48,14 @@
     w # display who is logged in and what they are doing
   fi
   # Print a random, hopefully interesting, adage.
-  if (( $+commands[fortune] )); then
-    echo -e "\n\e[33m [Today's fortune] \e[m"
-    if (( $+commands[trans] )); then
-      fortune -s | tr '\n' ' ' | trans :ja --show-original yes --show-translation yes --show-translation-phonetics no --show-alternatives no --show-prompt-message no --show-languages no &!
-    else
-      fortune -s
+  if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+    if (( $+commands[fortune] )); then
+      echo -e "\n\e[33m [Today's fortune] \e[m"
+      if (( $+commands[trans] )); then
+        fortune -s | tr '\n' ' ' | trans :ja --show-original yes --show-translation yes --show-translation-phonetics no --show-alternatives no --show-prompt-message no --show-languages no &!
+      else
+        fortune -s
+      fi
     fi
   fi
 } >&2
