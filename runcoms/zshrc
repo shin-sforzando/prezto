@@ -258,14 +258,16 @@ export GIT_EDITOR=nvim
 #
 if which gh >/dev/null; then
   eval "$(gh completion -s zsh)"
-  gh alias set rl 'repo list' >/dev/null
-  gh alias set rv 'repo view --web' >/dev/null
-  gh alias set il 'issue list' >/dev/null
-  gh alias set iv 'issue view --web' >/dev/null
-  gh alias set pl 'pr list' >/dev/null
-  gh alias set pv 'pr view --web' >/dev/null
-  gh alias set b 'browse' >/dev/null
-  gh alias set s 'status' >/dev/null
+  gh alias set rl 'repo list' >/dev/null 2>&1
+  gh alias set rv 'repo view --web' >/dev/null 2>&1
+  gh alias set il 'issue list' >/dev/null 2>&1
+  gh alias set is 'issue status' >/dev/null 2>&1
+  gh alias set iv 'issue view --web' >/dev/null 2>&1
+  gh alias set pl 'pr list' >/dev/null 2>&1
+  gh alias set ps 'pr status' >/dev/null 2>&1
+  gh alias set pv 'pr view --web' >/dev/null 2>&1
+  gh alias set b 'browse' >/dev/null 2>&1
+  gh alias set s 'status' >/dev/null 2>&1
 fi
 
 ## ghq
