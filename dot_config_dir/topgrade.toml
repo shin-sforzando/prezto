@@ -3,10 +3,10 @@
 #assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-disable = ["containers", "vim"]
+disable = ["containers", "vim", "pnpm"]
 
 # Ignore failures for these steps
-ignore_failures = ["brew_cask", "git_repos", "node", "pnpm"]
+ignore_failures = ["brew_cask", "git_repos", "node"]
 
 # Run specific steps - same options as the command line flag
 #only = ["system", "emacs"]
