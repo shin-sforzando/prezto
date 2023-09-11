@@ -68,6 +68,23 @@ else
   }
 fi
 
+## eza: Modern, maintained replacement for ls
+#
+if which eza >/dev/null; then
+  alias ls="eza -hF --icons"
+  alias l="eza -haF --icons"
+  alias la="eza -haF --icons"
+  alias ll="eza -halF --icons --git"
+
+  function chpwd() {
+    eza -halF --icons --git
+  }
+else
+  function chpwd() {
+    ls -GlA
+  }
+fi
+
 ## fzf
 #
 if which fzf >/dev/null; then

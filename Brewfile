@@ -43,6 +43,9 @@ brew "dust"
 # Modern replacement for 'ls'
 brew "exa"
 
+# Modern, maintained replacement for ls
+brew "eza"
+
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 
