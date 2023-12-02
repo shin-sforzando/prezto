@@ -262,9 +262,17 @@ if which github-copilot-cli >/dev/null; then
   eval "$(github-copilot-cli alias -- "$0")"
 fi
 
+## Ruby
+#
+export GEM_HOME="$HOME/.gem"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
+
 ## rbenv
 #
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 ## Git
 #

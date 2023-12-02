@@ -105,10 +105,10 @@ if which volta >/dev/null; then
 fi
 
 # for rbenv
-msg "${BLUE}Start setting up rbenv.${NOFORMAT}"
-LATEST_RUBY=$(rbenv install -l | grep -v - | tail -1)
-rbenv install $LATEST_RUBY
-rbenv global $LATEST_RUBY
+# msg "${BLUE}Start setting up rbenv.${NOFORMAT}"
+# LATEST_RUBY=$(rbenv install -l | grep -v - | tail -1)
+# rbenv install $LATEST_RUBY
+# rbenv global $LATEST_RUBY
 
 ## iTerm2 Shell Integration
 msg "${BLUE}Install iTerm2 Shell Integration.${NOFORMAT}"
