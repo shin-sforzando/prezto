@@ -237,8 +237,3 @@ max_concurrency = 5
 [distrobox]
 # use_root = false
 # containers = ["archlinux-latest"]
-
-
-# Containers
-[containers]
-# ignored_containers = ["ghcr.io/rancher-sandbox/rancher-desktop/rdx-proxy:latest"]
