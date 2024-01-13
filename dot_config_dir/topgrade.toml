@@ -14,7 +14,7 @@
 # sudo_command = "sudo"
 
 # Disable specific steps - same options as the command line flag
-disable = ["containers", "vim", "pnpm", "ruby_gems"]
+disable = ["containers", "vim", "pnpm", "gem", "ruby_gems"]
 
 # Ignore failures for these steps
 ignore_failures = ["brew_cask", "git_repos", "node"]
@@ -93,7 +93,7 @@ cleanup = true
 [python]
 # enable_pip_review = true                         ###disabled by default
 # enable_pip_review_local = true                   ###disabled by default
-enable_pipupgrade = true                           ###disabled by default
+enable_pipupgrade = true ###disabled by default
 # pipupgrade_arguments = "-y -u --pip-path pip"    ###disabled by default
 
 
