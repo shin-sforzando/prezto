@@ -108,7 +108,7 @@ if which fzf >/dev/null; then
   }
   zle -N _fzf-cdr
   if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-    # Avoid terminal with conflicting shortcust
+    # Avoid terminal with conflicting shortcut
     bindkey "^j" _fzf-cdr
   fi
 
