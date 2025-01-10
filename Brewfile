@@ -4,6 +4,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "ramborogers/netventory"
 tap "rhysd/hgrep", "https://github.com/rhysd/hgrep"
 
 ## Install Packages
@@ -150,6 +151,9 @@ brew "neofetch"
 
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+
+# Fast, beautiful network discovery tool with both terminal and web interfaces.
+brew "netventory"
 
 # Network Kanji code conversion Filter (NKF)
 brew "nkf"
