@@ -83,7 +83,7 @@ brew "fortune"
 # GitHub official CLI
 brew "gh"
 
-# The Go Programing Language
+# The Go Programming Language
 brew "go"
 
 # Remote repository management made easy

@@ -90,6 +90,8 @@ $(brew --prefix)/opt/fzf/install
 msg "${BLUE}Start setting up AstroNvim.${NOFORMAT}"
 pip3 install neovim
 git clone --depth 1 https://github.com/AstroNvim/template ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+nvim --headless -c 'quitall'
 
 ## for Volta
 msg "${BLUE}Start setting up Volta.${NOFORMAT}"
