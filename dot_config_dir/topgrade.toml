@@ -4,6 +4,7 @@
 [include]
 # paths = ["/etc/topgrade.toml"]
 
+
 [misc]
 # Run `sudo -v` to cache credentials at the start of the run
 # This avoids a blocking password prompt in the middle of an unattended run
@@ -14,7 +15,7 @@
 # sudo_command = "sudo"
 
 # Disable specific steps - same options as the command line flag
-disable = ["containers", "vim", "pnpm", "gem", "ruby_gems"]
+disable = ["containers", "vim", "pnpm", "gem", "ruby_gems", "uv"]
 
 # Ignore failures for these steps
 ignore_failures = ["brew_cask", "git_repos", "node"]
@@ -45,6 +46,12 @@ no_retry = true
 
 # Run inside tmux (default: false)
 # run_in_tmux = true
+
+# Changes the way topgrade interacts with
+# the tmux session, creating the session
+# and only attaching to it if not inside tmux
+# (default: "attach_if_not_in_session", allowed values: "attach_if_not_in_session", "attach_always")
+# tmux_session_mode = "attach_if_not_in_session"
 
 # Cleanup temporary or old files (default: false)
 cleanup = true
@@ -89,26 +96,52 @@ cleanup = true
 # "Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
 # "Custom command using interactive shell (unix)" = "-i vim_upgrade"
 
-# Python
+
 [python]
 # enable_pip_review = true                         ###disabled by default
 # enable_pip_review_local = true                   ###disabled by default
-enable_pipupgrade = true ###disabled by default
+enable_pipupgrade = true                         ###disabled by default
 # pipupgrade_arguments = "-y -u --pip-path pip"    ###disabled by default
 
+# For the poetry step, by default, Topgrade skips its update if poetry is not
+# installed with the official script. This configuration entry forces Topgrade
+# to run the update in this case.
+#
+# (default: false)
+# poetry_force_self_update = true
 
-# Composer
+
 [composer]
 # self_update = true
 
 
-# Homebrew
 [brew]
+# For the BrewCask step
+# If `Repo Cask Upgrade` exists, then use the `-a` option.
+# Otherwise, use the `--greedy` option.
 # greedy_cask = true
+
+# For the BrewCask step
+# If `Repo Cask Upgrade` does not exist, then use the `--greedy_latest` option.
+# NOTE: the above entry `greedy_cask` contains this entry, though you can enable
+# both of them, they won't clash with each other.
+# greedy_latest = true
+
+# For the BrewCask step
+# If `Repo Cask Upgrade` does not exist, then use the `--greedy_auto_updates` option.
+# NOTE: the above entry `greedy_cask` contains this entry, though you can enable
+# both of them, they won't clash with each other.
+# greedy_auto_updates = true
+
+# For the BrewFormula step
+# Execute `brew autoremove` after the step.
 autoremove = true
 
+# For the BrewFormula step
+# Upgrade formulae built from the HEAD branch; `brew upgrade --fetch-HEAD`
+# fetch_head = true
 
-# Linux
+
 [linux]
 # Arch Package Manager to use.
 # Allowed values:
@@ -146,6 +179,11 @@ autoremove = true
 
 # rpm_ostree = false
 
+# For Fedora/CentOS/RHEL Atomic variants, if `bootc` is available and this configuration entry is set to true, use
+# it to do the update - Will also supercede rpm-ostree if enabled
+# (default: false)
+# bootc = false
+
 # nix_arguments = "--flake"
 
 # nix_env_arguments = "--prebuilt-only"
@@ -154,8 +192,8 @@ autoremove = true
 # home_manager_arguments = ["--flake", "file"]
 
 
-# Git
 [git]
+# How many repos to pull at max in parallel
 max_concurrency = 5
 
 # Additional git repositories to pull
@@ -171,7 +209,6 @@ max_concurrency = 5
 # arguments = "--rebase --autostash"
 
 
-# Windows
 [windows]
 # Manually select Windows updates
 # accept_all_updates = false
@@ -187,35 +224,32 @@ max_concurrency = 5
 # manager such as Scoop or Cargo
 # self_rename = true
 
-# Enable WinGet upgrade
-# enable_winget = true
 
-
-# NPM
 [npm]
 # Use sudo if the NPM directory isn't owned by the current user
 # use_sudo = true
 
 
-# Yarn
 [yarn]
 # Run `yarn global upgrade` with `sudo`
 # use_sudo = true
 
 
-# Vim
+[deno]
+# Upgrade deno executable to the given version.
+# version = "stable"
+
+
 [vim]
 # For `vim-plug`, execute `PlugUpdate!` instead of `PlugUpdate`
 # force_plug_update = true
 
 
-# Firmware
 [firmware]
 # Offer to update firmware; if false just check for and display available updates
 # upgrade = true
 
 
-# Vagrant
 [vagrant]
 # Vagrant directories
 # directories = []
@@ -227,13 +261,68 @@ max_concurrency = 5
 # always_suspend = true
 
 
-# Flatpak
 [flatpak]
 # Use sudo for updating the system-wide installation
 # use_sudo = true
 
 
-# DistroBox
 [distrobox]
 # use_root = false
+
+
 # containers = ["archlinux-latest"]
+[containers]
+# Specify the containers to ignore while updating (Wildcard supported)
+# ignored_containers = ["ghcr.io/rancher-sandbox/rancher-desktop/rdx-proxy:latest", "docker.io*"]
+# Specify the runtime to use for containers (default: "docker", allowed values: "docker", "podman")
+# runtime = "podman"
+
+
+[lensfun]
+# If disabled, Topgrade invokes `lensfun‑update‑data` without root priviledge,
+# then the update will be only available to you. Otherwise, `sudo` is required,
+# and the update will be installed system-wide, i.e., available to all users.
+# (default: false)
+# use_sudo = false
+
+
+[julia]
+# If disabled, Topgrade invokes julia with the --startup-file=no CLI option.
+#
+# This may be desirable to avoid loading outdated packages with "using" directives
+# in the startup file, which might cause the update run to fail.
+# (default: true)
+# startup_file = true
+
+
+[zigup]
+# Version strings passed to zigup.
+# These may be pinned versions such as "0.13.0" or branches such as "master".
+# Each one will be updated in its own zigup invocation.
+# (default: ["master"])
+# target_versions = ["master", "0.13.0"]
+
+# Specifies the directory that the zig files will be installed to.
+# If defined, passed with the --install-dir command line flag.
+# If not defined, zigup will use its default behaviour.
+# (default: not defined)
+# install_dir = "~/.zig"
+
+# Specifies the path of the symlink which will be set to point at the default compiler version.
+# If defined, passed with the --path-link command line flag.
+# If not defined, zigup will use its default behaviour.
+# This is not meaningful if set_default is not enabled.
+# (default: not defined)
+# path_link = "~/.bin/zig"
+
+# If enabled, run `zigup clean` after updating all versions.
+# If enabled, each updated version above will be marked with `zigup keep`.
+# (default: false)
+# cleanup = false
+
+
+[vscode]
+# If this is set and is a non-empty string, it specifies the profile the
+# extensions should be updated for.
+# (default: this won't be set by default)
+# profile = ""
