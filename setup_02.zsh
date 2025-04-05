@@ -102,7 +102,6 @@ if which volta >/dev/null; then
   npm install --global commitizen
   npm install --global cz-emoji
   npm install --global npm-check-updates
-  npm install --global @githubnext/github-copilot-cli
 fi
 
 # for rbenv

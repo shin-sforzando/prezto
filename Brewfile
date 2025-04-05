@@ -41,9 +41,6 @@ brew "dog"
 # du + rust = dust, like du but more intuitive
 brew "dust"
 
-# Modern replacement for 'ls'
-brew "exa"
-
 # Modern, maintained replacement for ls
 brew "eza"
 
