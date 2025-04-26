@@ -20,6 +20,9 @@ if [[ ! -d $PERSONAL_COMP_DIR ]]; then
 fi
 export FPATH="$PERSONAL_COMP_DIR:$FPATH"
 
+# Docker Desktop
+fpath=(/Users/suzuki/.docker/completions $fpath)
+
 # Enable completions
 autoload -Uz compinit && compinit
 
