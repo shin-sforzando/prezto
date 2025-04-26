@@ -353,6 +353,7 @@ fi
 if which code >/dev/null; then
   export EDITOR="code"
 fi
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
 
 ## fpp: Facebook PathPicker
 #
