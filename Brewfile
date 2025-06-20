@@ -1,8 +1,8 @@
 ## Add Homebrew tap
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-drivers"
-tap "homebrew/cask-fonts"
+# tap "homebrew/cask-drivers"
+# tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "ramborogers/netventory"
 tap "rhysd/hgrep", "https://github.com/rhysd/hgrep"
