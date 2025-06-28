@@ -143,9 +143,6 @@ brew "navi"
 # NCurses Disk Usage
 brew "ncdu"
 
-# command-line system information tool
-brew "neofetch"
-
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 

@@ -19,8 +19,8 @@
 
 # Execute code only if STDERR is bound to a TTY.
 [[ -o INTERACTIVE && -t 2 ]] && {
-  if (( $+commands[neofetch] )); then
-    neofetch # command-line system information tool written in bash 3.2+
+  if (( $+commands[fastfetch] )); then
+    fastfetch # A maintained, feature-rich and performance oriented, neofetch like system information tool.
   else
     ## Login Message
     #
