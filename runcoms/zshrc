@@ -191,15 +191,6 @@ fi
 
 ## Google Cloud SDK
 #
-# The next line updates PATH for the Google Cloud SDK.
-if [ -e /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/ ]; then
-  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-fi
-if [ -e /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/ ]; then
-  source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-  source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-fi
 if [ -e $HOME/google-cloud-sdk/ ]; then
   source "$HOME/google-cloud-sdk/path.zsh.inc"
   source "$HOME/google-cloud-sdk/completion.zsh.inc"
@@ -248,15 +239,6 @@ fi
 if which github-copilot-cli >/dev/null; then
   eval "$(github-copilot-cli alias -- "$0")"
 fi
-
-## Ruby
-#
-export GEM_HOME="$HOME/.gem"
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
 
 ## rbenv
 #

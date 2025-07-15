@@ -104,12 +104,6 @@ if which volta >/dev/null; then
   npm install --global npm-check-updates
 fi
 
-# for rbenv
-# msg "${BLUE}Start setting up rbenv.${NOFORMAT}"
-# LATEST_RUBY=$(rbenv install -l | grep -v - | tail -1)
-# rbenv install $LATEST_RUBY
-# rbenv global $LATEST_RUBY
-
 ## iTerm2 Shell Integration
 msg "${BLUE}Install iTerm2 Shell Integration.${NOFORMAT}"
 curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | $(brew --prefix)/bin/zsh
