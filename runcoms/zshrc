@@ -286,9 +286,9 @@ else
   echo "gpgconf not found"
 fi
 
-### Claude Code
-#
-alias claude="/Users/suzuki/.claude/local/claude"
+# ### Claude Code
+# #
+# alias claude="/Users/suzuki/.claude/local/claude"
 
 
 ### OpenPGP
