@@ -16,6 +16,7 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
   - [Themes](#themes)
   - [External Modules](#external-modules)
 - [Customization](#customization)
+  - [Git Worktree Manager (`wt`)](#git-worktree-manager-wt)
 - [Misc](#misc)
   - [Resources](#resources)
   - [License](#license)
@@ -121,6 +122,36 @@ Prezto has many features disabled by default. Read the source code and accompany
 The project is managed via [Git][3].
 It is highly recommended that you fork this project; so, that you can commit your changes and push them to [GitHub][4] to not lose them. If you do not know how to use Git, follow this [tutorial][5] and bookmark this [reference][6].
 
+### Git Worktree Manager (`wt`)
+
+This repository includes a custom Git worktree management tool for ghq-managed repositories.
+
+**Usage:**
+
+```console
+wt                    # Select worktree interactively with fzf
+wt add <branch> [-b]  # Add new worktree (use -b for new branch)
+wt list               # List all worktrees
+wt remove             # Remove worktree interactively
+wt claude             # Select worktree and launch Claude Code
+```
+
+**Command Composition Examples:**
+
+```console
+cd $(wt)      # Navigate to selected worktree
+code $(wt)    # Open selected worktree in VS Code
+ls $(wt)      # List files in selected worktree
+```
+
+**Available Aliases:**
+
+- `wtcd` - Navigate to selected worktree
+- `wtcode` - Open selected worktree in VS Code
+- `wtclaude` - Launch Claude Code in selected worktree
+
+**Note:** Worktrees are stored in `worktrees/` directory within each repository (automatically added to `.gitignore`).
+
 ## Misc
 
 ### Resources
@@ -139,6 +170,3 @@ This project is licensed under the MIT License.
 [6]: https://git.github.io/git-reference/
 [7]: http://www.bash2zsh.com/zsh_refcard/refcard.pdf
 [8]: https://grml.org/zsh/zsh-lovers.html
-[9]: modules#readme
-[10]: runcoms#readme
-[11]: modules/git#readme

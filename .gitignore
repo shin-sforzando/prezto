@@ -3,3 +3,4 @@
 Brewfile.lock.json
 contrib
 modules/*/cache.zsh
+worktrees/

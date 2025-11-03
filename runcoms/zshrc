@@ -37,6 +37,11 @@ JETBRAINS_APPS_DIR="$HOME/Library/Application Support/JetBrains/Toolbox/apps"
 JETBRAINS_SCRIPTS_DIR="$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 export PATH="$PERSONAL_BIN_DIR:$JETBRAINS_APPS_DIR:$JETBRAINS_SCRIPTS_DIR:$PATH"
 
+## Prezto bin directory
+#
+PREZTO_BIN_DIR="$HOME/.zprezto/bin"
+export PATH="$PREZTO_BIN_DIR:$PATH"
+
 ## cURL
 #
 # For Intel
@@ -269,6 +274,14 @@ fi
 if which ghq >/dev/null; then
   alias repos="ghq list | fzf --preview 'bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*'"
   alias repo='cd $(ghq root)/$(repos)'
+fi
+
+## wt: Git worktree manager
+#
+if which wt >/dev/null; then
+  alias wtcd='cd $(wt)'
+  alias wtclaude='cd $(wt) && claude'
+  alias wtcode='code $(wt)'
 fi
 
 ## MObileSHell
