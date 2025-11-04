@@ -36,51 +36,51 @@ set -euo pipefail
 
 # Check if we're in a git repository
 check_git_repo() {
-    if ! git rev-parse --git-dir &>/dev/null; then
-        echo "Error: Not a git repository" >&2
-        return 1
-    fi
+  if ! git rev-parse --git-dir &>/dev/null; then
+    echo "Error: Not a git repository" >&2
+    return 1
+  fi
 }
 
 # Check if fzf is installed
 check_fzf() {
-    if ! command -v fzf &>/dev/null; then
-        echo "Error: fzf is not installed. Please install fzf first." >&2
-        return 1
-    fi
+  if ! command -v fzf &>/dev/null; then
+    echo "Error: fzf is not installed. Please install fzf first." >&2
+    return 1
+  fi
 }
 
 # Get repository root directory
 get_repo_root() {
-    git rev-parse --show-toplevel
+  git rev-parse --show-toplevel
 }
 
 # Ensure worktrees directory exists and is in .gitignore
 ensure_worktrees_dir() {
-    local repo_root
-    repo_root="$(get_repo_root)"
-    local worktrees_dir="$repo_root/worktrees"
-    local gitignore="$repo_root/.gitignore"
+  local repo_root
+  repo_root="$(get_repo_root)"
+  local worktrees_dir="$repo_root/worktrees"
+  local gitignore="$repo_root/.gitignore"
 
-    # Create worktrees directory if it doesn't exist
-    if [[ ! -d "$worktrees_dir" ]]; then
-        mkdir -p "$worktrees_dir"
-        echo "Created worktrees directory: $worktrees_dir" >&2
-    fi
+  # Create worktrees directory if it doesn't exist
+  if [[ ! -d "$worktrees_dir" ]]; then
+    mkdir -p "$worktrees_dir"
+    echo "Created worktrees directory: $worktrees_dir" >&2
+  fi
 
-    # Add worktrees/ to .gitignore if not already present
-    if [[ ! -f "$gitignore" ]]; then
-        echo "worktrees/" > "$gitignore"
-        echo "Added worktrees/ to .gitignore" >&2
-    elif ! grep -q '^/\?worktrees/$' "$gitignore"; then
-        echo "worktrees/" >> "$gitignore"
-        echo "Added worktrees/ to .gitignore" >&2
-    fi
+  # Add worktrees/ to .gitignore if not already present
+  if [[ ! -f "$gitignore" ]]; then
+    echo "worktrees/" >"$gitignore"
+    echo "Added worktrees/ to .gitignore" >&2
+  elif ! grep -q '^/\?worktrees/$' "$gitignore"; then
+    echo "worktrees/" >>"$gitignore"
+    echo "Added worktrees/ to .gitignore" >&2
+  fi
 }
 
 # Normalize branch name (replace / with -)
 normalize_branch_name() {
-    echo "$1" | sed 's|/|-|g'
+  echo "$1" | sed 's|/|-|g'
 }
 
 #------------------------------------------------------------------------------
@@ -89,11 +89,11 @@ normalize_branch_name() {
 
 # Default command: Select worktree with fzf and output path
 cmd_default() {
-    check_git_repo
-    check_fzf
+  check_git_repo
+  check_fzf
 
-    local worktrees
-    worktrees=$(git worktree list --porcelain | awk '
+  local worktrees
+  worktrees=$(git worktree list --porcelain | awk '
         /^worktree/ { path = $2 }
         /^branch/ { branch = $2; gsub("^refs/heads/", "", branch) }
         /^$/ {
@@ -109,15 +109,15 @@ cmd_default() {
         }
     ')
 
-    if [[ -z "$worktrees" ]]; then
-        echo "Error: No worktrees found" >&2
-        return 1
-    fi
+  if [[ -z "$worktrees" ]]; then
+    echo "Error: No worktrees found" >&2
+    return 1
+  fi
 
-    local selected
-    selected=$(echo "$worktrees" | fzf \
-        --prompt="Select worktree > " \
-        --preview='
+  local selected
+  selected=$(echo "$worktrees" | fzf \
+    --prompt="Select worktree > " \
+    --preview='
             path=$(echo {} | awk "{print \$1}");
             echo "=== Git Log ===";
             git -C "$path" log --oneline --graph --color=always -20 2>/dev/null || echo "No commits yet";
@@ -125,89 +125,89 @@ cmd_default() {
             echo "=== Git Status ===";
             git -C "$path" status --short 2>/dev/null || echo "No changes";
         ' \
-        --preview-window=right:50% \
-        --height=100%)
+    --preview-window=right:50% \
+    --height=100%)
 
-    if [[ -z "$selected" ]]; then
-        return 1
-    fi
+  if [[ -z "$selected" ]]; then
+    return 1
+  fi
 
-    # Extract path from selection
-    echo "$selected" | awk '{print $1}'
+  # Extract path from selection
+  echo "$selected" | awk '{print $1}'
 }
 
 # Add new worktree
 cmd_add() {
-    check_git_repo
+  check_git_repo
 
-    local create_branch=false
-    local branch=""
+  local create_branch=false
+  local branch=""
 
-    # Parse arguments
-    while [[ $# -gt 0 ]]; do
-        case "$1" in
-            -b)
-                create_branch=true
-                shift
-                ;;
-            *)
-                if [[ -z "$branch" ]]; then
-                    branch="$1"
-                else
-                    echo "Error: Unexpected argument: $1" >&2
-                    return 1
-                fi
-                shift
-                ;;
-        esac
-    done
-
-    if [[ -z "$branch" ]]; then
-        echo "Error: Branch name required" >&2
-        echo "Usage: wt add <branch> [-b]" >&2
+  # Parse arguments
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+    -b)
+      create_branch=true
+      shift
+      ;;
+    *)
+      if [[ -z "$branch" ]]; then
+        branch="$1"
+      else
+        echo "Error: Unexpected argument: $1" >&2
         return 1
-    fi
+      fi
+      shift
+      ;;
+    esac
+  done
 
-    ensure_worktrees_dir
+  if [[ -z "$branch" ]]; then
+    echo "Error: Branch name required" >&2
+    echo "Usage: wt add <branch> [-b]" >&2
+    return 1
+  fi
 
-    local repo_root
-    repo_root="$(get_repo_root)"
-    local normalized_branch
-    normalized_branch="$(normalize_branch_name "$branch")"
-    local worktree_path="$repo_root/worktrees/$normalized_branch"
+  ensure_worktrees_dir
 
-    if [[ -d "$worktree_path" ]]; then
-        echo "Error: Worktree already exists at $worktree_path" >&2
-        return 1
-    fi
+  local repo_root
+  repo_root="$(get_repo_root)"
+  local normalized_branch
+  normalized_branch="$(normalize_branch_name "$branch")"
+  local worktree_path="$repo_root/worktrees/$normalized_branch"
 
-    # Create worktree
-    if $create_branch; then
-        git worktree add -b "$branch" "$worktree_path"
-    else
-        git worktree add "$worktree_path" "$branch"
-    fi
+  if [[ -d "$worktree_path" ]]; then
+    echo "Error: Worktree already exists at $worktree_path" >&2
+    return 1
+  fi
 
-    echo "Worktree created at: $worktree_path"
+  # Create worktree
+  if $create_branch; then
+    git worktree add -b "$branch" "$worktree_path"
+  else
+    git worktree add "$worktree_path" "$branch"
+  fi
+
+  echo "Worktree created at: $worktree_path"
 }
 
 # List all worktrees
 cmd_list() {
-    check_git_repo
-    git worktree list
+  check_git_repo
+  git worktree list
 }
 
 # Remove worktree interactively
 cmd_remove() {
-    check_git_repo
-    check_fzf
+  check_git_repo
+  check_fzf
 
-    local repo_root
-    repo_root="$(get_repo_root)"
+  local repo_root
+  repo_root="$(get_repo_root)"
 
-    # Get worktrees excluding the main worktree
-    local worktrees
-    worktrees=$(git worktree list --porcelain | awk -v root="$repo_root" '
+  # Get worktrees excluding the main worktree
+  local worktrees
+  worktrees=$(git worktree list --porcelain | awk -v root="$repo_root" '
         /^worktree/ { path = $2 }
         /^branch/ { branch = $2; gsub("^refs/heads/", "", branch) }
         /^$/ {
@@ -223,15 +223,15 @@ cmd_remove() {
         }
     ')
 
-    if [[ -z "$worktrees" ]]; then
-        echo "No worktrees to remove (main worktree cannot be removed)" >&2
-        return 1
-    fi
+  if [[ -z "$worktrees" ]]; then
+    echo "No worktrees to remove (main worktree cannot be removed)" >&2
+    return 1
+  fi
 
-    local selected
-    selected=$(echo "$worktrees" | fzf \
-        --prompt="Select worktree to remove > " \
-        --preview='
+  local selected
+  selected=$(echo "$worktrees" | fzf \
+    --prompt="Select worktree to remove > " \
+    --preview='
             path=$(echo {} | awk "{print \$1}");
             echo "=== Git Status ===";
             git -C "$path" status --short 2>/dev/null || echo "No changes";
@@ -239,46 +239,46 @@ cmd_remove() {
             echo "=== Git Log ===";
             git -C "$path" log --oneline --graph --color=always -10 2>/dev/null || echo "No commits yet";
         ' \
-        --preview-window=right:50% \
-        --height=100%)
+    --preview-window=right:50% \
+    --height=100%)
 
-    if [[ -z "$selected" ]]; then
-        return 1
-    fi
+  if [[ -z "$selected" ]]; then
+    return 1
+  fi
 
-    # Extract path from selection
-    local worktree_path
-    worktree_path=$(echo "$selected" | awk '{print $1}')
+  # Extract path from selection
+  local worktree_path
+  worktree_path=$(echo "$selected" | awk '{print $1}')
 
-    # Confirmation prompt
-    echo -n "Remove worktree at $worktree_path? [y/N] " >&2
-    read -r response
+  # Confirmation prompt
+  echo -n "Remove worktree at $worktree_path? [y/N] " >&2
+  read -r response
 
-    if [[ "$response" =~ ^[Yy]$ ]]; then
-        git worktree remove "$worktree_path"
-        echo "Removed worktree: $worktree_path"
-    else
-        echo "Cancelled"
-        return 1
-    fi
+  if [[ "$response" =~ ^[Yy]$ ]]; then
+    git worktree remove "$worktree_path"
+    echo "Removed worktree: $worktree_path"
+  else
+    echo "Cancelled"
+    return 1
+  fi
 }
 
 # Select worktree and launch Claude Code
 cmd_claude() {
-    check_git_repo
-    check_fzf
+  check_git_repo
+  check_fzf
 
-    local selected_path
-    if ! selected_path=$(cmd_default); then
-        return 1
-    fi
+  local selected_path
+  if ! selected_path=$(cmd_default); then
+    return 1
+  fi
 
-    cd "$selected_path" && claude
+  cd "$selected_path" && claude
 }
 
 # Show usage
 cmd_help() {
-    sed -n '2,/^$/p' "$0" | sed 's/^# \?//'
+  sed -n '2,/^$/p' "$0" | sed 's/^# \?//'
 }
 
 #------------------------------------------------------------------------------
@@ -286,32 +286,32 @@ cmd_help() {
 #------------------------------------------------------------------------------
 
 main() {
-    case "${1:-}" in
-        "")
-            cmd_default
-            ;;
-        add)
-            shift
-            cmd_add "$@"
-            ;;
-        list)
-            cmd_list
-            ;;
-        remove)
-            cmd_remove
-            ;;
-        claude)
-            cmd_claude
-            ;;
-        help|--help|-h)
-            cmd_help
-            ;;
-        *)
-            echo "Error: Unknown command: $1" >&2
-            echo "Run 'wt help' for usage information" >&2
-            return 1
-            ;;
-    esac
+  case "${1:-}" in
+  "")
+    cmd_default
+    ;;
+  add)
+    shift
+    cmd_add "$@"
+    ;;
+  list)
+    cmd_list
+    ;;
+  remove)
+    cmd_remove
+    ;;
+  claude)
+    cmd_claude
+    ;;
+  help | --help | -h)
+    cmd_help
+    ;;
+  *)
+    echo "Error: Unknown command: $1" >&2
+    echo "Run 'wt help' for usage information" >&2
+    return 1
+    ;;
+  esac
 }
 
 main "$@"

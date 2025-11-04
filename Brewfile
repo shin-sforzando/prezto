@@ -126,7 +126,7 @@ brew "lnav"
 brew "m-cli"
 
 # Slightly unconventional command-line interface for markdownlint
-brew install markdownlint-cli2
+brew "markdownlint-cli2"
 
 # Mac App Store CLI interface
 brew "mas"
