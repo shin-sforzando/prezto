@@ -187,6 +187,14 @@ if which op >/dev/null; then
   eval "$(op completion zsh)"; compdef _op op
 fi
 
+## tenv
+#
+if which tenv >/dev/null; then
+  tenv completion zsh > ~/.tenv.completion.zsh
+  echo "source \$HOME/.tenv.completion.zsh" >> ~/.zshrc
+  export TENV_AUTO_INSTALL=true
+fi
+
 ## Terraform
 #
 if which terraform >/dev/null; then
@@ -396,3 +404,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 #if type zprof > /dev/null 2>&1; then
 #  zprof | less
 #fi
+source $HOME/.tenv.completion.zsh
+source $HOME/.tenv.completion.zsh
