@@ -404,5 +404,3 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 #if type zprof > /dev/null 2>&1; then
 #  zprof | less
 #fi
-source $HOME/.tenv.completion.zsh
-source $HOME/.tenv.completion.zsh
