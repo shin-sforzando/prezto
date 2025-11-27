@@ -190,7 +190,7 @@ fi
 ## tenv
 #
 if which tenv >/dev/null; then
-  tenv completion zsh > ~/.tenv.completion.zsh
+  tenv completion zsh >| ~/.tenv.completion.zsh
   source "$HOME/.tenv.completion.zsh"
   export TENV_AUTO_INSTALL=true
 fi
