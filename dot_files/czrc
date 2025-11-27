@@ -7,8 +7,8 @@
       "types": [
         {
           "name": "feat",
-          "code": "feat: :+1:",
-          "emoji": "👍",
+          "code": "feat: :sparkles:",
+          "emoji": "✨",
           "description": "Feature     (実装)"
         },
         {
@@ -31,8 +31,8 @@
         },
         {
           "name": "style",
-          "code": "style: :sparkles:",
-          "emoji": "✨",
+          "code": "style: :art:",
+          "emoji": "🎨",
           "description": "Style       (美観)"
         },
         {
@@ -61,7 +61,7 @@
         },
         {
           "name": "release",
-          "code": "release :tada:",
+          "code": "release: :tada:",
           "emoji": "🎉",
           "description": "Release     (公開)"
         }
