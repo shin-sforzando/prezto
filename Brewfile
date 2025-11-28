@@ -182,6 +182,9 @@ brew "rsync"
 # sd - s[earch] & d[isplace] like sed
 brew "sd"
 
+# Modern Task runner written in Go
+brew "go-task"
+
 # Send macOS User Notifications from the CLI
 brew "terminal-notifier"
 

@@ -187,6 +187,12 @@ if which op >/dev/null; then
   eval "$(op completion zsh)"; compdef _op op
 fi
 
+## go-Task
+#
+if which task >/dev/null; then
+  eval "$(task --completion zsh)"
+fi
+
 ## tenv
 #
 if which tenv >/dev/null; then
