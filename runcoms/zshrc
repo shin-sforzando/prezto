@@ -59,6 +59,9 @@ alias ddf="find . \( -name '.DS_Store' -o -name '._*' -o -name '.apdisk' -o -nam
 ## Say Success or Failure
 alias -g ssf="&& say success || say failure"
 
+## pbcopy
+alias -g pbc="| tee >(pbcopy)"
+
 ## eza: Modern, maintained replacement for ls
 #
 if which eza >/dev/null; then
@@ -122,6 +125,7 @@ if which ov >/dev/null; then
   export BAT_PAGER="ov -F -H3"
   eval $(ov --completion zsh)
 fi
+
 
 ## ripgrep: https://github.com/BurntSushi/ripgrep
 #
@@ -258,9 +262,6 @@ fi
 if which github-copilot-cli >/dev/null; then
   eval "$(github-copilot-cli alias -- "$0")"
 fi
-
-## rbenv
-#
 
 ## Git
 #
@@ -399,7 +400,7 @@ fi
 ## translate-shell
 #
 if which trans >/dev/null; then
-  alias -g T="| trans :ja"
+  alias -g trj="| trans :ja"
 fi
 
 ## iTerm2 Shell Integrations
