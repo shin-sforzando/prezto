@@ -16,7 +16,6 @@
 #
 # RECOMMENDED ALIASES (add to ~/.zshrc or ~/.zprezto/runcoms/zshrc):
 #   alias wtcd='cd $(wt)'
-#   alias wtclaude='cd $(wt) && claude'
 #   alias wtcode='code $(wt)'
 #
 # INSTALLATION:
@@ -55,12 +54,11 @@ get_repo_root() {
   git rev-parse --show-toplevel
 }
 
-# Ensure worktrees directory exists and is in .gitignore
+# Ensure worktrees directory exists
 ensure_worktrees_dir() {
   local repo_root
   repo_root="$(get_repo_root)"
   local worktrees_dir="$repo_root/worktrees"
-  local gitignore="$repo_root/.gitignore"
 
   # Create worktrees directory if it doesn't exist
   if [[ ! -d "$worktrees_dir" ]]; then
@@ -68,14 +66,17 @@ ensure_worktrees_dir() {
     echo "Created worktrees directory: $worktrees_dir" >&2
   fi
 
-  # Add worktrees/ to .gitignore if not already present
-  if [[ ! -f "$gitignore" ]]; then
-    echo "worktrees/" >"$gitignore"
-    echo "Added worktrees/ to .gitignore" >&2
-  elif ! grep -q '^/\?worktrees/$' "$gitignore"; then
-    echo "worktrees/" >>"$gitignore"
-    echo "Added worktrees/ to .gitignore" >&2
-  fi
+  ## Add worktrees/ to .gitignore if not already present
+  # NOTE: worktrees/ is now added to global gitignore (~/.zprezto/dot_files/gitignore)
+  # so we don't need to add it to each repository's .gitignore
+  # local gitignore="$repo_root/.gitignore"
+  # if [[ ! -f "$gitignore" ]]; then
+  #   echo "worktrees/" >"$gitignore"
+  #   echo "Added worktrees/ to .gitignore" >&2
+  # elif ! grep -q '^/\?worktrees/$' "$gitignore"; then
+  #   echo "worktrees/" >>"$gitignore"
+  #   echo "Added worktrees/ to .gitignore" >&2
+  # fi
 }
 
 # Normalize branch name (replace / with -)
@@ -87,21 +88,73 @@ normalize_branch_name() {
 # Command Implementations
 #------------------------------------------------------------------------------
 
+# Find common directory prefix for all paths
+find_common_prefix() {
+  local paths=("$@")
+
+  if [[ ${#paths[@]} -eq 0 ]]; then
+    echo ""
+    return
+  fi
+
+  # Start with the first path's directory
+  local prefix="${paths[0]%/*}/"
+
+  # Compare with all other paths
+  for path in "${paths[@]:1}"; do
+    # Find common prefix between current prefix and this path
+    while [[ -n "$prefix" ]] && [[ "${path#$prefix}" == "$path" ]]; do
+      # Remove last directory component
+      prefix="${prefix%/}"
+      prefix="${prefix%/*}/"
+    done
+
+    # If no common prefix found, break
+    if [[ -z "$prefix" ]]; then
+      break
+    fi
+  done
+
+  echo "$prefix"
+}
+
 # Default command: Select worktree with fzf and output path
 cmd_default() {
   check_git_repo
   check_fzf
 
+  # Get all worktree paths first to calculate common prefix
+  local all_paths=()
+  while IFS= read -r path; do
+    all_paths+=("$path")
+  done < <(git worktree list --porcelain | awk '/^worktree/ {print $2}')
+
+  if [[ ${#all_paths[@]} -eq 0 ]]; then
+    echo "Error: No worktrees found" >&2
+    return 1
+  fi
+
+  # Find common prefix
+  local common_prefix
+  common_prefix=$(find_common_prefix "${all_paths[@]}")
+
+  # Build worktree list with full path and display path
   local worktrees
-  worktrees=$(git worktree list --porcelain | awk '
+  worktrees=$(git worktree list --porcelain | awk -v prefix="$common_prefix" '
         /^worktree/ { path = $2 }
         /^branch/ { branch = $2; gsub("^refs/heads/", "", branch) }
         /^$/ {
             if (path != "") {
+                # Create display path by removing common prefix
+                display_path = path
+                if (prefix != "" && index(path, prefix) == 1) {
+                    display_path = substr(path, length(prefix) + 1)
+                }
+
                 if (branch != "") {
-                    print path " (" branch ")"
+                    print path "\t" display_path " (" branch ")"
                 } else {
-                    print path " (detached)"
+                    print path "\t" display_path " (detached)"
                 }
             }
             path = ""
@@ -109,16 +162,13 @@ cmd_default() {
         }
     ')
 
-  if [[ -z "$worktrees" ]]; then
-    echo "Error: No worktrees found" >&2
-    return 1
-  fi
-
   local selected
   selected=$(echo "$worktrees" | fzf \
     --prompt="Select worktree > " \
+    --delimiter='\t' \
+    --with-nth=2 \
     --preview='
-            path=$(echo {} | awk "{print \$1}");
+            path=$(echo {} | awk -F"\t" "{print \$1}");
             echo "=== Git Log ===";
             git -C "$path" log --oneline --graph --color=always -20 2>/dev/null || echo "No commits yet";
             echo "";
@@ -132,8 +182,8 @@ cmd_default() {
     return 1
   fi
 
-  # Extract path from selection
-  echo "$selected" | awk '{print $1}'
+  # Extract actual path from selection (first field before tab)
+  echo "$selected" | awk -F'\t' '{print $1}'
 }
 
 # Add new worktree
@@ -205,17 +255,40 @@ cmd_remove() {
   local repo_root
   repo_root="$(get_repo_root)"
 
+  # Get all worktree paths first to calculate common prefix
+  local all_paths=()
+  while IFS= read -r path; do
+    if [[ "$path" != "$repo_root" ]]; then
+      all_paths+=("$path")
+    fi
+  done < <(git worktree list --porcelain | awk '/^worktree/ {print $2}')
+
+  if [[ ${#all_paths[@]} -eq 0 ]]; then
+    echo "No worktrees to remove (main worktree cannot be removed)" >&2
+    return 1
+  fi
+
+  # Find common prefix
+  local common_prefix
+  common_prefix=$(find_common_prefix "${all_paths[@]}")
+
   # Get worktrees excluding the main worktree
   local worktrees
-  worktrees=$(git worktree list --porcelain | awk -v root="$repo_root" '
+  worktrees=$(git worktree list --porcelain | awk -v root="$repo_root" -v prefix="$common_prefix" '
         /^worktree/ { path = $2 }
         /^branch/ { branch = $2; gsub("^refs/heads/", "", branch) }
         /^$/ {
             if (path != "" && path != root) {
+                # Create display path by removing common prefix
+                display_path = path
+                if (prefix != "" && index(path, prefix) == 1) {
+                    display_path = substr(path, length(prefix) + 1)
+                }
+
                 if (branch != "") {
-                    print path " (" branch ")"
+                    print path "\t" display_path " (" branch ")"
                 } else {
-                    print path " (detached)"
+                    print path "\t" display_path " (detached)"
                 }
             }
             path = ""
@@ -223,16 +296,13 @@ cmd_remove() {
         }
     ')
 
-  if [[ -z "$worktrees" ]]; then
-    echo "No worktrees to remove (main worktree cannot be removed)" >&2
-    return 1
-  fi
-
   local selected
   selected=$(echo "$worktrees" | fzf \
     --prompt="Select worktree to remove > " \
+    --delimiter='\t' \
+    --with-nth=2 \
     --preview='
-            path=$(echo {} | awk "{print \$1}");
+            path=$(echo {} | awk -F"\t" "{print \$1}");
             echo "=== Git Status ===";
             git -C "$path" status --short 2>/dev/null || echo "No changes";
             echo "";
@@ -248,7 +318,7 @@ cmd_remove() {
 
   # Extract path from selection
   local worktree_path
-  worktree_path=$(echo "$selected" | awk '{print $1}')
+  worktree_path=$(echo "$selected" | awk -F'\t' '{print $1}')
 
   # Confirmation prompt
   echo -n "Remove worktree at $worktree_path? [y/N] " >&2
@@ -261,19 +331,6 @@ cmd_remove() {
     echo "Cancelled"
     return 1
   fi
-}
-
-# Select worktree and launch Claude Code
-cmd_claude() {
-  check_git_repo
-  check_fzf
-
-  local selected_path
-  if ! selected_path=$(cmd_default); then
-    return 1
-  fi
-
-  cd "$selected_path" && claude
 }
 
 # Show usage
@@ -299,9 +356,6 @@ main() {
     ;;
   remove)
     cmd_remove
-    ;;
-  claude)
-    cmd_claude
     ;;
   help | --help | -h)
     cmd_help

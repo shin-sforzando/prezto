@@ -201,3 +201,6 @@ modules.xml
 
 ### DeepCode aka. Snyl ###
 .dccache
+
+### Git Worktrees ###
+worktrees/

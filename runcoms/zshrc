@@ -295,6 +295,7 @@ fi
 #
 if which wt >/dev/null; then
   alias wtcd='cd $(wt)'
+  alias wtrm='wt remove'
   alias wtclaude='cd $(wt) && claude'
   alias wtcode='code $(wt)'
 fi
