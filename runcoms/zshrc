@@ -380,7 +380,7 @@ fi
 ## zoxide: Smarter cd command
 #
 if which zoxide >/dev/null; then
-  eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh --cmd cd)"
 fi
 
 ## OpenSSL
