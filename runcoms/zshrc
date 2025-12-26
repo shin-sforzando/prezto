@@ -364,6 +364,13 @@ if which volta >/dev/null; then
   fi
 fi
 
+# bun completions
+[ -s "/Users/suzuki/.bun/_bun" ] && source "/Users/suzuki/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 ## Visual Studio Code
 #
 if which code >/dev/null; then
