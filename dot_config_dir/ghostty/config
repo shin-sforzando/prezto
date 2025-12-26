@@ -28,6 +28,10 @@ window-title-font-family = HackGen Console NF
 macos-titlebar-style = tabs
 macos-option-as-alt = true
 
+# Disable automatic shell integration injection
+# We manually load it in .zshrc after Prezto to ensure correct hook order
+shell-integration = none
+
 window-padding-x = 8
 window-padding-y = 8
 window-padding-balance = true

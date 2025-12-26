@@ -70,13 +70,20 @@ if which eza >/dev/null; then
   alias la="eza -haF --icons"
   alias ll="eza -halF --icons --git"
 
-  function chpwd() {
+  # Auto-list files on directory change
+  # Use add-zsh-hook instead of defining chpwd() directly
+  # to avoid overriding chpwd_functions array used by Prezto and Ghostty
+  _auto_ls_eza() {
     eza -halF --icons --git
   }
+  autoload -Uz add-zsh-hook
+  add-zsh-hook chpwd _auto_ls_eza
 else
-  function chpwd() {
+  _auto_ls_default() {
     ls -GlA
   }
+  autoload -Uz add-zsh-hook
+  add-zsh-hook chpwd _auto_ls_default
 fi
 
 ## fzf
@@ -87,7 +94,6 @@ if which fzf >/dev/null; then
 
   autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
   add-zsh-hook chpwd chpwd_recent_dirs
-  chpwd_functions+=chpwd_recent_dirs
   zstyle ':chpwd:*' recent-dirs-max 1000
   zstyle ':chpwd:*' recent-dirs-default true
   zstyle ':completion:*' recent-dirs-insert always
@@ -411,9 +417,12 @@ if which trans >/dev/null; then
   alias -g trj="| trans :ja"
 fi
 
-## iTerm2 Shell Integrations
-#
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+## Ghostty Shell Integration
+# Must be loaded AFTER Prezto to ensure proper hook order
+# See: https://ghostty.org/docs/shell-integration
+if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
+  source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration
+fi
 
 # End Profiling
 #if type zprof > /dev/null 2>&1; then
