@@ -212,6 +212,9 @@ brew "ugrep"
 # Source code beautifier
 brew "uncrustify"
 
+# Extremely fast Python package installer and resolver
+brew "uv"
+
 # hassle-free way to manage your JavaScript command-line tools
 brew "volta"
 
